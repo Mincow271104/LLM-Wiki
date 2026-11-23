@@ -1,0 +1,40 @@
+{
+  "id": "S02",
+  "title": "Toolformer: Language Models Can Teach Themselves to Use Tools",
+  "authors": [
+    "Timo Schick",
+    "Jane Dwivedi-Yu",
+    "Roberto Dessì",
+    "Roberta Raileanu",
+    "Maria Lomeli",
+    "Luke Zettlemoyer",
+    "Nicola Cancedda",
+    "Thomas Scialom"
+  ],
+  "publisher": "arXiv / NeurIPS 2023",
+  "publication_date": "2023-02-09",
+  "access_date": "2026-11-23",
+  "url": "https://arxiv.org/abs/2302.04761",
+  "retrieval_status": "accessible",
+  "http_status": 200,
+  "document_type": "peer_reviewed_paper",
+  "summary": "Demonstrates that language models can self-learn tool usage through self-supervised API call generation, execution, filtering based on perplexity reduction, and fine-tuning without human annotations.",
+  "key_topics": [
+    "tool use",
+    "self-supervised learning",
+    "API execution",
+    "calculator",
+    "retrieval",
+    "perplexity filtering"
+  ],
+  "verified_sections": [
+    "1 Introduction",
+    "2 Approach",
+    "3 Tools",
+    "4 Experiments",
+    "5 Related Work",
+    "6 Limitations",
+    "7 Conclusion"
+  ],
+  "copyright_notice": "Academic preprint under arXiv distribution license; metadata and fair use excerpts."
+}

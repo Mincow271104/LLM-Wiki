@@ -1,0 +1,292 @@
+[
+  {
+    "id": "S01",
+    "title": "ReAct: Synergizing Reasoning and Acting in Language Models",
+    "authors": [
+      "Shunyu Yao",
+      "Jeffrey Zhao",
+      "Dian Yu",
+      "Nan Du",
+      "Izhak Shafran",
+      "Karthik Narasimhan"
+    ],
+    "publisher": "arXiv / ICLR 2023",
+    "publication_date": "2022-10-06",
+    "access_date": "2026-11-23",
+    "url": "https://arxiv.org/abs/2210.03629",
+    "retrieval_status": "accessible",
+    "http_status": 200,
+    "document_type": "peer_reviewed_paper",
+    "summary": "Introduces the ReAct framework combining chain-of-thought reasoning with interactive action execution. Shows that interleaving reasoning ('thought') and acting ('action' -> 'observation') enables language models to overcome hallucination in reasoning and error propagation in action execution.",
+    "key_topics": [
+      "ReAct loop",
+      "reasoning and acting",
+      "chain-of-thought",
+      "multi-hop QA",
+      "interactive decision making"
+    ],
+    "verified_sections": [
+      "1 Introduction",
+      "2 ReAct: Synergizing Reasoning + Acting",
+      "3 Knowledge-Intensive Reasoning",
+      "4 Decision Making Tasks",
+      "5 Related Work",
+      "6 Conclusion"
+    ],
+    "copyright_notice": "Academic preprint under arXiv non-exclusive distribution license; metadata and fair use excerpts."
+  },
+  {
+    "id": "S02",
+    "title": "Toolformer: Language Models Can Teach Themselves to Use Tools",
+    "authors": [
+      "Timo Schick",
+      "Jane Dwivedi-Yu",
+      "Roberto Dessì",
+      "Roberta Raileanu",
+      "Maria Lomeli",
+      "Luke Zettlemoyer",
+      "Nicola Cancedda",
+      "Thomas Scialom"
+    ],
+    "publisher": "arXiv / NeurIPS 2023",
+    "publication_date": "2023-02-09",
+    "access_date": "2026-11-23",
+    "url": "https://arxiv.org/abs/2302.04761",
+    "retrieval_status": "accessible",
+    "http_status": 200,
+    "document_type": "peer_reviewed_paper",
+    "summary": "Demonstrates that language models can self-learn tool usage through self-supervised API call generation, execution, filtering based on perplexity reduction, and fine-tuning without human annotations.",
+    "key_topics": [
+      "tool use",
+      "self-supervised learning",
+      "API execution",
+      "calculator",
+      "retrieval",
+      "perplexity filtering"
+    ],
+    "verified_sections": [
+      "1 Introduction",
+      "2 Approach",
+      "3 Tools",
+      "4 Experiments",
+      "5 Related Work",
+      "6 Limitations",
+      "7 Conclusion"
+    ],
+    "copyright_notice": "Academic preprint under arXiv distribution license; metadata and fair use excerpts."
+  },
+  {
+    "id": "S03",
+    "title": "Building Effective Agents",
+    "authors": [
+      "Erik Schluntz",
+      "Barry Zhang"
+    ],
+    "publisher": "Anthropic",
+    "publication_date": "2024-12-19",
+    "access_date": "2026-11-23",
+    "url": "https://www.anthropic.com/engineering/building-effective-agents",
+    "retrieval_status": "accessible",
+    "http_status": 200,
+    "document_type": "engineering_blog",
+    "summary": "Practical engineering guide distinguishing deterministic workflows from autonomous agents. Outlines key patterns including Prompt Chaining, Routing, Parallelization, Orchestrator-Workers, and Evaluator-Optimizer, advocating for starting with simple architectures before adding complexity.",
+    "key_topics": [
+      "workflows vs agents",
+      "prompt chaining",
+      "routing",
+      "parallelization",
+      "orchestrator-workers",
+      "evaluator-optimizer",
+      "augmented LLM",
+      "tool engineering"
+    ],
+    "verified_sections": [
+      "What are agents?",
+      "When (and when not) to use agents",
+      "When and how to use frameworks",
+      "Building blocks, workflows, and agents",
+      "Combining and customizing these patterns",
+      "Summary",
+      "Appendix 1: Agents in practice",
+      "Appendix 2: Prompt engineering your tools"
+    ],
+    "copyright_notice": "Copyright Anthropic Engineering; educational citation and fair use analysis."
+  },
+  {
+    "id": "S04",
+    "title": "Choose your agentic AI architecture components",
+    "authors": [
+      "Google Cloud Architecture Center Contributors"
+    ],
+    "publisher": "Google Cloud",
+    "publication_date": "2024-11-15",
+    "access_date": "2026-11-23",
+    "url": "https://docs.cloud.google.com/architecture/choose-agentic-ai-architecture-components",
+    "retrieval_status": "accessible",
+    "http_status": 200,
+    "document_type": "official_documentation",
+    "summary": "Enterprise cloud reference architecture mapping foundational agent components: model runtimes, agent execution runtimes, memory architectures (short-term vs. long-term), tools (MCP, APIs, function calling), tool bloat mitigation, design patterns, and enterprise governance/security.",
+    "key_topics": [
+      "enterprise agent architecture",
+      "agent runtime",
+      "model runtime",
+      "agent memory",
+      "short-term vs long-term memory",
+      "tools and MCP",
+      "tool bloat",
+      "governance and security"
+    ],
+    "verified_sections": [
+      "Agent architecture overview",
+      "Agent development frameworks",
+      "Frontend framework",
+      "Agent security and governance",
+      "Agent tools",
+      "Built-in tools",
+      "MCP",
+      "API management platform",
+      "Custom function tool",
+      "Tool bloat",
+      "Agent memory",
+      "Short-term memory",
+      "Long-term memory",
+      "Agent design patterns",
+      "AI models",
+      "Model runtime",
+      "Agent runtime"
+    ],
+    "copyright_notice": "Copyright Google Cloud Documentation; technical reference under fair use."
+  },
+  {
+    "id": "S05",
+    "title": "Agents SDK",
+    "authors": [
+      "OpenAI Developer Platform Team"
+    ],
+    "publisher": "OpenAI",
+    "publication_date": "2025-03-01",
+    "access_date": "2026-11-23",
+    "url": "https://developers.openai.com/api/docs/guides/agents/sdk",
+    "retrieval_status": "accessible",
+    "http_status": 200,
+    "document_type": "official_documentation",
+    "summary": "Official reference guide for OpenAI's Agents SDK in Python and TypeScript. Specifies agent encapsulation (model, instructions, tools), multi-agent hand-offs, guardrails, and execution tracing for production AI applications.",
+    "key_topics": [
+      "OpenAI Agents SDK",
+      "agent definition",
+      "hand-offs",
+      "guardrails",
+      "tracing and observability",
+      "Python and TypeScript SDKs"
+    ],
+    "verified_sections": [
+      "Get your first agent running",
+      "Get the Agents SDK",
+      "Choose your starting point",
+      "Build with the SDK",
+      "Compare agent runtime options",
+      "Core concepts"
+    ],
+    "copyright_notice": "Copyright OpenAI Developer Documentation; educational quotation and analysis."
+  },
+  {
+    "id": "S06",
+    "title": "LangGraph Overview",
+    "authors": [
+      "LangChain Engineering Team"
+    ],
+    "publisher": "LangChain",
+    "publication_date": "2024-05-15",
+    "access_date": "2026-11-23",
+    "url": "https://docs.langchain.com/oss/python/langgraph/overview",
+    "retrieval_status": "accessible",
+    "http_status": 200,
+    "document_type": "official_documentation",
+    "summary": "Low-level orchestration framework and runtime for long-running stateful agents. Defines agents as cyclic graphs of shared state, nodes, and edges, providing durable execution via checkpointers, token/event streaming, and human-in-the-loop controls.",
+    "key_topics": [
+      "LangGraph",
+      "graph orchestration",
+      "state management",
+      "checkpointers and persistence",
+      "human-in-the-loop",
+      "streaming",
+      "time travel"
+    ],
+    "verified_sections": [
+      "Documentation Index",
+      "Install",
+      "Capabilities",
+      "Integrations, deployment, and observability",
+      "Build with the Graph API",
+      "Patterns",
+      "Thinking in the Graph API"
+    ],
+    "copyright_notice": "Copyright LangChain Inc.; open documentation reference."
+  },
+  {
+    "id": "S07",
+    "title": "CrewAI Documentation & Repository",
+    "authors": [
+      "João Moura",
+      "CrewAI Inc."
+    ],
+    "publisher": "CrewAI Inc.",
+    "publication_date": "2023-11-20",
+    "access_date": "2026-11-23",
+    "url": "https://github.com/crewAIInc/crewAI",
+    "retrieval_status": "accessible",
+    "http_status": 200,
+    "document_type": "technical_specification",
+    "summary": "Open-source framework designed for orchestrating autonomous role-playing AI agents. Formulates multi-agent systems via Agent roles, goals, backstories, Task assignments, and Crew execution processes (Sequential and Hierarchical).",
+    "key_topics": [
+      "CrewAI",
+      "multi-agent collaboration",
+      "role-playing agents",
+      "hierarchical process",
+      "sequential process",
+      "agent memory"
+    ],
+    "verified_sections": [
+      "Fast and Flexible Multi-Agent Automation Framework",
+      "Why CrewAI?",
+      "Getting Started",
+      "Key Features",
+      "Core Concepts: Agents, Tasks, Crews",
+      "Connecting Your Crew to a Model"
+    ],
+    "copyright_notice": "MIT Open Source License; CrewAI Inc."
+  },
+  {
+    "id": "S08",
+    "title": "Microsoft Agent Framework Overview",
+    "authors": [
+      "Microsoft Learn AI Team"
+    ],
+    "publisher": "Microsoft",
+    "publication_date": "2025-02-18",
+    "access_date": "2026-11-23",
+    "url": "https://learn.microsoft.com/en-us/agent-framework/overview",
+    "retrieval_status": "accessible",
+    "http_status": 200,
+    "document_type": "official_documentation",
+    "summary": "Official overview of Microsoft Agent Framework. Unifies AutoGen's agent abstractions with Semantic Kernel's enterprise session management, type safety, telemetry, and middleware, adding graph workflows. Designates Agent Framework as the direct successor to AutoGen and Semantic Kernel.",
+    "key_topics": [
+      "Microsoft Agent Framework",
+      "AutoGen successor",
+      "Semantic Kernel convergence",
+      "enterprise state management",
+      "agents vs workflows",
+      "Harness Agent",
+      "middleware and telemetry"
+    ],
+    "verified_sections": [
+      "In this article",
+      "Agent Framework brings together four primary areas",
+      "Get started",
+      "When to use agents vs workflows",
+      "Why Agent Framework?",
+      "Next steps"
+    ],
+    "copyright_notice": "Copyright Microsoft Corporation; official documentation reference."
+  }
+]

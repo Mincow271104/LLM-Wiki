@@ -1,0 +1,34 @@
+{
+  "id": "S06",
+  "title": "LangGraph Overview",
+  "authors": [
+    "LangChain Engineering Team"
+  ],
+  "publisher": "LangChain",
+  "publication_date": "2024-05-15",
+  "access_date": "2026-11-23",
+  "url": "https://docs.langchain.com/oss/python/langgraph/overview",
+  "retrieval_status": "accessible",
+  "http_status": 200,
+  "document_type": "official_documentation",
+  "summary": "Low-level orchestration framework and runtime for long-running stateful agents. Defines agents as cyclic graphs of shared state, nodes, and edges, providing durable execution via checkpointers, token/event streaming, and human-in-the-loop controls.",
+  "key_topics": [
+    "LangGraph",
+    "graph orchestration",
+    "state management",
+    "checkpointers and persistence",
+    "human-in-the-loop",
+    "streaming",
+    "time travel"
+  ],
+  "verified_sections": [
+    "Documentation Index",
+    "Install",
+    "Capabilities",
+    "Integrations, deployment, and observability",
+    "Build with the Graph API",
+    "Patterns",
+    "Thinking in the Graph API"
+  ],
+  "copyright_notice": "Copyright LangChain Inc.; open documentation reference."
+}

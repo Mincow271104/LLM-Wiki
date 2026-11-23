@@ -1,0 +1,33 @@
+{
+  "id": "S07",
+  "title": "CrewAI Documentation & Repository",
+  "authors": [
+    "João Moura",
+    "CrewAI Inc."
+  ],
+  "publisher": "CrewAI Inc.",
+  "publication_date": "2023-11-20",
+  "access_date": "2026-11-23",
+  "url": "https://github.com/crewAIInc/crewAI",
+  "retrieval_status": "accessible",
+  "http_status": 200,
+  "document_type": "technical_specification",
+  "summary": "Open-source framework designed for orchestrating autonomous role-playing AI agents. Formulates multi-agent systems via Agent roles, goals, backstories, Task assignments, and Crew execution processes (Sequential and Hierarchical).",
+  "key_topics": [
+    "CrewAI",
+    "multi-agent collaboration",
+    "role-playing agents",
+    "hierarchical process",
+    "sequential process",
+    "agent memory"
+  ],
+  "verified_sections": [
+    "Fast and Flexible Multi-Agent Automation Framework",
+    "Why CrewAI?",
+    "Getting Started",
+    "Key Features",
+    "Core Concepts: Agents, Tasks, Crews",
+    "Connecting Your Crew to a Model"
+  ],
+  "copyright_notice": "MIT Open Source License; CrewAI Inc."
+}

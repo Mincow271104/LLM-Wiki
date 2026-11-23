@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SourceRecord",
+  "description": "Schema for source cards and raw source registry records in the AI Agents Learning Wiki.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^S[0-9]{2,}$",
+      "description": "Unique stable identifier for the source (e.g., S01, S02)."
+    },
+    "title": {
+      "type": "string",
+      "description": "Original academic paper or official documentation title."
+    },
+    "authors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of primary authors or organizational contributors."
+    },
+    "publisher": {
+      "type": "string",
+      "description": "Publisher, conference venue, or hosting organization."
+    },
+    "publication_date": {
+      "type": "string",
+      "description": "Official publication date (YYYY-MM-DD or YYYY-MM)."
+    },
+    "access_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date when the source was retrieved and verified (YYYY-MM-DD)."
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "Canonical URL for the source."
+    },
+    "retrieval_status": {
+      "type": "string",
+      "enum": ["accessible", "failed", "cached", "partial"],
+      "description": "Verification status of the source retrieval."
+    },
+    "http_status": {
+      "type": "integer",
+      "description": "HTTP response status code during retrieval."
+    },
+    "document_type": {
+      "type": "string",
+      "enum": ["peer_reviewed_paper", "official_documentation", "engineering_blog", "technical_specification"],
+      "description": "Type of primary document."
+    },
+    "summary": {
+      "type": "string",
+      "description": "Objective summary of the source and its relevance to AI agents."
+    },
+    "key_topics": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of architectural or conceptual topics covered."
+    },
+    "verified_sections": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Exact section or chapter names identified in the source."
+    },
+    "copyright_notice": {
+      "type": "string",
+      "description": "Redistribution and copyright policy note (fair use / metadata only)."
+    }
+  },
+  "required": [
+    "id",
+    "title",
+    "publisher",
+    "access_date",
+    "url",
+    "retrieval_status",
+    "document_type",
+    "summary",
+    "key_topics"
+  ],
+  "additionalProperties": false
+}

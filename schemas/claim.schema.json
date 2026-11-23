@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ClaimEvidenceRecord",
+  "description": "Schema for individual factual claims and source evidence references in the AI Agents Learning Wiki.",
+  "type": "object",
+  "properties": {
+    "claim_id": {
+      "type": "string",
+      "pattern": "^CLM-[0-9]{3,}$",
+      "description": "Unique identifier for the claim (e.g., CLM-001)."
+    },
+    "statement": {
+      "type": "string",
+      "description": "The exact factual assertion or architectural finding."
+    },
+    "source_id": {
+      "type": "string",
+      "pattern": "^S[0-9]{2,}$",
+      "description": "Source identifier corresponding to an entry in the source registry."
+    },
+    "locator": {
+      "type": "string",
+      "description": "Traceable location within the source (e.g., 'Section 2', 'Workflow: Routing', 'What are agents?')."
+    },
+    "exact_quote_or_paraphrase": {
+      "type": "string",
+      "description": "Verbatim quote or faithful paraphrase supporting the assertion."
+    },
+    "claim_type": {
+      "type": "string",
+      "enum": ["verified_fact", "architectural_interpretation", "unresolved_disagreement"],
+      "description": "Epistemic status of the statement."
+    },
+    "category": {
+      "type": "string",
+      "description": "Wiki knowledge category (e.g., 'loop', 'memory', 'planning', 'tools', 'frameworks')."
+    },
+    "disagreement_with": {
+      "type": ["string", "null"],
+      "description": "Reference to another claim ID if this claim conflicts with or qualifies an alternative view."
+    },
+    "disagreement_notes": {
+      "type": ["string", "null"],
+      "description": "Technical notes explaining context, terminology shifts, or scope differences."
+    }
+  },
+  "required": [
+    "claim_id",
+    "statement",
+    "source_id",
+    "locator",
+    "claim_type",
+    "category"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,33 @@
+{
+  "id": "S08",
+  "title": "Microsoft Agent Framework Overview",
+  "authors": [
+    "Microsoft Learn AI Team"
+  ],
+  "publisher": "Microsoft",
+  "publication_date": "2025-02-18",
+  "access_date": "2026-11-23",
+  "url": "https://learn.microsoft.com/en-us/agent-framework/overview",
+  "retrieval_status": "accessible",
+  "http_status": 200,
+  "document_type": "official_documentation",
+  "summary": "Official overview of Microsoft Agent Framework. Unifies AutoGen's agent abstractions with Semantic Kernel's enterprise session management, type safety, telemetry, and middleware, adding graph workflows. Designates Agent Framework as the direct successor to AutoGen and Semantic Kernel.",
+  "key_topics": [
+    "Microsoft Agent Framework",
+    "AutoGen successor",
+    "Semantic Kernel convergence",
+    "enterprise state management",
+    "agents vs workflows",
+    "Harness Agent",
+    "middleware and telemetry"
+  ],
+  "verified_sections": [
+    "In this article",
+    "Agent Framework brings together four primary areas",
+    "Get started",
+    "When to use agents vs workflows",
+    "Why Agent Framework?",
+    "Next steps"
+  ],
+  "copyright_notice": "Copyright Microsoft Corporation; official documentation reference."
+}

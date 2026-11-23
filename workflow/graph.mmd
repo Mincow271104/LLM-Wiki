@@ -1,0 +1,36 @@
+flowchart TD
+    %% Main Forward Line
+    Start([Project Initiation]) --> N1[1. Source Retrieval]
+    N1 -->|HTTP Success 200| N2[2. Source Validation]
+    N2 -->|Valid Schema & Metadata| N3[3. Sequential Ingestion]
+    N3 -->|Source Cards & Registry Updated| N4[4. Wiki Compilation]
+    N4 -->|Synthesis Pages Drafted| N5[5. Wiki Coverage Check]
+    N5 -->|All 21 Topics Covered| N6[6. Evidence Validation]
+    N6 -->|Traceable Citations Verified| N7[7. Wiki Lint & Integrity Audit]
+    N7 -->|All 11 Checks Passed| N8[8. Human / PM Approval Gate]
+    N8 -->|Approved| Approved([Approved Knowledge Base - End P1+P2])
+
+    %% Failure Routes & Return Paths (Max 3 cycles)
+    N1 -.->|Retrieval Failed 404/Timeout| E1[Report Missing / Inaccessible Source]
+    E1 --> StopFailed([Halt: Unresolved Source Dependency])
+
+    N2 -.->|Invalid Metadata / Authors Missing| R2[Return: Request Bibliographic Correction]
+    R2 -->|Correction Cycle <= 3| N1
+
+    N5 -.->|Missing Topics / Gap Detected| R5[Return: Author Missing Concept Page]
+    R5 -->|Correction Cycle <= 3| N4
+
+    N6 -.->|Untraceable Claim / Missing Citation| R6[Return: Ground Claim in Source Locator]
+    R6 -->|Correction Cycle <= 3| N4
+
+    N6 -.->|Conflicting Source Claims| C6[Update Contradiction & Disagreement Register]
+    C6 --> N7
+
+    N7 -.->|Broken Links Detected| R7A[Repair Target File Paths]
+    R7A -->|Correction Cycle <= 3| N7
+
+    N7 -.->|Schema Validation Failure| R7B[Re-validate JSON against Schema]
+    R7B -->|Correction Cycle <= 3| N3
+
+    N8 -.->|Changes Requested by Reviewer| R8[Address Review Feedback]
+    R8 -->|Correction Cycle <= 3| N4

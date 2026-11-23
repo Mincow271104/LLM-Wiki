@@ -1,0 +1,37 @@
+{
+  "id": "S03",
+  "title": "Building Effective Agents",
+  "authors": [
+    "Erik Schluntz",
+    "Barry Zhang"
+  ],
+  "publisher": "Anthropic",
+  "publication_date": "2024-12-19",
+  "access_date": "2026-11-23",
+  "url": "https://www.anthropic.com/engineering/building-effective-agents",
+  "retrieval_status": "accessible",
+  "http_status": 200,
+  "document_type": "engineering_blog",
+  "summary": "Practical engineering guide distinguishing deterministic workflows from autonomous agents. Outlines key patterns including Prompt Chaining, Routing, Parallelization, Orchestrator-Workers, and Evaluator-Optimizer, advocating for starting with simple architectures before adding complexity.",
+  "key_topics": [
+    "workflows vs agents",
+    "prompt chaining",
+    "routing",
+    "parallelization",
+    "orchestrator-workers",
+    "evaluator-optimizer",
+    "augmented LLM",
+    "tool engineering"
+  ],
+  "verified_sections": [
+    "What are agents?",
+    "When (and when not) to use agents",
+    "When and how to use frameworks",
+    "Building blocks, workflows, and agents",
+    "Combining and customizing these patterns",
+    "Summary",
+    "Appendix 1: Agents in practice",
+    "Appendix 2: Prompt engineering your tools"
+  ],
+  "copyright_notice": "Copyright Anthropic Engineering; educational citation and fair use analysis."
+}

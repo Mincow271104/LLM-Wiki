@@ -27,8 +27,15 @@ Thumbs.db
 .tmp/
 playwright-report/
 test-results/
+scratch/
+tmp/
+*.log
+
+# Separate local development repo backup
+ai-agents-wiki-assignment/
 
 # Private source downloads should be reviewed before committing.
 # Do not automatically ignore all PDFs: only commit files whose
 # redistribution is permitted or that are explicitly intended for
 # this public educational repository.
+raw/downloads/

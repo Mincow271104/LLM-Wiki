@@ -1,0 +1,45 @@
+{
+  "id": "S04",
+  "title": "Choose your agentic AI architecture components",
+  "authors": [
+    "Google Cloud Architecture Center Contributors"
+  ],
+  "publisher": "Google Cloud",
+  "publication_date": "2024-11-15",
+  "access_date": "2026-11-23",
+  "url": "https://docs.cloud.google.com/architecture/choose-agentic-ai-architecture-components",
+  "retrieval_status": "accessible",
+  "http_status": 200,
+  "document_type": "official_documentation",
+  "summary": "Enterprise cloud reference architecture mapping foundational agent components: model runtimes, agent execution runtimes, memory architectures (short-term vs. long-term), tools (MCP, APIs, function calling), tool bloat mitigation, design patterns, and enterprise governance/security.",
+  "key_topics": [
+    "enterprise agent architecture",
+    "agent runtime",
+    "model runtime",
+    "agent memory",
+    "short-term vs long-term memory",
+    "tools and MCP",
+    "tool bloat",
+    "governance and security"
+  ],
+  "verified_sections": [
+    "Agent architecture overview",
+    "Agent development frameworks",
+    "Frontend framework",
+    "Agent security and governance",
+    "Agent tools",
+    "Built-in tools",
+    "MCP",
+    "API management platform",
+    "Custom function tool",
+    "Tool bloat",
+    "Agent memory",
+    "Short-term memory",
+    "Long-term memory",
+    "Agent design patterns",
+    "AI models",
+    "Model runtime",
+    "Agent runtime"
+  ],
+  "copyright_notice": "Copyright Google Cloud Documentation; technical reference under fair use."
+}

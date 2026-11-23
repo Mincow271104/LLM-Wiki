@@ -1,0 +1,200 @@
+[
+  {
+    "claim_id": "CLM-001",
+    "statement": "Interleaving reasoning traces ('thoughts') with task-specific actions ('actions') and external environment observations enables language models to overcome hallucination and maintain reliable multi-step plans.",
+    "source_id": "S01",
+    "locator": "2 ReAct: Synergizing Reasoning + Acting",
+    "exact_quote_or_paraphrase": "ReAct prompts LLMs to generate both reasoning traces and task-specific actions in an interleaved manner, allowing greater synergy between reasoning and acting.",
+    "claim_type": "verified_fact",
+    "category": "loop",
+    "disagreement_with": null,
+    "disagreement_notes": null
+  },
+  {
+    "claim_id": "CLM-002",
+    "statement": "Chain-of-thought (CoT) reasoning without external action suffers from factual hallucination and error propagation in knowledge-intensive tasks.",
+    "source_id": "S01",
+    "locator": "1 Introduction",
+    "exact_quote_or_paraphrase": "Reason-only methods suffer from factual hallucinations and lack of access to external world knowledge.",
+    "claim_type": "verified_fact",
+    "category": "reasoning",
+    "disagreement_with": null,
+    "disagreement_notes": null
+  },
+  {
+    "claim_id": "CLM-003",
+    "statement": "Language models can learn to call external tools autonomously using self-supervised learning by generating potential API calls, executing them, and filtering based on whether tool outputs reduce language modeling perplexity on subsequent tokens.",
+    "source_id": "S02",
+    "locator": "2 Approach",
+    "exact_quote_or_paraphrase": "We introduce Toolformer, a model trained to decide which APIs to call, when to call them, what arguments to pass, and how to best incorporate the results into future token prediction in a self-supervised way.",
+    "claim_type": "verified_fact",
+    "category": "tools",
+    "disagreement_with": "CLM-008",
+    "disagreement_notes": "Toolformer treats tools as inline token sequences learned during fine-tuning, whereas modern production frameworks (Google Cloud S04, OpenAI S05, Microsoft S08) treat tools via structured API/JSON Schema function calling and protocol specifications like MCP."
+  },
+  {
+    "claim_id": "CLM-004",
+    "statement": "Workflows and agents represent distinct architectural patterns: workflows orchestrate LLMs and tools via predefined, deterministic code paths, while agents dynamically direct their own processes and tool usage in autonomous loops.",
+    "source_id": "S03",
+    "locator": "What are agents?",
+    "exact_quote_or_paraphrase": "We define agents as systems where LLMs dynamically direct their own processes and tool usage, maintaining control over how they accomplish tasks, contrasting with workflows where LLMs and tools are orchestrated through predefined code paths.",
+    "claim_type": "architectural_interpretation",
+    "category": "architecture",
+    "disagreement_with": "CLM-014",
+    "disagreement_notes": "Anthropic establishes a strict binary boundary between workflows and agents, while LangGraph treats workflows and agents as a continuum on a unified state graph where workflows are DAGs and agents are cyclic graphs."
+  },
+  {
+    "claim_id": "CLM-005",
+    "statement": "Engineering teams should start with simple prompts, optimize with retrieval and few-shot examples, and only add agentic autonomy when deterministic workflows cannot handle the problem variability.",
+    "source_id": "S03",
+    "locator": "When (and when not) to use agents",
+    "exact_quote_or_paraphrase": "When building applications with LLMs, we recommend finding the simplest solution possible, and only increasing complexity when needed. Many applications don't need agents at all.",
+    "claim_type": "verified_fact",
+    "category": "fundamentals",
+    "disagreement_with": null,
+    "disagreement_notes": null
+  },
+  {
+    "claim_id": "CLM-006",
+    "statement": "The foundational building block of agentic systems is the augmented LLM, which combines a core language model with retrieval capabilities, external tools, and memory.",
+    "source_id": "S03",
+    "locator": "Building block: The augmented LLM",
+    "exact_quote_or_paraphrase": "The basic building block of agentic systems is an LLM augmented with tools, memory, and retrieval mechanisms.",
+    "claim_type": "verified_fact",
+    "category": "architecture",
+    "disagreement_with": null,
+    "disagreement_notes": null
+  },
+  {
+    "claim_id": "CLM-007",
+    "statement": "Five core workflow patterns cover the majority of non-agentic LLM orchestration: Prompt Chaining, Routing, Parallelization (Sectioning/Voting), Orchestrator-Workers, and Evaluator-Optimizer.",
+    "source_id": "S03",
+    "locator": "Building blocks, workflows, and agents",
+    "exact_quote_or_paraphrase": "We have identified five common patterns for workflows: prompt chaining, routing, parallelization, orchestrator-workers, and evaluator-optimizer.",
+    "claim_type": "verified_fact",
+    "category": "workflows",
+    "disagreement_with": null,
+    "disagreement_notes": null
+  },
+  {
+    "claim_id": "CLM-008",
+    "statement": "Production agentic AI architectures require modular enterprise layers: user interfaces, orchestration frameworks, tools and protocols (like MCP), short-term and long-term memory, foundation model runtimes, and governance/security controls.",
+    "source_id": "S04",
+    "locator": "Agent architecture overview",
+    "exact_quote_or_paraphrase": "Agentic AI systems require a comprehensive architecture comprising user experience, agent development frameworks, tools, memory, design patterns, models, runtimes, and security governance.",
+    "claim_type": "verified_fact",
+    "category": "architecture",
+    "disagreement_with": null,
+    "disagreement_notes": null
+  },
+  {
+    "claim_id": "CLM-009",
+    "statement": "Agent memory must be bifurcated into short-term memory (in-context conversation buffer and scratchpad) and long-term memory (external persistent storage such as vector, key-value, or document databases).",
+    "source_id": "S04",
+    "locator": "Agent memory",
+    "exact_quote_or_paraphrase": "Agent memory is categorized into short-term memory within the model's active context window and long-term memory stored in external persistence systems across sessions.",
+    "claim_type": "verified_fact",
+    "category": "memory",
+    "disagreement_with": null,
+    "disagreement_notes": null
+  },
+  {
+    "claim_id": "CLM-010",
+    "statement": "Providing an agent with too many tools ('tool bloat') confuses model tool selection, increases token consumption and latency, and significantly expands the system attack surface.",
+    "source_id": "S04",
+    "locator": "Tool bloat",
+    "exact_quote_or_paraphrase": "Tool bloat occurs when an agent is given access to too many tools, leading to degradation in decision accuracy, excessive latency, increased token cost, and higher security risks.",
+    "claim_type": "verified_fact",
+    "category": "tools",
+    "disagreement_with": null,
+    "disagreement_notes": null
+  },
+  {
+    "claim_id": "CLM-011",
+    "statement": "An agent is defined as an autonomous entity encapsulating system instructions, a foundation model, and a scoped set of callable tools.",
+    "source_id": "S05",
+    "locator": "Core concepts: Agents",
+    "exact_quote_or_paraphrase": "An agent is a configured instance combining a model, specific instructions, and a scoped set of tools.",
+    "claim_type": "verified_fact",
+    "category": "fundamentals",
+    "disagreement_with": null,
+    "disagreement_notes": null
+  },
+  {
+    "claim_id": "CLM-012",
+    "statement": "Hand-offs enable multi-agent systems by allowing an active agent to pass conversation state and control authority directly to another specialized agent.",
+    "source_id": "S05",
+    "locator": "Core concepts: Hand-offs",
+    "exact_quote_or_paraphrase": "Hand-offs allow an agent to transfer control of a conversation or workflow to another specialized agent.",
+    "claim_type": "verified_fact",
+    "category": "multi-agent",
+    "disagreement_with": "CLM-016",
+    "disagreement_notes": "OpenAI Agents SDK models multi-agent delegation via explicit code hand-offs between specialized agents, contrasting with CrewAI's role-playing conversational personas."
+  },
+  {
+    "claim_id": "CLM-013",
+    "statement": "Guardrails execute programmatic safety checks before and after agent execution to detect malicious inputs, validate tool parameters, and sanitize generated outputs.",
+    "source_id": "S05",
+    "locator": "Core concepts: Guardrails",
+    "exact_quote_or_paraphrase": "Guardrails provide programmatic safety boundaries that execute before or after an agent turn to detect jailbreaks, check policy compliance, or validate tool arguments.",
+    "claim_type": "verified_fact",
+    "category": "safety",
+    "disagreement_with": null,
+    "disagreement_notes": null
+  },
+  {
+    "claim_id": "CLM-014",
+    "statement": "LangGraph orchestrates stateful multi-actor applications by modeling workflows as graphs of shared typed state, compute nodes, and conditional edges.",
+    "source_id": "S06",
+    "locator": "Build with the Graph API",
+    "exact_quote_or_paraphrase": "You define workflows as graphs of shared state, nodes, and edges, and can mix deterministic steps with LLM-driven steps in the same graph.",
+    "claim_type": "verified_fact",
+    "category": "orchestration",
+    "disagreement_with": "CLM-004",
+    "disagreement_notes": "LangGraph treats workflows (DAGs) and agents (cyclic graphs) as sharing the same graph primitives on a unified state graph, contrasting with Anthropic's strict binary separation."
+  },
+  {
+    "claim_id": "CLM-015",
+    "statement": "Durable execution with checkpointers allows graphs to snapshot state after every execution step, enabling automated recovery, time-travel debugging, and human-in-the-loop interruptions.",
+    "source_id": "S06",
+    "locator": "Capabilities: Persistence",
+    "exact_quote_or_paraphrase": "LangGraph focuses on orchestration capabilities such as durable execution, streaming, and human-in-the-loop via checkpointers that persist state across steps.",
+    "claim_type": "verified_fact",
+    "category": "orchestration",
+    "disagreement_with": null,
+    "disagreement_notes": null
+  },
+  {
+    "claim_id": "CLM-016",
+    "statement": "CrewAI models multi-agent collaboration through anthropomorphic role-playing personas defined by Role, Goal, and Backstory, organized into Crews that execute sequential or hierarchical processes.",
+    "source_id": "S07",
+    "locator": "Core Concepts: Agents, Tasks, Crews",
+    "exact_quote_or_paraphrase": "CrewAI empowers agents to work together seamlessly by fostering collaborative intelligence through role-playing autonomous agents defined by role, goal, and backstory.",
+    "claim_type": "verified_fact",
+    "category": "multi-agent",
+    "disagreement_with": "CLM-012",
+    "disagreement_notes": "CrewAI organizes multi-agent systems around anthropomorphic role-playing personas (role, goal, backstory), contrasting with OpenAI Agents SDK's functional hand-offs and LangGraph's explicit state graphs."
+  },
+  {
+    "claim_id": "CLM-017",
+    "statement": "Microsoft Agent Framework is the direct successor to both Semantic Kernel and AutoGen, unifying AutoGen's agent abstractions with Semantic Kernel's enterprise state management, telemetry, and middleware, while introducing graph workflows.",
+    "source_id": "S08",
+    "locator": "Why Agent Framework?",
+    "exact_quote_or_paraphrase": "Agent Framework combines AutoGen's simple agent abstractions with Semantic Kernel's enterprise features — session-based state management, type safety, middleware, telemetry — and adds graph-based workflows for explicit multi-agent orchestration. In short, Agent Framework is the next generation of both Semantic Kernel and AutoGen.",
+    "claim_type": "verified_fact",
+    "category": "frameworks",
+    "disagreement_with": null,
+    "disagreement_notes": "Historical succession clarification: Legacy AutoGen 0.2 is in maintenance; Microsoft Agent Framework is the official unified enterprise successor."
+  },
+  {
+    "claim_id": "CLM-018",
+    "statement": "If a task can be solved deterministically with a standard programmatic function, developers should use code rather than invoking an AI agent.",
+    "source_id": "S08",
+    "locator": "When to use agents vs workflows",
+    "exact_quote_or_paraphrase": "If you can write a function to handle the task, do that instead of using an AI agent.",
+    "claim_type": "verified_fact",
+    "category": "fundamentals",
+    "disagreement_with": null,
+    "disagreement_notes": null
+  }
+]

@@ -1,0 +1,32 @@
+{
+  "id": "S05",
+  "title": "Agents SDK",
+  "authors": [
+    "OpenAI Developer Platform Team"
+  ],
+  "publisher": "OpenAI",
+  "publication_date": "2025-03-01",
+  "access_date": "2026-11-23",
+  "url": "https://developers.openai.com/api/docs/guides/agents/sdk",
+  "retrieval_status": "accessible",
+  "http_status": 200,
+  "document_type": "official_documentation",
+  "summary": "Official reference guide for OpenAI's Agents SDK in Python and TypeScript. Specifies agent encapsulation (model, instructions, tools), multi-agent hand-offs, guardrails, and execution tracing for production AI applications.",
+  "key_topics": [
+    "OpenAI Agents SDK",
+    "agent definition",
+    "hand-offs",
+    "guardrails",
+    "tracing and observability",
+    "Python and TypeScript SDKs"
+  ],
+  "verified_sections": [
+    "Get your first agent running",
+    "Get the Agents SDK",
+    "Choose your starting point",
+    "Build with the SDK",
+    "Compare agent runtime options",
+    "Core concepts"
+  ],
+  "copyright_notice": "Copyright OpenAI Developer Documentation; educational quotation and analysis."
+}
