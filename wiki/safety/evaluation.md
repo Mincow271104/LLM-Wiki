@@ -76,9 +76,9 @@ To prevent regressions, engineering teams implement continuous evaluation pipeli
 ---
 
 ## Related Wiki Pages
-- [Safety, Guardrails, and Limitations](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/safety/safety-and-limitations.md)
-- [The Agent Loop](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/architecture/agent-loop.md)
-- [Comprehensive Framework Comparison](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/frameworks/comparison.md)
-- [Wiki Master Index](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/index.md)
+- [Safety, Guardrails, and Limitations](safety-and-limitations.md)
+- [The Agent Loop](../architecture/agent-loop.md)
+- [Comprehensive Framework Comparison](../frameworks/comparison.md)
+- [Wiki Master Index](../index.md)
 
 *Last Updated: 2026-11-23*

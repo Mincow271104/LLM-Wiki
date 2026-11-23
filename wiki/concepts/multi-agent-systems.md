@@ -96,10 +96,10 @@ While multi-agent systems offer remarkable architectural modularity, Anthropic [
 ---
 
 ## Related Wiki Pages
-- [Single-Agent Systems](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/concepts/single-agent-systems.md)
-- [Workflows vs. Autonomous Agents](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/concepts/workflows-vs-agents.md)
-- [Comprehensive Framework Comparison](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/frameworks/comparison.md)
-- [CrewAI Framework Deep Dive](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/frameworks/crewai.md)
-- [Wiki Master Index](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/index.md)
+- [Single-Agent Systems](single-agent-systems.md)
+- [Workflows vs. Autonomous Agents](workflows-vs-agents.md)
+- [Comprehensive Framework Comparison](../frameworks/comparison.md)
+- [CrewAI Framework Deep Dive](../frameworks/crewai.md)
+- [Wiki Master Index](../index.md)
 
 *Last Updated: 2026-11-23*

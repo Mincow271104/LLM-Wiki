@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Agents: Concepts, Architecture and Workflow — Interactive Learning Presentation</title>
+  <meta name="description" content="A Karpathy-inspired foundational guide to AI Agents for beginners. Covers architecture, reasoning, ReAct, memory, tools, workflows, multi-agent systems, and safety.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top Progress Bar -->
+  <div id="progress-container">
+    <div id="progress-bar"></div>
+  </div>
+
+  <!-- Top Header Navigation -->
+  <header>
+    <div class="brand">
+      <span>AI Agents Learning Wiki</span>
+      <span class="brand-badge">Academic Edition</span>
+    </div>
+    <div class="header-controls">
+      <span id="slide-counter">Slide 1 of 12</span>
+      <button id="overview-btn" class="btn" title="View all slides (O or Esc)">Overview</button>
+    </div>
+  </header>
+
+  <!-- Main Presentation Stage -->
+  <main id="presentation-container">
+
+    <!-- SLIDE 01: Title and Learning Objectives -->
+    <section class="slide active" id="slide-1" data-slide="1">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-tag">FOUNDATIONAL CURRICULUM &bull; SLIDE 01</span>
+          <h1 class="slide-title">AI Agents: Concepts, Architecture and Workflow</h1>
+          <p class="slide-subtitle">A Karpathy-Inspired Foundational Guide for AI Beginners</p>
+        </div>
+
+        <div class="columns-2">
+          <div class="card card-highlight">
+            <h3 class="card-title">&#x1F393; Executive Overview</h3>
+            <p class="card-text">
+              Artificial Intelligence is evolving rapidly from passive text generation to <strong>active, autonomous problem solving</strong>. This curriculum provides a rigorous, beginner-friendly exploration of agentic AI systems, grounding every architectural concept in academic literature and production framework patterns.
+            </p>
+            <div style="margin-top: 0.5rem; padding: 0.75rem; background: rgba(0,0,0,0.2); border-radius: 6px;">
+              <strong style="color: var(--accent-primary); font-size: 0.85rem;">Interactive Navigation:</strong>
+              <ul style="margin-left: 1.25rem; font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">
+                <li>Advance: <kbd class="kbd">Right Arrow</kbd> or <kbd class="kbd">Space</kbd> or <kbd class="kbd">Next &rarr;</kbd></li>
+                <li>Go Back: <kbd class="kbd">Left Arrow</kbd> or <kbd class="kbd">Prev &larr;</kbd></li>
+                <li>Slide Map: <kbd class="kbd">O</kbd> or <kbd class="kbd">Esc</kbd> or <strong>Overview</strong></li>
+                <li>Touch / Mobile: Swipe left or right</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3 class="card-title">&#x1F3AF; Core Learning Objectives</h3>
+            <ul style="margin-left: 1.25rem; font-size: 0.9rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.5rem;">
+              <li><strong>Objective 1:</strong> Distinguish autonomous AI agents from traditional chatbots and raw foundation models.</li>
+              <li><strong>Objective 2:</strong> Master the core 6-part agent architecture: Brain, Instructions, Tools, Memory, Environment, and Runtime.</li>
+              <li><strong>Objective 3:</strong> Understand modern reasoning paradigms (ReAct, Plan-and-Solve, Self-Reflection).</li>
+              <li><strong>Objective 4:</strong> Contrast static DAG workflows, autonomous cyclic loops, and state graph orchestrations.</li>
+              <li><strong>Objective 5:</strong> Compare 4 major production frameworks and inspect production-grade safety and evaluation benchmarks.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="citation-footer">
+          <span>Curriculum grounding: Karpathy LLM Wiki Architecture</span>
+          <span class="citation-badge">Evidence: S01–S08 | CLM-001</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 02: What Is an AI Agent? -->
+    <section class="slide" id="slide-2" data-slide="2">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-tag">CONCEPTUAL FOUNDATIONS &bull; SLIDE 02</span>
+          <h2 class="slide-title">What Is an AI Agent?</h2>
+          <p class="slide-subtitle">Beyond static text generation: Perception, Reasoning, Action, and Feedback</p>
+        </div>
+
+        <div class="columns-2">
+          <div class="card card-highlight">
+            <h3 class="card-title">&#x1F4A1; Academic Definition</h3>
+            <p class="card-text">
+              An <strong>AI Agent</strong> is an autonomous computational system that leverages a foundation model as its reasoning engine. Rather than producing a single static response, it operates inside an environmental feedback loop: perceiving inputs, maintaining internal state, formulating multi-step plans, selecting and invoking external tools, and evaluating outcomes until a defined objective is satisfied.
+            </p>
+            <div style="margin-top: 0.75rem; padding: 0.65rem; background: rgba(56, 189, 248, 0.08); border-left: 3px solid var(--accent-primary); border-radius: 4px;">
+              <code style="font-size: 0.85rem; color: var(--accent-primary);">The Agency Formula: Perception + Reasoning + Action + Feedback Loop = Agency</code>
+            </div>
+          </div>
+
+          <div class="card card-success">
+            <h3 class="card-title">&#x1F373; Beginner Analogy: Chef vs. Recipe Reader</h3>
+            <p class="card-text">
+              <strong>The Recipe Reader (Standard Program / Raw LLM):</strong><br>
+              Follows a printed list of static instructions linearly. If an ingredient is missing, the pan burns, or the oven fails, it blindly proceeds or crashes because it lacks environmental feedback.
+            </p>
+            <p class="card-text" style="margin-top: 0.4rem;">
+              <strong>The Executive Chef (Autonomous AI Agent):</strong><br>
+              Receives a high-level goal: <em>"Prepare dinner for four."</em> It inspects the pantry (Perception), plans the menu (Reasoning), slices and cooks (Action), tastes the sauce and adjusts seasoning (Feedback), and pivots to substitute ingredients when needed until a delicious meal is served.
+            </p>
+          </div>
+        </div>
+
+        <div class="columns-3" style="margin-top: 0.25rem;">
+          <div class="card">
+            <div style="color: var(--accent-primary); font-weight: bold; font-size: 0.85rem;">1. PERCEIVE</div>
+            <p class="card-text" style="font-size: 0.85rem;">Ingests user prompts, environment observations, system states, and tool return data.</p>
+          </div>
+          <div class="card">
+            <div style="color: var(--accent-purple); font-weight: bold; font-size: 0.85rem;">2. REASON &amp; ACT</div>
+            <p class="card-text" style="font-size: 0.85rem;">Synthesizes thoughts, selects tools via JSON schemas, and modifies external state.</p>
+          </div>
+          <div class="card">
+            <div style="color: var(--accent-success); font-weight: bold; font-size: 0.85rem;">3. REFLECT</div>
+            <p class="card-text" style="font-size: 0.85rem;">Evaluates tool outputs against goals, handles errors, and decides when the task is complete.</p>
+          </div>
+        </div>
+
+        <div class="citation-footer">
+          <span>Primary Sources: Anthropic &bull; Google Cloud Architecture</span>
+          <span class="citation-badge">Citations: [S03, What are agents?] | [S04, Core components] | CLM-001, CLM-002</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 03: AI Agent vs. Traditional Chatbot -->
+    <section class="slide" id="slide-3" data-slide="3">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-tag">COMPARATIVE ANALYSIS &bull; SLIDE 03</span>
+          <h2 class="slide-title">AI Agent vs. Traditional Chatbot</h2>
+          <p class="slide-subtitle">Understanding the architectural chasm between reactive conversation and proactive execution</p>
+        </div>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 20%;">Architectural Dimension</th>
+                <th style="width: 40%;">Traditional Conversational Chatbot</th>
+                <th style="width: 40%;">Autonomous AI Agent</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Primary Objective</strong></td>
+                <td>Generate fluent, contextually relevant textual responses to user queries.</td>
+                <td>Achieve multi-step real-world goals through autonomous planning and action.</td>
+              </tr>
+              <tr>
+                <td><strong>Execution Model</strong></td>
+                <td>Single-turn request/response pipeline (passive &amp; reactive).</td>
+                <td>Multi-step iterative cycle (`Thought &rarr; Action &rarr; Observation`) driven by an agent runtime.</td>
+              </tr>
+              <tr>
+                <td><strong>Environmental Agency</strong></td>
+                <td>None. Confined strictly to emitting tokens within the active chat window.</td>
+                <td>High. Interacts with external systems: calls REST APIs, executes code, reads databases, queries files.</td>
+              </tr>
+              <tr>
+                <td><strong>Error Handling</strong></td>
+                <td>Cannot detect errors in its own outputs; relies entirely on human follow-up prompts.</td>
+                <td>Autonomous self-correction: reads error messages from tool outputs and replans dynamically.</td>
+              </tr>
+              <tr>
+                <td><strong>Memory Architecture</strong></td>
+                <td>Transient conversational history bounded strictly by the context window.</td>
+                <td>Hierarchical: short-term working context plus long-term persistent memory (Vector DBs, KV stores).</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card card-highlight">
+          <p class="card-text" style="font-size: 0.9rem;">
+            <strong>Key Insight for AI Beginners:</strong> Chatbots communicate with humans; AI agents collaborate with environments. A chatbot answers: <em>"Here is how you check flight prices."</em> An agent searches 5 airlines, books the optimal ticket via API, updates your calendar, and emails your confirmation.
+          </p>
+        </div>
+
+        <div class="citation-footer">
+          <span>Architectural Distinctions: Anthropic Engineering &bull; Google Cloud</span>
+          <span class="citation-badge">Citations: [S03, What are agents?] | [S04, Core components] | CLM-002, CLM-003</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 04: Core Agent Architecture -->
+    <section class="slide" id="slide-4" data-slide="4">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-tag">SYSTEM ARCHITECTURE &bull; SLIDE 04</span>
+          <h2 class="slide-title">Core Agent Architecture</h2>
+          <p class="slide-subtitle">The six structural pillars that transform a language model into an autonomous system</p>
+        </div>
+
+        <!-- Inline Responsive SVG Architecture Diagram -->
+        <div style="background: #090d16; border: 1px solid var(--border-color); border-radius: 8px; padding: 1rem; display: flex; justify-content: center;">
+          <svg viewBox="0 0 920 260" style="width: 100%; max-height: 240px; font-family: system-ui, sans-serif;" aria-label="Core Agent Architecture Diagram">
+            <!-- Background & Outer Runtime Boundary -->
+            <rect x="10" y="10" width="900" height="240" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+            <text x="30" y="32" fill="#94a3b8" font-size="12" font-weight="bold" letter-spacing="1">AGENT RUNTIME &amp; ORCHESTRATION LOOP</text>
+
+            <!-- 1. Foundation Model (Center) -->
+            <rect x="340" y="55" width="240" height="90" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="2" />
+            <text x="460" y="88" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">&#x1F9E0; Foundation Model</text>
+            <text x="460" y="108" fill="#38bdf8" font-size="11" text-anchor="middle">Central Reasoning Engine</text>
+            <text x="460" y="125" fill="#94a3b8" font-size="10" text-anchor="middle">Decides next thoughts, plans &amp; tool calls</text>
+
+            <!-- 2. Instructions / Persona (Top Left) -->
+            <rect x="35" y="55" width="240" height="65" rx="6" fill="#27354a" stroke="#475569" stroke-width="1.5" />
+            <text x="155" y="82" fill="#f8fafc" font-size="13" font-weight="bold" text-anchor="middle">&#x1F4DC; System Instructions</text>
+            <text x="155" y="101" fill="#94a3b8" font-size="10.5" text-anchor="middle">Personas, behavioral bounds &amp; goals</text>
+
+            <!-- 3. Memory Subsystem (Bottom Left) -->
+            <rect x="35" y="145" width="240" height="85" rx="6" fill="#27354a" stroke="#475569" stroke-width="1.5" />
+            <text x="155" y="172" fill="#f8fafc" font-size="13" font-weight="bold" text-anchor="middle">&#x1F4BE; Memory Subsystem</text>
+            <text x="155" y="193" fill="#38bdf8" font-size="10" text-anchor="middle">Short-term: Context Window buffer</text>
+            <text x="155" y="211" fill="#a855f7" font-size="10" text-anchor="middle">Long-term: Vector DB / KV store</text>
+
+            <!-- 4. Tools / Actuators (Top Right) -->
+            <rect x="645" y="55" width="240" height="75" rx="6" fill="#27354a" stroke="#10b981" stroke-width="1.5" />
+            <text x="765" y="82" fill="#f8fafc" font-size="13" font-weight="bold" text-anchor="middle">&#x1F6E0;&#xFE0F; Tools / Actuators</text>
+            <text x="765" y="101" fill="#10b981" font-size="10.5" text-anchor="middle">APIs, Search, Calculators, Shell</text>
+            <text x="765" y="117" fill="#94a3b8" font-size="9.5" text-anchor="middle">Schemas defined via JSON Schema</text>
+
+            <!-- 5. External Environment (Bottom Right) -->
+            <rect x="645" y="155" width="240" height="75" rx="6" fill="#090d16" stroke="#f59e0b" stroke-width="1.5" />
+            <text x="765" y="182" fill="#f8fafc" font-size="13" font-weight="bold" text-anchor="middle">&#x1F30E; External Environment</text>
+            <text x="765" y="201" fill="#f59e0b" font-size="10.5" text-anchor="middle">Web, File System, Code Sandbox, DB</text>
+            <text x="765" y="217" fill="#94a3b8" font-size="9.5" text-anchor="middle">Produces observations / returns states</text>
+
+            <!-- Flow Arrows -->
+            <!-- Instructions to Model -->
+            <path d="M 275 87 L 335 87" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)" />
+            <!-- Memory to Model (bidirectional) -->
+            <path d="M 275 175 L 340 120" stroke="#a855f7" stroke-width="2" />
+            <!-- Model to Tools -->
+            <path d="M 580 87 L 640 87" stroke="#10b981" stroke-width="2" />
+            <!-- Tools to Environment -->
+            <path d="M 765 130 L 765 150" stroke="#f59e0b" stroke-width="2" />
+            <!-- Environment to Model Feedback Loop -->
+            <path d="M 645 195 L 460 195 L 460 150" stroke="#38bdf8" stroke-width="2" stroke-dasharray="4" />
+            <text x="545" y="212" fill="#38bdf8" font-size="10" text-anchor="middle">Observation Feedback Loop</text>
+          </svg>
+        </div>
+
+        <div class="columns-3" style="margin-top: 0.25rem;">
+          <div class="card">
+            <h4 style="font-size: 0.95rem; color: #ffffff;">1. Instructions &amp; Brain</h4>
+            <p class="card-text" style="font-size: 0.85rem;">System prompts constrain role, safety guidelines, and task criteria. The model performs contextual inference.</p>
+          </div>
+          <div class="card">
+            <h4 style="font-size: 0.95rem; color: #ffffff;">2. Tools &amp; Actuators</h4>
+            <p class="card-text" style="font-size: 0.85rem;">Executable interfaces registered with type definitions allowing the model to affect the external world.</p>
+          </div>
+          <div class="card">
+            <h4 style="font-size: 0.95rem; color: #ffffff;">3. Memory &amp; Runtime</h4>
+            <p class="card-text" style="font-size: 0.85rem;">Maintains short-term state and long-term knowledge while the runtime schedules execution turns until completion.</p>
+          </div>
+        </div>
+
+        <div class="citation-footer">
+          <span>Structural Taxonomy: Google Cloud Architecture &bull; Anthropic</span>
+          <span class="citation-badge">Citations: [S04, Core components] | [S03, What are agents?] | CLM-003</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 05: Planning and Reasoning -->
+    <section class="slide" id="slide-5" data-slide="5">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-tag">COGNITIVE STRATEGIES &bull; SLIDE 05</span>
+          <h2 class="slide-title">Planning and Reasoning</h2>
+          <p class="slide-subtitle">How intelligent agents break down intractable objectives and recover from intermediate failures</p>
+        </div>
+
+        <div class="columns-3">
+          <div class="card card-highlight">
+            <h3 class="card-title">&#x1F9E9; 1. Task Decomposition</h3>
+            <p class="card-text">
+              Raw foundation models suffer from <em>myopic token generation</em>: predicting next tokens without global foresight leads to compounding drift.
+            </p>
+            <p class="card-text" style="margin-top: 0.5rem;">
+              <strong>Decomposition</strong> forces the agent to break an ambiguous goal (e.g. <em>"Deploy web app"</em>) into an ordered set of discrete sub-problems: provision DB, configure DNS, run tests, and deploy.
+            </p>
+          </div>
+
+          <div class="card card-highlight">
+            <h3 class="card-title">&#x1F5FA;&#xFE0F; 2. Plan-and-Solve</h3>
+            <p class="card-text">
+              Separates the reasoning phase from execution. The agent first synthesizes a formal execution graph or step list before executing any tool actions.
+            </p>
+            <p class="card-text" style="margin-top: 0.5rem;">
+              <strong>Benefit:</strong> Dramatically reduces token waste and wandering by establishing an explicit roadmap before invoking external APIs.
+            </p>
+          </div>
+
+          <div class="card card-highlight">
+            <h3 class="card-title">&#x1F504; 3. Self-Reflection</h3>
+            <p class="card-text">
+              When an intermediate tool returns an unexpected error (e.g. <code>404 Not Found</code> or <code>SyntaxError</code>), the agent does not quit.
+            </p>
+            <p class="card-text" style="margin-top: 0.5rem;">
+              <strong>Reflection Loop:</strong> The agent inspects the diagnostic trace, formulates a hypothesis of failure, alters parameters, and replans dynamically.
+            </p>
+          </div>
+        </div>
+
+        <div class="card card-warning" style="margin-top: 0.25rem;">
+          <h4 style="color: var(--accent-warning); font-size: 0.95rem;">&#x26A0;&#xFE0F; The Architectural Tradeoff: Latency &amp; Cost vs. Reliability</h4>
+          <p class="card-text" style="font-size: 0.88rem;">
+            Extensive multi-step planning and reflection improve task completion rates on complex benchmarks, but each planning turn consumes token quota and adds 1–3 seconds of latency. Practical systems balance deterministic workflows for predictable tasks with agentic loops for exploratory tasks.
+          </p>
+        </div>
+
+        <div class="citation-footer">
+          <span>Foundational Reasoning: Yao et al. (ReAct) &bull; Anthropic</span>
+          <span class="citation-badge">Citations: [S01, Section 1] | [S03, Building effective agents] | CLM-006, CLM-007</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 06: Memory and Context -->
+    <section class="slide" id="slide-6" data-slide="6">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-tag">STATE MANAGEMENT &bull; SLIDE 06</span>
+          <h2 class="slide-title">Memory and Context</h2>
+          <p class="slide-subtitle">Bridging transient context windows and persistent long-term knowledge</p>
+        </div>
+
+        <div class="columns-2">
+          <div class="card">
+            <h3 class="card-title">&#x23F1;&#xFE0F; Short-Term Working Memory</h3>
+            <p class="card-text">
+              Maintained directly within the foundation model's active <strong>Context Window</strong>.
+            </p>
+            <ul style="margin-left: 1.25rem; font-size: 0.88rem; color: var(--text-muted); margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.4rem;">
+              <li><strong>Contents:</strong> System persona, user prompt, conversational history, and immediate tool execution observations.</li>
+              <li><strong>Characteristics:</strong> Extremely fast, highly attentive, but strictly bounded and volatile (cleared when session ends).</li>
+              <li><strong>Compaction:</strong> As turns accumulate, summarization agents compress older turns to prevent context overflow.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3 class="card-title">&#x1F4BE; Long-Term Persistent Memory</h3>
+            <p class="card-text">
+              External storage layers that survive across disparate sessions and days.
+            </p>
+            <ul style="margin-left: 1.25rem; font-size: 0.88rem; color: var(--text-muted); margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.4rem;">
+              <li><strong>Vector Databases (Semantic Memory):</strong> Stores embeddings of past experiences, documents, and historical codebases for RAG retrieval.</li>
+              <li><strong>Key-Value Stores (Episodic / User Memory):</strong> Stores persistent facts (e.g. user preferences, API tokens, project configurations).</li>
+              <li><strong>Relational DBs (Structured State):</strong> Tracks transactional state machines and multi-step workflow progress.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card card-highlight">
+          <h4 style="font-size: 0.95rem; color: #ffffff;">&#x1F50D; The Memory Consolidation Pipeline</h4>
+          <p class="card-text" style="font-size: 0.88rem;">
+            When an agent finishes a task, modern frameworks run an offline <em>memory consolidation</em> step: extracting key learnings, user preferences, and failure patterns from working memory, embedding them, and indexing them in the vector store so future agent runs benefit from past experience.
+          </p>
+        </div>
+
+        <div class="citation-footer">
+          <span>Memory Architecture: Google Cloud Architecture &bull; LangGraph Persistence</span>
+          <span class="citation-badge">Citations: [S04, Agent memory] | [S06, Persistence] | CLM-004, CLM-005</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 07: Tools and Function Calling -->
+    <section class="slide" id="slide-7" data-slide="7">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-tag">ENVIRONMENTAL INTERFACES &bull; SLIDE 07</span>
+          <h2 class="slide-title">Tools and Function Calling</h2>
+          <p class="slide-subtitle">Actuators that transform language models into real-world software operators</p>
+        </div>
+
+        <div class="columns-2">
+          <div class="card">
+            <h3 class="card-title">&#x1F6E0;&#xFE0F; The 4-Step Tool Execution Cycle</h3>
+            <ol style="margin-left: 1.25rem; font-size: 0.88rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.5rem;">
+              <li>
+                <strong>1. Tool Registration:</strong> Developer exposes tool signatures to the model using JSON Schema (declaring function name, docstring description, parameter types, and required fields).
+              </li>
+              <li>
+                <strong>2. Tool Call Generation:</strong> The LLM analyzes the user prompt, determines that an external calculation or API lookup is needed, and emits a structured tool invocation object:
+                <code style="font-size: 0.8rem; display: block; margin-top: 0.25rem;">{"name": "fetch_weather", "arguments": {"city": "Tokyo"}}</code>
+              </li>
+              <li>
+                <strong>3. Client Execution:</strong> The agent runtime intercepts the tool call, validates the parameters, and executes the actual Python function, SQL query, or REST API request.
+              </li>
+              <li>
+                <strong>4. Observation Injection:</strong> The runtime formats the tool output and injects it back into the model's context as a new message with <code>role: "tool"</code>.
+              </li>
+            </ol>
+          </div>
+
+          <div class="card card-highlight">
+            <h3 class="card-title">&#x1F4DC; Standardized Tool Schema Example</h3>
+            <pre><code>{
+  "name": "search_documentation",
+  "description": "Searches the official knowledge base.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "query": {
+        "type": "string",
+        "description": "Keyword search string"
+      },
+      "max_results": {
+        "type": "integer",
+        "default": 5
+      }
+    },
+    "required": ["query"]
+  }
+}</code></pre>
+            <div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 0.25rem;">
+              <strong>Model Context Protocol (MCP):</strong> Emerging open standard allowing agents to securely discover and invoke tools across diverse platforms and servers.
+            </div>
+          </div>
+        </div>
+
+        <div class="citation-footer">
+          <span>Tool Calling Foundations: Schick et al. (Toolformer) &bull; Google Cloud</span>
+          <span class="citation-badge">Citations: [S02, Section 2] | [S04, Tools and extensions] | CLM-009, CLM-010</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 08: The ReAct Pattern -->
+    <section class="slide" id="slide-8" data-slide="8">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-tag">CANONICAL REASONING PARADIGM &bull; SLIDE 08</span>
+          <h2 class="slide-title">The ReAct Pattern: Reasoning and Acting</h2>
+          <p class="slide-subtitle">Synergizing reasoning traces and task-specific actions to eliminate hallucinations</p>
+        </div>
+
+        <div class="columns-2">
+          <div class="card card-highlight">
+            <h3 class="card-title">&#x1F501; The Tripartite ReAct Loop</h3>
+            <p class="card-text">
+              Introduced by Shunyu Yao et al. (2022), <strong>ReAct</strong> tightly interleaves reasoning traces (<em>Thoughts</em>) and environment interactions (<em>Actions</em> and <em>Observations</em>).
+            </p>
+            <div style="margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+              <div style="padding: 0.5rem 0.75rem; background: rgba(56, 189, 248, 0.1); border-left: 3px solid var(--accent-primary); border-radius: 4px;">
+                <strong style="color: var(--accent-primary); font-size: 0.85rem;">THOUGHT:</strong>
+                <span style="font-size: 0.85rem; color: var(--text-main);"> The model verbalizes its internal reasoning, tracks progress, and plans the next action.</span>
+              </div>
+              <div style="padding: 0.5rem 0.75rem; background: rgba(16, 185, 129, 0.1); border-left: 3px solid var(--accent-success); border-radius: 4px;">
+                <strong style="color: var(--accent-success); font-size: 0.85rem;">ACTION:</strong>
+                <span style="font-size: 0.85rem; color: var(--text-main);"> The model emits an explicit tool invocation with verified arguments.</span>
+              </div>
+              <div style="padding: 0.5rem 0.75rem; background: rgba(245, 158, 11, 0.1); border-left: 3px solid var(--accent-warning); border-radius: 4px;">
+                <strong style="color: var(--accent-warning); font-size: 0.85rem;">OBSERVATION:</strong>
+                <span style="font-size: 0.85rem; color: var(--text-main);"> The environment returns the actual ground-truth result back into the prompt.</span>
+              </div>
+            </div>
+            <p class="card-text" style="font-size: 0.85rem; margin-top: 0.5rem;">
+              <strong>Why it works:</strong> Reasoning prevents blind action; ground-truth observations prevent hallucinated reasoning.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3 class="card-title">&#x1F4DC; Real-World Execution Trace</h3>
+            <pre><code>Question: What is the population of Paris divided by 2?
+
+Thought 1: I need to find the current population of Paris.
+Action 1: search_kb["population of Paris"]
+Observation 1: The population of Paris is 2,161,000.
+
+Thought 2: Now I must divide 2,161,000 by 2.
+Action 2: calculate["2161000 / 2"]
+Observation 2: 1080500.0
+
+Thought 3: I have verified the result via calculation.
+Action 3: finish["The population of Paris divided by 2 is 1,080,500."]</code></pre>
+            <div style="font-size: 0.82rem; color: var(--accent-success); margin-top: 0.25rem;">
+              &#x2714; Verified ground truth obtained at each step. No hallucination.
+            </div>
+          </div>
+        </div>
+
+        <div class="citation-footer">
+          <span>Seminal Paper: Yao et al. (Princeton &bull; Google Brain, 2022)</span>
+          <span class="citation-badge">Citations: [S01, Section 2 &amp; 3] | CLM-011</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 09: Agent Loop vs. Graph Orchestration -->
+    <section class="slide" id="slide-9" data-slide="9">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-tag">ORCHESTRATION TOPOLOGIES &bull; SLIDE 09</span>
+          <h2 class="slide-title">Agent Loops vs. Graph Orchestration</h2>
+          <p class="slide-subtitle">Deterministic workflows, autonomous loops, and the unified state graph architecture</p>
+        </div>
+
+        <div class="columns-3">
+          <div class="card">
+            <h3 class="card-title">&#x27A1;&#xFE0F; Static DAG Workflows</h3>
+            <p class="card-text" style="font-size: 0.88rem;">
+              <strong>Model:</strong> Deterministic code pipelines where execution flow is hardcoded in advance (e.g., Prompt Chaining, Parallel Routing, Evaluator-Optimizer).
+            </p>
+            <p class="card-text" style="font-size: 0.88rem; margin-top: 0.5rem;">
+              <strong>Anthropic View [S03]:</strong> Prefers deterministic workflows wherever possible. LLMs generate content, but human-written code directs the flow for predictable cost and safety.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3 class="card-title">&#x1F501; Autonomous Cyclic Loops</h3>
+            <p class="card-text" style="font-size: 0.88rem;">
+              <strong>Model:</strong> Dynamic while-loops where the foundation model controls its own path: choosing tools, iterating, and deciding when to terminate.
+            </p>
+            <p class="card-text" style="font-size: 0.88rem; margin-top: 0.5rem;">
+              <strong>Characteristics:</strong> Essential for open-ended tasks (e.g. debugging code, deep web research), but harder to predict and bound against runaway loops.
+            </p>
+          </div>
+
+          <div class="card card-highlight">
+            <h3 class="card-title">&#x1F578;&#xFE0F; Stateful Graphs (LangGraph)</h3>
+            <p class="card-text" style="font-size: 0.88rem;">
+              <strong>Model:</strong> Unifies deterministic workflows and autonomous loops as <em>Nodes</em> (computations) and <em>Edges</em> (conditional transitions).
+            </p>
+            <p class="card-text" style="font-size: 0.88rem; margin-top: 0.5rem;">
+              <strong>LangChain View [S06]:</strong> Reconciles the dichotomy. A graph provides cyclic transitions with deterministic state channels, persistence, and human checkpoints.
+            </p>
+          </div>
+        </div>
+
+        <div class="card card-warning" style="margin-top: 0.25rem;">
+          <h4 style="color: var(--accent-warning); font-size: 0.95rem;">&#x2696;&#xFE0F; Architectural Reconciliation (Documented Disagreement)</h4>
+          <p class="card-text" style="font-size: 0.88rem;">
+            Anthropic [S03] draws a sharp conceptual dichotomy between <em>Workflows</em> (deterministic code routing) and <em>Agents</em> (model-directed loops). LangGraph [S06] resolves this by demonstrating that both are instances of stateful computational graphs differing only in whether edge branching is static or conditional.
+          </p>
+        </div>
+
+        <div class="citation-footer">
+          <span>Divergent Architectural Philosophies: Anthropic vs. LangChain</span>
+          <span class="citation-badge">Citations: [S03, Workflows vs agents] | [S06, Build with the Graph API] | CLM-008, CLM-014</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 10: Single-Agent vs. Multi-Agent Systems -->
+    <section class="slide" id="slide-10" data-slide="10">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-tag">COLLABORATIVE ARCHITECTURES &bull; SLIDE 10</span>
+          <h2 class="slide-title">Single-Agent vs. Multi-Agent Systems</h2>
+          <p class="slide-subtitle">Coordination topologies: Sequential pipelines, hierarchical supervisors, and swarm hand-offs</p>
+        </div>
+
+        <div class="columns-2">
+          <div class="card">
+            <h3 class="card-title">&#x1F464; Single-Agent Systems</h3>
+            <ul style="margin-left: 1.25rem; font-size: 0.88rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.4rem;">
+              <li><strong>Architecture:</strong> One centralized foundation model with all instructions and tools loaded into a single context window.</li>
+              <li><strong>Pros:</strong> Low latency, straightforward debugging, zero inter-agent communication overhead.</li>
+              <li><strong>Cons:</strong> Context saturation, prompt interference, and performance degradation when juggling disparate domain instructions.</li>
+            </ul>
+          </div>
+
+          <div class="card card-highlight">
+            <h3 class="card-title">&#x1F465; Multi-Agent Systems (MAS)</h3>
+            <ul style="margin-left: 1.25rem; font-size: 0.88rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.4rem;">
+              <li><strong>Architecture:</strong> A team of specialized agents, each with dedicated system prompts, constrained toolsets, and isolated contexts.</li>
+              <li><strong>Pros:</strong> Role specialization (e.g. Researcher + Coder + Reviewer), parallel execution, modular maintenance.</li>
+              <li><strong>Cons:</strong> Higher token consumption, potential communication loops, and coordination overhead.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="columns-3" style="margin-top: 0.25rem;">
+          <div class="card">
+            <h4 style="font-size: 0.95rem; color: #ffffff;">1. Sequential Pipeline</h4>
+            <p class="card-text" style="font-size: 0.85rem;">Agent A performs research &rarr; passes brief to Agent B (Writer) &rarr; passes draft to Agent C (Editor). Linear handoff.</p>
+          </div>
+          <div class="card">
+            <h4 style="font-size: 0.95rem; color: #ffffff;">2. Hierarchical Supervisor</h4>
+            <p class="card-text" style="font-size: 0.85rem;">A central Router / Manager agent receives the primary goal, decomposes tasks, dispatches worker sub-agents, and synthesizes output.</p>
+          </div>
+          <div class="card">
+            <h4 style="font-size: 0.95rem; color: #ffffff;">3. Peer Handoff / Swarm</h4>
+            <p class="card-text" style="font-size: 0.85rem;">Agents transfer conversation control dynamically to specialized peers (e.g., Triage &rarr; Billing &rarr; Tech Support) via direct delegation.</p>
+          </div>
+        </div>
+
+        <div class="citation-footer">
+          <span>Multi-Agent Paradigms: OpenAI SDK &bull; CrewAI &bull; Microsoft Agent Framework</span>
+          <span class="citation-badge">Citations: [S05, Core concepts] | [S07, Core Concepts] | [S08, Why Agent Framework?] | CLM-012, CLM-013</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 11: Frameworks & Python Implementation -->
+    <section class="slide" id="slide-11" data-slide="11">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-tag">PRACTICAL IMPLEMENTATION &bull; SLIDE 11</span>
+          <h2 class="slide-title">Frameworks &amp; Python Implementation</h2>
+          <p class="slide-subtitle">Comparing production frameworks alongside an educational simulated ReAct agent</p>
+        </div>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Framework</th>
+                <th>Core Abstraction</th>
+                <th>Primary Strength</th>
+                <th>Ideal Use Case</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>OpenAI Agents SDK [S05]</strong></td>
+                <td>Agents, Tools, Handoffs</td>
+                <td>Minimalist, Pythonic, native tool calling</td>
+                <td>Customer support routing, single/multi-agent handoffs</td>
+              </tr>
+              <tr>
+                <td><strong>LangGraph [S06]</strong></td>
+                <td>StateGraph, Nodes, Edges</td>
+                <td>Fine-grained cyclic control, durable persistence</td>
+                <td>Complex enterprise workflows, human-in-the-loop audit</td>
+              </tr>
+              <tr>
+                <td><strong>CrewAI [S07]</strong></td>
+                <td>Agents, Tasks, Crews</td>
+                <td>Intuitive role-playing personas &amp; team choreography</td>
+                <td>Automated research, content creation, collaborative pipelines</td>
+              </tr>
+              <tr>
+                <td><strong>Microsoft Agent Framework [S08]</strong></td>
+                <td>Agents, Workflows, Unified SK</td>
+                <td>Enterprise multi-agent patterns, AutoGen evolution</td>
+                <td>Multi-modal enterprise agent operations across cloud services</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="columns-2" style="margin-top: 0.25rem;">
+          <div class="card">
+            <h4 style="font-size: 0.9rem; color: var(--accent-primary);">&#x1F40D; Educational Simulated ReAct Loop (Pure Python)</h4>
+            <pre style="font-size: 0.78rem;"><code>def run_react_agent(query, max_steps=3):
+    state = {"query": query, "history": []}
+    for step in range(max_steps):
+        thought = plan_thought(state)
+        action, arg = select_tool(thought)
+        if action == "finish":
+            return arg
+        observation = execute_tool(action, arg)
+        state["history"].append((thought, action, observation))
+    return "Reached maximum steps."</code></pre>
+          </div>
+
+          <div class="card">
+            <h4 style="font-size: 0.9rem; color: var(--accent-success);">&#x26A1; Production LLM Pattern (Structured Calling)</h4>
+            <pre style="font-size: 0.78rem;"><code># Production LLM Runtime Pattern
+messages = [{"role": "system", "content": persona},
+            {"role": "user", "content": query}]
+while True:
+    response = llm.chat(messages, tools=registered_tools)
+    if not response.tool_calls:
+        return response.content
+    for call in response.tool_calls:
+        obs = run_tool(call.name, call.args)
+        messages.append({"role": "tool", "content": obs})</code></pre>
+          </div>
+        </div>
+
+        <div class="citation-footer">
+          <span>Implementation Foundations: OpenAI &bull; LangChain &bull; CrewAI &bull; Microsoft</span>
+          <span class="citation-badge">Citations: [S05] | [S06] | [S07] | [S08] | CLM-015, CLM-016, CLM-017</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 12: Evaluation, Safety & Future Horizons -->
+    <section class="slide" id="slide-12" data-slide="12">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-tag">SAFETY, EVALUATION &amp; SUMMARY &bull; SLIDE 12</span>
+          <h2 class="slide-title">Evaluation, Safety &amp; Future Horizons</h2>
+          <p class="slide-subtitle">Industry benchmarks, security guardrails, and core curriculum takeaways</p>
+        </div>
+
+        <div class="columns-2">
+          <div class="card">
+            <h3 class="card-title">&#x1F4CA; Standardized Agent Benchmarks</h3>
+            <ul style="margin-left: 1.25rem; font-size: 0.88rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.4rem;">
+              <li><strong>SWE-bench:</strong> Evaluates agents on resolving real-world GitHub issues (cloning repos, writing code, executing unit tests). Measures real end-to-end coding ability.</li>
+              <li><strong>GAIA (General AI Assistants):</strong> Evaluates multimodal assistants on real-world tasks requiring web browsing, file parsing, multi-modal reasoning, and complex tool usage.</li>
+            </ul>
+          </div>
+
+          <div class="card card-warning">
+            <h3 class="card-title">&#x1F6E1;&#xFE0F; Critical Safety Guardrails</h3>
+            <ul style="margin-left: 1.25rem; font-size: 0.88rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.4rem;">
+              <li><strong>Prompt Injection (Direct &amp; Indirect):</strong> Malicious text embedded in crawled webpages or emails instructing the agent to exfiltrate private user tokens.</li>
+              <li><strong>Tool Sandboxing:</strong> Agents executing shell scripts or SQL must run in isolated containerized environments with least-privilege credentials.</li>
+              <li><strong>Human-in-the-Loop (HITL):</strong> Requiring explicit human approval before financial transactions, database mutations, or public messaging.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card card-success">
+          <h4 style="font-size: 0.95rem; color: #ffffff;">&#x1F393; Core Curriculum Summary for Beginners</h4>
+          <div class="columns-3" style="margin-top: 0.35rem;">
+            <div style="font-size: 0.85rem; color: var(--text-muted);">
+              <strong style="color: var(--text-main);">1. Agents Act:</strong> LLMs write text; agents perceive environments, execute tools, and handle errors.
+            </div>
+            <div style="font-size: 0.85rem; color: var(--text-muted);">
+              <strong style="color: var(--text-main);">2. ReAct Synergizes:</strong> Interleaving thoughts and external tool observations eliminates hallucination.
+            </div>
+            <div style="font-size: 0.85rem; color: var(--text-muted);">
+              <strong style="color: var(--text-main);">3. Start Simple:</strong> Prefer deterministic workflows first; scale to cyclic graphs or multi-agent swarms only when needed.
+            </div>
+          </div>
+        </div>
+
+        <div class="citation-footer">
+          <span>Safety &amp; Verification: Google Cloud Architecture &bull; Anthropic</span>
+          <span class="citation-badge">Citations: [S03, Building effective agents] | [S04, Guardrails] | CLM-018</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Bottom Navigation Bar -->
+  <footer>
+    <button id="prev-btn" class="btn" disabled>&larr; Previous</button>
+    <div style="font-size: 0.82rem; color: var(--text-dim);">
+      AI Agents Learning Wiki &bull; Karpathy Educational Architecture
+    </div>
+    <button id="next-btn" class="btn btn-primary">Next &rarr;</button>
+  </footer>
+
+  <!-- Slide Overview Modal / Drawer -->
+  <div id="overview-modal" role="dialog" aria-modal="true" aria-label="Slide Directory">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 style="font-size: 1.2rem; color: #ffffff;">Presentation Slide Directory</h3>
+        <button id="close-modal-btn" class="close-btn" aria-label="Close Overview">&times;</button>
+      </div>
+      <div id="overview-grid" class="overview-grid">
+        <!-- Injected dynamically by slides.js -->
+      </div>
+      <div style="margin-top: 1rem; text-align: right;">
+        <button id="close-modal-footer-btn" class="btn" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">Close (Esc)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Controller Script -->
+  <script src="slides.js"></script>
+</body>
+</html>

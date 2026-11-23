@@ -51,10 +51,10 @@ A critical insight shared by leading AI research and engineering groups (Anthrop
 ---
 
 ## Related Wiki Pages
-- [AI Agents vs. Traditional Chatbots](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/fundamentals/agents-vs-chatbots.md)
-- [Agent Architecture Stack](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/architecture/agent-architecture.md)
-- [The Agent Loop](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/architecture/agent-loop.md)
-- [Workflows vs. Autonomous Agents](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/concepts/workflows-vs-agents.md)
-- [Wiki Master Index](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/index.md)
+- [AI Agents vs. Traditional Chatbots](agents-vs-chatbots.md)
+- [Agent Architecture Stack](../architecture/agent-architecture.md)
+- [The Agent Loop](../architecture/agent-loop.md)
+- [Workflows vs. Autonomous Agents](../concepts/workflows-vs-agents.md)
+- [Wiki Master Index](../index.md)
 
 *Last Updated: 2026-11-23*

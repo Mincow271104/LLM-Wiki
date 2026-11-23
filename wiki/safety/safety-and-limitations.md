@@ -113,9 +113,9 @@ Beginners must understand the current technological boundaries of agentic AI:
 ---
 
 ## Related Wiki Pages
-- [Agent Evaluation and Benchmarking](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/safety/evaluation.md)
-- [Agent Architecture Stack](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/architecture/agent-architecture.md)
-- [The Agent Loop](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/architecture/agent-loop.md)
-- [Wiki Master Index](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/index.md)
+- [Agent Evaluation and Benchmarking](evaluation.md)
+- [Agent Architecture Stack](../architecture/agent-architecture.md)
+- [The Agent Loop](../architecture/agent-loop.md)
+- [Wiki Master Index](../index.md)
 
 *Last Updated: 2026-11-23*

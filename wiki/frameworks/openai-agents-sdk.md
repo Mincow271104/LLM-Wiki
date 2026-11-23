@@ -67,9 +67,9 @@ Guardrails execute deterministically at turn boundaries:
 ---
 
 ## Related Wiki Pages
-- [Comprehensive Framework Comparison](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/frameworks/comparison.md)
-- [Multi-Agent Systems](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/concepts/multi-agent-systems.md)
-- [Safety, Guardrails, and Limitations](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/safety/safety-and-limitations.md)
-- [Wiki Master Index](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/index.md)
+- [Comprehensive Framework Comparison](comparison.md)
+- [Multi-Agent Systems](../concepts/multi-agent-systems.md)
+- [Safety, Guardrails, and Limitations](../safety/safety-and-limitations.md)
+- [Wiki Master Index](../index.md)
 
 *Last Updated: 2026-11-23*

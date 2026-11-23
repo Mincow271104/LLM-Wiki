@@ -64,9 +64,9 @@ While LLMs are remarkably versatile, their architectural properties introduce ke
 ---
 
 ## Related Wiki Pages
-- [What is an AI Agent?](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/fundamentals/what-is-an-agent.md)
-- [Tools & Function Calling](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/architecture/tools-and-function-calling.md)
-- [The ReAct Pattern](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/concepts/react-pattern.md)
-- [Wiki Master Index](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/index.md)
+- [What is an AI Agent?](what-is-an-agent.md)
+- [Tools & Function Calling](../architecture/tools-and-function-calling.md)
+- [The ReAct Pattern](../concepts/react-pattern.md)
+- [Wiki Master Index](../index.md)
 
 *Last Updated: 2026-11-23*

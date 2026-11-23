@@ -85,7 +85,7 @@ def simulated_llm_brain(messages: list) -> dict:
     """
     # Inspect the history to determine progress
     history_text = " ".join([m["content"] for m in messages])
-    
+
     # Check if we already have Apollo 11 launch year
     if "Apollo 11 launched on July 16, 1969" in history_text:
         # Check if we computed the years since launch
@@ -116,41 +116,41 @@ def run_agent(user_goal: str, max_iterations: int = 5):
     print("=" * 70)
     print(f"USER GOAL: {user_goal}")
     print("=" * 70)
-    
+
     messages = [
         {"role": "user", "content": user_goal}
     ]
-    
+
     for step in range(1, max_iterations + 1):
         print(f"\n--- [AGENT LOOP ITERATION {step}] ---")
-        
+
         # Phase 1: Think (Invoke Reasoning Engine)
         decision = simulated_llm_brain(messages)
         print(f"THOUGHT: {decision['thought']}")
-        
+
         # Check for Termination
         if decision["final_answer"] is not None:
             print(f"\nFINAL ANSWER:\n{decision['final_answer']}")
             print("=" * 70)
             return decision["final_answer"]
-        
+
         # Phase 2: Act (Tool Dispatch)
         tool_call = decision["action"]
         tool_name = tool_call["tool"]
         tool_arg = tool_call["argument"]
         print(f"ACTION: Invoke tool '{tool_name}' with argument '{tool_arg}'")
-        
+
         if tool_name in TOOL_REGISTRY:
             observation = TOOL_REGISTRY[tool_name](tool_arg)
         else:
             observation = f"Error: Tool '{tool_name}' not recognized."
-            
+
         print(f"OBSERVATION: {observation}")
-        
+
         # Phase 3: Update Context Scratchpad
         messages.append({"role": "assistant", "content": f"Thought: {decision['thought']}\nAction: {tool_name}[{tool_arg}]"})
         messages.append({"role": "tool", "content": f"Observation: {observation}"})
-        
+
     print("\nTERMINATION WARNING: Maximum iterations reached without final answer.")
     return None
 
@@ -181,9 +181,9 @@ if __name__ == "__main__":
 ---
 
 ## Related Wiki Pages
-- [The Agent Loop](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/architecture/agent-loop.md)
-- [The ReAct Pattern](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/concepts/react-pattern.md)
-- [Tools & Function Calling](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/architecture/tools-and-function-calling.md)
-- [Wiki Master Index](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/index.md)
+- [The Agent Loop](../architecture/agent-loop.md)
+- [The ReAct Pattern](../concepts/react-pattern.md)
+- [Tools & Function Calling](../architecture/tools-and-function-calling.md)
+- [Wiki Master Index](../index.md)
 
 *Last Updated: 2026-11-23*

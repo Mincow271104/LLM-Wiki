@@ -12,7 +12,7 @@ In Karpathy's architecture:
 
 ## 2. Directory Responsibilities & Structure
 ```
-ai-agents-wiki-assignment/
+LLM-Wiki/                       # Repository Root
 ├── AGENTS.md                   # AI Agent operating manual & governance instructions
 ├── README.md                   # User-facing onboarding, navigation, and CLI guide
 ├── .gitignore                  # Git exclusions (private keys, scratch, cache)
@@ -121,7 +121,8 @@ In-text citations must use traceable brackets specifying the source ID and exact
 1. **No Hardcoded Secrets:** Never hardcode API keys, access tokens, or private credentials in scripts, Wiki pages, or tests.
 2. **Environment Variable Configuration:** All optional cloud integrations must read from environment variables (see `.env.example`).
 3. **No External Pushes:** Do not push to remote repositories during local assignment execution.
-4. **Scope Isolation:** Modify only files inside the `ai-agents-wiki-assignment` workspace.
+4. **Scope Isolation:** Modify only files inside this official repository workspace.
+5. **Authorized Remote Operations:** Remote Git pushes are performed only when explicitly reviewed and authorized by the Project Manager.
 
 ---
 

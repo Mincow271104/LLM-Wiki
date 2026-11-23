@@ -17,7 +17,7 @@ Google Cloud's reference architecture provides an exhaustive taxonomy of compone
 Core architectural components:
 1. **Agent Development Frameworks:** Evaluates LangChain, LangGraph, LlamaIndex, CrewAI, AutoGen, and Vertex AI Agent Builder.
 2. **AI Models & Model Runtime:** Selecting foundation models (multimodal capabilities, context windows) and hosting infrastructure (Vertex AI, Cloud Run, GKE) with SLA, latency, and cost considerations.
-3. **Agent Tools:** 
+3. **Agent Tools:**
    - Built-in tools vs. custom function tools.
    - Standardized tool protocols such as Model Context Protocol (MCP) and enterprise API gateways (Apigee).
    - **Tool Bloat:** Explicitly warns against offering too many tools to an LLM, which degrades selection accuracy, inflates token overhead, and introduces security attack surfaces.

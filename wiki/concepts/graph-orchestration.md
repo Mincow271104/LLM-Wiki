@@ -93,10 +93,10 @@ High-risk tools (e.g., executing shell scripts, modifying production databases, 
 ---
 
 ## Related Wiki Pages
-- [The Agent Loop](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/architecture/agent-loop.md)
-- [Workflows vs. Autonomous Agents](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/concepts/workflows-vs-agents.md)
-- [LangGraph Framework Deep Dive](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/frameworks/langgraph.md)
-- [Safety, Guardrails, and Limitations](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/safety/safety-and-limitations.md)
-- [Wiki Master Index](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/index.md)
+- [The Agent Loop](../architecture/agent-loop.md)
+- [Workflows vs. Autonomous Agents](workflows-vs-agents.md)
+- [LangGraph Framework Deep Dive](../frameworks/langgraph.md)
+- [Safety, Guardrails, and Limitations](../safety/safety-and-limitations.md)
+- [Wiki Master Index](../index.md)
 
 *Last Updated: 2026-11-23*

@@ -71,10 +71,10 @@ In the empirical evaluations across HotpotQA, Fever, ALFWorld, and WebShop [[S01
 ---
 
 ## Related Wiki Pages
-- [The Agent Loop](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/architecture/agent-loop.md)
-- [Planning and Reasoning](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/concepts/planning-and-reasoning.md)
-- [Tools & Function Calling](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/architecture/tools-and-function-calling.md)
-- [Educational Python Agent Example](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/implementation/python-agent-example.md)
-- [Wiki Master Index](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/index.md)
+- [The Agent Loop](../architecture/agent-loop.md)
+- [Planning and Reasoning](planning-and-reasoning.md)
+- [Tools & Function Calling](../architecture/tools-and-function-calling.md)
+- [Educational Python Agent Example](../implementation/python-agent-example.md)
+- [Wiki Master Index](../index.md)
 
 *Last Updated: 2026-11-23*

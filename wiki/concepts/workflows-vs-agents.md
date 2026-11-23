@@ -85,10 +85,10 @@ Microsoft Learn [[S08, When to use agents vs workflows](#)] and Anthropic [[S03,
 ---
 
 ## Related Wiki Pages
-- [What is an AI Agent?](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/fundamentals/what-is-an-agent.md)
-- [The Agent Loop](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/architecture/agent-loop.md)
-- [Graph-Based Orchestration](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/concepts/graph-orchestration.md)
-- [Master Evidence & Disagreement Registry](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/evidence-registry.md)
-- [Wiki Master Index](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/index.md)
+- [What is an AI Agent?](../fundamentals/what-is-an-agent.md)
+- [The Agent Loop](../architecture/agent-loop.md)
+- [Graph-Based Orchestration](graph-orchestration.md)
+- [Master Evidence & Disagreement Registry](../evidence-registry.md)
+- [Wiki Master Index](../index.md)
 
 *Last Updated: 2026-11-23*

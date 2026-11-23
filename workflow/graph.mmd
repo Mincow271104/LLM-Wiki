@@ -1,36 +1,54 @@
 flowchart TD
-    %% Main Forward Line
-    Start([Project Initiation]) --> N1[1. Source Retrieval]
-    N1 -->|HTTP Success 200| N2[2. Source Validation]
-    N2 -->|Valid Schema & Metadata| N3[3. Sequential Ingestion]
-    N3 -->|Source Cards & Registry Updated| N4[4. Wiki Compilation]
-    N4 -->|Synthesis Pages Drafted| N5[5. Wiki Coverage Check]
-    N5 -->|All 21 Topics Covered| N6[6. Evidence Validation]
-    N6 -->|Traceable Citations Verified| N7[7. Wiki Lint & Integrity Audit]
-    N7 -->|All 11 Checks Passed| N8[8. Human / PM Approval Gate]
-    N8 -->|Approved| Approved([Approved Knowledge Base - End P1+P2])
+    %% =========================================================================
+    %% AI AGENTS LEARNING WIKI: 10-STAGE PRESENTATION GENERATION & VERIFICATION GRAPH
+    %% Distinguishing Directed Graphs (DAG Flow) from Cyclic Correction Loops (Max 3)
+    %% =========================================================================
 
-    %% Failure Routes & Return Paths (Max 3 cycles)
-    N1 -.->|Retrieval Failed 404/Timeout| E1[Report Missing / Inaccessible Source]
-    E1 --> StopFailed([Halt: Unresolved Source Dependency])
+    Start([Initiate Batch 2 Presentation Pipeline]) --> S1[Stage 1: Topic Extraction & Synthesis]
 
-    N2 -.->|Invalid Metadata / Authors Missing| R2[Return: Request Bibliographic Correction]
-    R2 -->|Correction Cycle <= 3| N1
+    %% Stage 1 to 2
+    S1 -->|Extracted 21 Topics & 18 Claims| S2[Stage 2: Slide Architecture & Storyboard]
 
-    N5 -.->|Missing Topics / Gap Detected| R5[Return: Author Missing Concept Page]
-    R5 -->|Correction Cycle <= 3| N4
+    %% Stage 2 to 3
+    S2 -->|12-Slide Storyboard Defined| S3[Stage 3: Content Drafting & Strict Citations]
 
-    N6 -.->|Untraceable Claim / Missing Citation| R6[Return: Ground Claim in Source Locator]
-    R6 -->|Correction Cycle <= 3| N4
+    %% Stage 3 to 4
+    S3 -->|Drafted Content with S01-S08 Locators| S4[Stage 4: Visual & Diagram Specification]
 
-    N6 -.->|Conflicting Source Claims| C6[Update Contradiction & Disagreement Register]
-    C6 --> N7
+    %% Stage 4 to 5
+    S4 -->|Inline SVGs & Responsive Tables Styled| S5[Stage 5: Interactive Controller Development]
 
-    N7 -.->|Broken Links Detected| R7A[Repair Target File Paths]
-    R7A -->|Correction Cycle <= 3| N7
+    %% Stage 5 to 6
+    S5 -->|Keyboard & Touch Navigation Wired| S6[Stage 6: Code Example Harmonization]
 
-    N7 -.->|Schema Validation Failure| R7B[Re-validate JSON against Schema]
-    R7B -->|Correction Cycle <= 3| N3
+    %% Stage 6 to 7
+    S6 -->|Simulated vs Production Patterns Aligned| S7[Stage 7: Automated Linter & Integrity Audit]
 
-    N8 -.->|Changes Requested by Reviewer| R8[Address Review Feedback]
-    R8 -->|Correction Cycle <= 3| N4
+    %% Stage 7 Verification Gate (Loop 1)
+    S7 -->|15 Checks PASS: Schemas, Links, Locators| S8[Stage 8: Playwright Browser & Screenshot Testing]
+    S7 -.->|FAIL: Broken Link / Invalid Citation| L7[Correction Loop A: Repair Syntax / Links]
+    L7 -->|Cycle <= 3| S3
+
+    %% Stage 8 Verification Gate (Loop 2)
+    S8 -->|0 Console Errors & 6 Screenshots Captured| S9[Stage 9: Human / PM Fidelity Review Gate]
+    S8 -.->|FAIL: Layout Overflow / Console Exception| L8[Correction Loop B: Refactor CSS / JS]
+    L8 -->|Cycle <= 3| S5
+
+    %% Stage 9 Verification Gate (Loop 3)
+    S9 -->|PM Approved: Complete Curriculum Fidelity| S10[Stage 10: GitHub Pages Deployment & Packaging]
+    S9 -.->|FAIL: Review Feedback / Claim Gap| L9[Correction Loop C: Refine Content / Cards]
+    L9 -->|Cycle <= 3| S3
+
+    %% Terminal Completion
+    S10 --> End([Complete Assignment Package: Pushed to origin/main])
+
+    %% Styling
+    classDef stageNode fill:#1e293b,stroke:#38bdf8,stroke-width:1.5px,color:#f8fafc;
+    classDef loopNode fill:#27354a,stroke:#f59e0b,stroke-width:1.5px,stroke-dasharray: 4,color:#f8fafc;
+    classDef gateNode fill:#0f172a,stroke:#10b981,stroke-width:2px,color:#ffffff;
+    classDef termNode fill:#090d16,stroke:#a855f7,stroke-width:2px,color:#ffffff;
+
+    class S1,S2,S3,S4,S5,S6 stageNode;
+    class S7,S8,S9 gateNode;
+    class L7,L8,L9 loopNode;
+    class S10,Start,End termNode;

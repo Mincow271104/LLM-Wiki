@@ -50,9 +50,9 @@ Consider an example task: *"Analyze our server logs for the past 24 hours, ident
 ---
 
 ## Related Wiki Pages
-- [What is an AI Agent?](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/fundamentals/what-is-an-agent.md)
-- [The Agent Loop](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/architecture/agent-loop.md)
-- [Tools & Function Calling](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/architecture/tools-and-function-calling.md)
-- [Wiki Master Index](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/index.md)
+- [What is an AI Agent?](what-is-an-agent.md)
+- [The Agent Loop](../architecture/agent-loop.md)
+- [Tools & Function Calling](../architecture/tools-and-function-calling.md)
+- [Wiki Master Index](../index.md)
 
 *Last Updated: 2026-11-23*

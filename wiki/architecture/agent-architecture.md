@@ -90,10 +90,10 @@ Google Cloud's reference architecture [[S04, Agent architecture overview](#)] ou
 ---
 
 ## Related Wiki Pages
-- [What is an AI Agent?](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/fundamentals/what-is-an-agent.md)
-- [The Agent Loop](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/architecture/agent-loop.md)
-- [Tools & Function Calling](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/architecture/tools-and-function-calling.md)
-- [Memory & Context Management](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/architecture/memory-and-context.md)
-- [Wiki Master Index](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/index.md)
+- [What is an AI Agent?](../fundamentals/what-is-an-agent.md)
+- [The Agent Loop](agent-loop.md)
+- [Tools & Function Calling](tools-and-function-calling.md)
+- [Memory & Context Management](memory-and-context.md)
+- [Wiki Master Index](../index.md)
 
 *Last Updated: 2026-11-23*

@@ -3,11 +3,10 @@
 [![Wiki Lint Status](https://img.shields.io/badge/Wiki_Lint-11%2F11_PASS-brightgreen)](reports/wiki-lint-report.md)
 [![Methodology](https://img.shields.io/badge/Architecture-Karpathy_LLM_Wiki-blue)](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f)
 [![Target Branch](https://img.shields.io/badge/Branch-main-orange)](https://github.com/Mincow271104/LLM-Wiki)
-[![License](https://img.shields.io/badge/License-MIT-lightgrey)](LICENSE)
 
-**Project:** AI Agents: Concepts, Architecture and Workflow  
+**Project:** AI Agents: Concepts, Architecture and Workflow
 **Audience:** AI beginners with limited or no prior knowledge of AI Agents
-**Language:** English  
+**Language:** English
 **Purpose:** An authoritative, source-grounded, incrementally maintainable LLM Wiki that serves as the permanent knowledge base for an interactive teaching presentation.
 
 ---

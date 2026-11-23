@@ -78,9 +78,9 @@ Long-term memory provides durability across restarts, sessions, and multi-day wo
 ---
 
 ## Related Wiki Pages
-- [Agent Architecture Stack](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/architecture/agent-architecture.md)
-- [The Agent Loop](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/architecture/agent-loop.md)
-- [Graph-Based Orchestration](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/concepts/graph-orchestration.md)
-- [Wiki Master Index](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/index.md)
+- [Agent Architecture Stack](agent-architecture.md)
+- [The Agent Loop](agent-loop.md)
+- [Graph-Based Orchestration](../concepts/graph-orchestration.md)
+- [Wiki Master Index](../index.md)
 
 *Last Updated: 2026-11-23*

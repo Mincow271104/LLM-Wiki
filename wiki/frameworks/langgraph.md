@@ -86,9 +86,9 @@ graph.update_state(
 ---
 
 ## Related Wiki Pages
-- [Graph-Based Orchestration](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/concepts/graph-orchestration.md)
-- [Comprehensive Framework Comparison](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/frameworks/comparison.md)
-- [Workflows vs. Autonomous Agents](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/concepts/workflows-vs-agents.md)
-- [Wiki Master Index](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/index.md)
+- [Graph-Based Orchestration](../concepts/graph-orchestration.md)
+- [Comprehensive Framework Comparison](comparison.md)
+- [Workflows vs. Autonomous Agents](../concepts/workflows-vs-agents.md)
+- [Wiki Master Index](../index.md)
 
 *Last Updated: 2026-11-23*

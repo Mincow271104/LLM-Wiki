@@ -87,10 +87,10 @@ A vital requirement for modern technical literacy is understanding the historica
 ---
 
 ## Related Wiki Pages
-- [OpenAI Agents SDK Deep Dive](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/frameworks/openai-agents-sdk.md)
-- [LangGraph Deep Dive](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/frameworks/langgraph.md)
-- [CrewAI Deep Dive](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/frameworks/crewai.md)
-- [Microsoft Agent Framework Deep Dive](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/frameworks/microsoft-agent-framework.md)
-- [Wiki Master Index](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/index.md)
+- [OpenAI Agents SDK Deep Dive](openai-agents-sdk.md)
+- [LangGraph Deep Dive](langgraph.md)
+- [CrewAI Deep Dive](crewai.md)
+- [Microsoft Agent Framework Deep Dive](microsoft-agent-framework.md)
+- [Wiki Master Index](../index.md)
 
 *Last Updated: 2026-11-23*

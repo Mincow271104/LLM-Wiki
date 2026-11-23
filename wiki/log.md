@@ -91,3 +91,35 @@ This append-only log tracks every operation (ingest, query, lint, compilation) p
 - **URL:** https://arxiv.org/abs/2210.03629
 - **Document Type:** peer_reviewed_paper
 - **Status:** Ingested and validated against schema.
+
+## [2026-11-23] ingest | S01: ReAct: Synergizing Reasoning and Acting in Language Models
+- **Source ID:** S01
+- **Publisher / Authors:** Shunyu Yao, Jeffrey Zhao, Dian Yu, Nan Du, Izhak Shafran, Karthik Narasimhan
+- **URL:** https://arxiv.org/abs/2210.03629
+- **Document Type:** peer_reviewed_paper
+- **Status:** Recorded metadata validated against schema.
+
+
+## [2026-11-24] upgrade | Batch 2 Tooling, Schema Engine & Link Portability
+- **Action:** Upgraded `scripts/lint_wiki.py` to employ official `jsonschema` validation engine across `raw/sources.json` and `raw/claims.json`.
+- **Source Integrity:** Replaced unconditional PASS logic with comprehensive assertion verifying recorded HTTP 200, bibliographic fields, and unique source cards. Added optional `--verify-live-urls` timeout check.
+- **Link Portability:** Converted all 24 Markdown files from machine-specific absolute file paths (`file:///`) to portable relative links. Linter Pass 12 now strictly rejects non-portable paths.
+- **Deduplication:** Enforced canonical slugs in `scripts/ingest.py` and purged duplicate S01 cards.
+- **Status:** Complete (15/15 Lint Passes Succeeded).
+
+## [2026-11-24] presentation | Interactive 12-Slide Teaching Presentation
+- **Action:** Designed and implemented responsive educational slide deck in `presentation/` (`index.html`, `styles.css`, `slides.js`).
+- **Curriculum:** Fully addresses all 12 planned slides, including inline SVG architecture diagram, ReAct trace, comparative matrices, and beginner analogies.
+- **Fidelity Grounding:** Every slide is grounded with exact citations (`[S01]`, `[S03]`, etc.) and primary claims (`CLM-001` through `CLM-018`).
+- **Status:** Verified and functional.
+
+## [2026-11-24] test | Automated Playwright Browser Verification & Evidence
+- **Action:** Executed end-to-end automated browser testing using Playwright Chromium across Desktop (1366x768) and Mobile (390x844) viewports.
+- **Verification:** Verified 0 console errors, 0 uncaught exceptions, full keyboard navigation, touch swipe support, and modal interactions. Captured 6 visual evidence screenshots to `reports/evidence/`.
+- **Controlled Negative Tests:** Executed 5 negative test cases verifying that locator omissions, bad source IDs, machine links, schema errors, and missing slides are reliably caught and rejected.
+- **Status:** Complete (All test suites passed).
+
+## [2026-11-24] deploy | GitHub Pages & Submission Package
+- **Action:** Configured GitHub Actions Pages workflow `.github/workflows/deploy-pages.yml` targeting `https://mincow271104.github.io/LLM-Wiki/`.
+- **Submission:** Authored `SUBMISSION.md` and `reports/submission-checklist.md` with NCUT CSIE institutional metadata placeholders.
+- **Status:** Ready for final Git commit and push to `origin main`.

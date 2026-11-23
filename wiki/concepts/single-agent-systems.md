@@ -59,10 +59,10 @@ When these boundaries are reached, engineering teams transition to **Multi-Agent
 ---
 
 ## Related Wiki Pages
-- [What is an AI Agent?](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/fundamentals/what-is-an-agent.md)
-- [The Agent Loop](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/architecture/agent-loop.md)
-- [Multi-Agent Systems](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/concepts/multi-agent-systems.md)
-- [Educational Python Agent Example](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/implementation/python-agent-example.md)
-- [Wiki Master Index](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/index.md)
+- [What is an AI Agent?](../fundamentals/what-is-an-agent.md)
+- [The Agent Loop](../architecture/agent-loop.md)
+- [Multi-Agent Systems](multi-agent-systems.md)
+- [Educational Python Agent Example](../implementation/python-agent-example.md)
+- [Wiki Master Index](../index.md)
 
 *Last Updated: 2026-11-23*

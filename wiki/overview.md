@@ -40,30 +40,30 @@ Following Andrej Karpathy's methodology, this knowledge repository is structured
 For readers new to agentic artificial intelligence, the following sequential learning path is recommended:
 
 1. **Foundations:**
-   - [What is an AI Agent?](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/fundamentals/what-is-an-agent.md) — Fundamental definitions, autonomy spectrum, and foundational characteristics.
-   - [AI Agents vs. Traditional Chatbots](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/fundamentals/agents-vs-chatbots.md) — Understanding the shift from passive text generation to active environmental agency.
-   - [LLM Foundations for Agents](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/fundamentals/llm-foundations.md) — Context windows, token prediction, in-context learning, and instruction adherence.
+   - [What is an AI Agent?](fundamentals/what-is-an-agent.md) — Fundamental definitions, autonomy spectrum, and foundational characteristics.
+   - [AI Agents vs. Traditional Chatbots](fundamentals/agents-vs-chatbots.md) — Understanding the shift from passive text generation to active environmental agency.
+   - [LLM Foundations for Agents](fundamentals/llm-foundations.md) — Context windows, token prediction, in-context learning, and instruction adherence.
 2. **Architecture & Core Mechanics:**
-   - [Agent Architecture Stack](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/architecture/agent-architecture.md) — The Augmented LLM building block and the enterprise multi-tier infrastructure.
-   - [The Agent Loop](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/architecture/agent-loop.md) — The core perception-reasoning-action-observation feedback cycle.
-   - [Tools & Function Calling](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/architecture/tools-and-function-calling.md) — Extending LLM reach with APIs, Model Context Protocol (MCP), and tool bloat mitigation.
-   - [Memory & Context Management](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/architecture/memory-and-context.md) — Differentiating short-term working context from persistent long-term storage.
+   - [Agent Architecture Stack](architecture/agent-architecture.md) — The Augmented LLM building block and the enterprise multi-tier infrastructure.
+   - [The Agent Loop](architecture/agent-loop.md) — The core perception-reasoning-action-observation feedback cycle.
+   - [Tools & Function Calling](architecture/tools-and-function-calling.md) — Extending LLM reach with APIs, Model Context Protocol (MCP), and tool bloat mitigation.
+   - [Memory & Context Management](architecture/memory-and-context.md) — Differentiating short-term working context from persistent long-term storage.
 3. **Advanced Concepts & Orchestration:**
-   - [Planning & Reasoning](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/concepts/planning-and-reasoning.md) — Task decomposition, reflection, and error recovery.
-   - [The ReAct Pattern](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/concepts/react-pattern.md) — Synergizing reasoning traces with environment actions.
-   - [Workflows vs. Autonomous Agents](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/concepts/workflows-vs-agents.md) — When to use deterministic pipelines versus autonomous loops.
-   - [Graph-Based Orchestration](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/concepts/graph-orchestration.md) — Stateful orchestration using nodes, edges, checkpointers, and human-in-the-loop gates.
-   - [Single-Agent vs. Multi-Agent Systems](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/concepts/multi-agent-systems.md) — Hand-offs, supervisor patterns, and role-playing crews.
+   - [Planning & Reasoning](concepts/planning-and-reasoning.md) — Task decomposition, reflection, and error recovery.
+   - [The ReAct Pattern](concepts/react-pattern.md) — Synergizing reasoning traces with environment actions.
+   - [Workflows vs. Autonomous Agents](concepts/workflows-vs-agents.md) — When to use deterministic pipelines versus autonomous loops.
+   - [Graph-Based Orchestration](concepts/graph-orchestration.md) — Stateful orchestration using nodes, edges, checkpointers, and human-in-the-loop gates.
+   - [Single-Agent vs. Multi-Agent Systems](concepts/multi-agent-systems.md) — Hand-offs, supervisor patterns, and role-playing crews.
 4. **Frameworks & Practical Python Implementation:**
-   - [Comprehensive Framework Comparison](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/frameworks/comparison.md) — Side-by-side analysis of OpenAI Agents SDK, LangGraph, CrewAI, and Microsoft Agent Framework (with AutoGen succession analysis).
-   - [Educational Python Agent Example](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/implementation/python-agent-example.md) — A self-contained, API-key-free educational Python script illustrating the agent loop.
+   - [Comprehensive Framework Comparison](frameworks/comparison.md) — Side-by-side analysis of OpenAI Agents SDK, LangGraph, CrewAI, and Microsoft Agent Framework (with AutoGen succession analysis).
+   - [Educational Python Agent Example](implementation/python-agent-example.md) — A self-contained, API-key-free educational Python script illustrating the agent loop.
 5. **Safety, Evaluation, and Limitations:**
-   - [Agent Evaluation & Benchmarking](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/safety/evaluation.md) — How to measure task success, trajectory efficiency, and tool precision.
-   - [Safety, Guardrails, and Limitations](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/safety/safety-and-limitations.md) — Addressing prompt injection, sandboxing, tool limits, and operational boundaries.
+   - [Agent Evaluation & Benchmarking](safety/evaluation.md) — How to measure task success, trajectory efficiency, and tool precision.
+   - [Safety, Guardrails, and Limitations](safety/safety-and-limitations.md) — Addressing prompt injection, sandboxing, tool limits, and operational boundaries.
 
 ## Metadata & Navigation
 - **Primary Sources Cited:** [S01], [S03], [S04], [S05], [S06], [S07], [S08]
-- **Evidence Registry:** [Master Evidence & Disagreement Registry](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/evidence-registry.md)
-- **Terminology Glossary:** [Agent Concepts Glossary](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/glossary.md)
-- **Index:** [Wiki Master Index](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/index.md)
+- **Evidence Registry:** [Master Evidence & Disagreement Registry](evidence-registry.md)
+- **Terminology Glossary:** [Agent Concepts Glossary](glossary.md)
+- **Index:** [Wiki Master Index](index.md)
 - **Last Updated:** 2026-11-23

@@ -59,14 +59,14 @@ def search_wiki_pages(query_tokens):
                         if pos != -1 and (first_pos == -1 or pos < first_pos):
                             first_pos = pos
                             matched_token = token
-                    
+
                     snippet = ""
                     if first_pos != -1:
                         start = max(0, first_pos - 60)
                         end = min(len(content), first_pos + 140)
                         snippet = content[start:end].replace("\n", " ").strip()
                         snippet = f"...{snippet}..."
-                    
+
                     rel_path = md_file.relative_to(BASE_DIR)
                     matched_pages.append((score, title, str(rel_path), snippet))
         except Exception as e:
@@ -79,7 +79,7 @@ def query_wiki(query_str):
     print(f"AI AGENTS LEARNING WIKI - SEARCH ENGINE")
     print(f"Query: \"{query_str}\"")
     print("=" * 75)
-    
+
     tokens = [t.lower().strip() for t in query_str.split() if len(t) > 2]
     if not tokens:
         print("Please provide a search query with terms longer than 2 characters.")
@@ -88,7 +88,7 @@ def query_wiki(query_str):
     claims = load_claims()
     sources = load_sources()
     source_map = {s["id"]: s for s in sources}
-    
+
     # 1. Matched Claims
     matched_claims = search_claims(tokens, claims)
     print(f"\n[1] MATCHED FACTUAL CLAIMS ({len(matched_claims)} found):")
@@ -116,7 +116,7 @@ def query_wiki(query_str):
             print()
     else:
         print("  No Wiki pages matched the query.")
-        
+
     print("=" * 75)
 
 if __name__ == "__main__":

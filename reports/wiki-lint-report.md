@@ -1,10 +1,10 @@
 # AI Agents Learning Wiki - Lint & Integrity Report
 
 ## Execution Summary
-- **Execution Timestamp:** 2026-11-23 23:06:38
+- **Execution Timestamp:** 2026-11-24 00:17:32
 - **Overall Status:** **PASSED**
-- **Total Checks Executed:** 11
-- **Checks Passed:** 11
+- **Total Checks Executed:** 15
+- **Checks Passed:** 15
 - **Checks Failed:** 0
 - **Warnings:** 0
 
@@ -14,22 +14,26 @@
 
 | Status | Check Category | Result Description |
 | :---: | :--- | :--- |
-| ✅ PASS | **Source Schema** | All 8 sources conform to source.schema.json |
-| ✅ PASS | **Claim Schema** | All 18 claims conform to claim.schema.json |
-| ✅ PASS | **Source Coverage** | All 8 approved sources (S01-S08) are registered. |
-| ✅ PASS | **Source Integrity** | Every source record has valid title, URL, access date, and verified HTTP 200 status. |
-| ✅ PASS | **Claim Citations** | All 18 claims map to verified source IDs. |
+| ✅ PASS | **Source Schema** | All 8 sources conform strictly to source.schema.json (jsonschema engine). |
+| ✅ PASS | **Claim Schema** | All 18 claims conform strictly to claim.schema.json (jsonschema engine). |
+| ✅ PASS | **Source Coverage** | All 8 approved primary sources (S01-S08) are registered. |
+| ✅ PASS | **Source Card Uniqueness** | Exactly one canonical markdown source card exists per source ID (8 cards). |
+| ✅ PASS | **Source Integrity** | All 8 source records satisfy bibliographic completeness and recorded HTTP 200 provenance. |
+| ✅ PASS | **Live URL Verification** | All 8 source URLs currently respond with HTTP 200 OK. |
+| ✅ PASS | **Claim Citations** | All 18 claims reference verified source IDs. |
+| ✅ PASS | **Claim Locators** | All 18 claims have explicit, non-empty source locators. |
 | ✅ PASS | **Contradiction Registry** | Verified 4 thematic contradiction categories across 5 registered claim cross-references (all targets resolve). |
-| ✅ PASS | **File Integrity** | All 26 Wiki markdown files are non-empty and well-structured. |
+| ✅ PASS | **File Integrity** | All 26 Wiki markdown files are substantive and well-structured. |
 | ✅ PASS | **Wiki Indexing** | All 24 topic knowledge pages are indexed in wiki/index.md. |
-| ✅ PASS | **Link Resolution** | All verified local Markdown and file links resolve successfully (834 links checked). |
-| ✅ PASS | **Topic Coverage** | All 21 required knowledge areas are fully covered. |
+| ✅ PASS | **Link Portability** | Zero non-portable machine-specific paths (file:/// or drive letters) detected. |
+| ✅ PASS | **Link Resolution** | All 431 verified Markdown links resolve successfully to existing files. |
+| ✅ PASS | **Topic Coverage** | All 21 required knowledge areas are fully and substantively covered. |
 | ✅ PASS | **Inline Citations** | All inline citations reference valid sources. Sources cited: ['S01', 'S02', 'S03', 'S04', 'S05', 'S06', 'S07', 'S08'] |
 
 ---
 
 ## Knowledge Scope Verification
-All 21 required curriculum areas specified in project requirements:
+All 21 curriculum topics specified in project requirements:
 - **AI Agent Overview:** Covered in `overview.md, what-is-an-agent.md`
 - **AI Agent vs. Chatbot:** Covered in `agents-vs-chatbots.md`
 - **LLM Foundations for Agents:** Covered in `llm-foundations.md`
@@ -62,4 +66,4 @@ All 21 required curriculum areas specified in project requirements:
 - **Registered Claim Contradiction Cross-References:** 5 (all targets verified)
 
 ### Conclusion
-The Wiki knowledge base satisfies all structural integrity, citation validity, and knowledge coverage requirements for Phases P1 and P2 under the Karpathy LLM Wiki methodology.
+The Wiki knowledge base satisfies all structural integrity, JSON schema, citation validity, and knowledge coverage requirements under the Karpathy LLM Wiki methodology.

@@ -72,10 +72,10 @@ In the Evaluator-Optimizer pattern [[S03, Workflow: Evaluator-optimizer](#)], re
 ---
 
 ## Related Wiki Pages
-- [What is an AI Agent?](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/fundamentals/what-is-an-agent.md)
-- [The ReAct Pattern](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/concepts/react-pattern.md)
-- [The Agent Loop](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/architecture/agent-loop.md)
-- [Workflows vs. Autonomous Agents](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/concepts/workflows-vs-agents.md)
-- [Wiki Master Index](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/index.md)
+- [What is an AI Agent?](../fundamentals/what-is-an-agent.md)
+- [The ReAct Pattern](react-pattern.md)
+- [The Agent Loop](../architecture/agent-loop.md)
+- [Workflows vs. Autonomous Agents](workflows-vs-agents.md)
+- [Wiki Master Index](../index.md)
 
 *Last Updated: 2026-11-23*

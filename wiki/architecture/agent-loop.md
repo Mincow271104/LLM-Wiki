@@ -79,15 +79,15 @@ def run_agent_loop(system_prompt, user_goal, tools, max_steps=10):
         {"role": "system", "content": system_prompt},
         {"role": "user", "content": user_goal}
     ]
-    
+
     for step in range(max_steps):
         # 1. Sense & Think: Invoke model with available tools
         response = call_llm(messages=messages, tools=tools)
-        
+
         # 2. Check Termination: If model provided final answer without tool calls
         if not response.tool_calls:
             return response.content
-        
+
         # 3. Act & Observe: Execute requested tools
         messages.append(response.to_message()) # Record thought/action
         for tool_call in response.tool_calls:
@@ -98,7 +98,7 @@ def run_agent_loop(system_prompt, user_goal, tools, max_steps=10):
                 "tool_call_id": tool_call.id,
                 "content": str(result)
             })
-            
+
     raise TimeoutError("Agent exceeded maximum configured loop iterations.")
 ```
 
@@ -113,10 +113,10 @@ def run_agent_loop(system_prompt, user_goal, tools, max_steps=10):
 ---
 
 ## Related Wiki Pages
-- [What is an AI Agent?](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/fundamentals/what-is-an-agent.md)
-- [The ReAct Pattern](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/concepts/react-pattern.md)
-- [Tools & Function Calling](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/architecture/tools-and-function-calling.md)
-- [Educational Python Agent Example](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/implementation/python-agent-example.md)
-- [Wiki Master Index](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/index.md)
+- [What is an AI Agent?](../fundamentals/what-is-an-agent.md)
+- [The ReAct Pattern](../concepts/react-pattern.md)
+- [Tools & Function Calling](tools-and-function-calling.md)
+- [Educational Python Agent Example](../implementation/python-agent-example.md)
+- [Wiki Master Index](../index.md)
 
 *Last Updated: 2026-11-23*

@@ -80,10 +80,10 @@ Google Cloud's architecture guide [[S04, Tool bloat](#)] identifies **Tool Bloat
 ---
 
 ## Related Wiki Pages
-- [Agent Architecture Stack](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/architecture/agent-architecture.md)
-- [The Agent Loop](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/architecture/agent-loop.md)
-- [Safety, Guardrails, and Limitations](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/safety/safety-and-limitations.md)
-- [Educational Python Agent Example](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/implementation/python-agent-example.md)
-- [Wiki Master Index](file:///e:/HƯ/ai-agents-wiki-assignment/wiki/index.md)
+- [Agent Architecture Stack](agent-architecture.md)
+- [The Agent Loop](agent-loop.md)
+- [Safety, Guardrails, and Limitations](../safety/safety-and-limitations.md)
+- [Educational Python Agent Example](../implementation/python-agent-example.md)
+- [Wiki Master Index](../index.md)
 
 *Last Updated: 2026-11-23*
