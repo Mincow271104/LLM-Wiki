@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Agents: Concepts, Architecture and Workflow — Interactive Learning Presentation</title>
-  <meta name="description" content="A Karpathy-inspired foundational guide to AI Agents for beginners. Covers architecture, reasoning, ReAct, memory, tools, workflows, multi-agent systems, and safety.">
+  <title>AI Systems Atlas — Concepts, Architecture and Workflow</title>
+  <meta name="description" content="An interactive field guide and architectural atlas to AI Agents for beginners. Grounded in academic literature and production framework patterns.">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -17,397 +17,513 @@
   <!-- Top Header Navigation -->
   <header>
     <div class="brand">
-      <span>AI Agents Learning Wiki</span>
-      <span class="brand-badge">Academic Edition</span>
+      <span class="brand-title">AI Systems Atlas</span>
+      <span class="brand-badge">Academic Field Guide</span>
     </div>
     <div class="header-controls">
       <span id="slide-counter">Slide 1 of 12</span>
-      <button id="overview-btn" class="btn" title="View all slides (O or Esc)">Overview</button>
+      <button id="overview-btn" class="btn" title="View all slides (O or Esc)">Atlas Index</button>
     </div>
   </header>
 
-  <!-- Main Presentation Stage -->
+  <!-- Main Presentation Stage: Full-Bleed Viewport Canvas -->
   <main id="presentation-container">
 
-    <!-- SLIDE 01: Title and Learning Objectives -->
-    <section class="slide active" id="slide-1" data-slide="1">
-      <div class="slide-content">
-        <div class="slide-header">
-          <span class="slide-tag">FOUNDATIONAL CURRICULUM &bull; SLIDE 01</span>
-          <h1 class="slide-title">AI Agents: Concepts, Architecture and Workflow</h1>
-          <p class="slide-subtitle">A Karpathy-Inspired Foundational Guide for AI Beginners</p>
-        </div>
-
-        <div class="columns-2">
-          <div class="card card-highlight">
-            <h3 class="card-title">&#x1F393; Executive Overview</h3>
-            <p class="card-text">
-              Artificial Intelligence is evolving rapidly from passive text generation to <strong>active, autonomous problem solving</strong>. This curriculum provides a rigorous, beginner-friendly exploration of agentic AI systems, grounding every architectural concept in academic literature and production framework patterns.
-            </p>
-            <div style="margin-top: 0.5rem; padding: 0.75rem; background: rgba(0,0,0,0.2); border-radius: 6px;">
-              <strong style="color: var(--accent-primary); font-size: 0.85rem;">Interactive Navigation:</strong>
-              <ul style="margin-left: 1.25rem; font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">
-                <li>Advance: <kbd class="kbd">Right Arrow</kbd> or <kbd class="kbd">Space</kbd> or <kbd class="kbd">Next &rarr;</kbd></li>
-                <li>Go Back: <kbd class="kbd">Left Arrow</kbd> or <kbd class="kbd">Prev &larr;</kbd></li>
-                <li>Slide Map: <kbd class="kbd">O</kbd> or <kbd class="kbd">Esc</kbd> or <strong>Overview</strong></li>
-                <li>Touch / Mobile: Swipe left or right</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="card">
-            <h3 class="card-title">&#x1F3AF; Core Learning Objectives</h3>
-            <ul style="margin-left: 1.25rem; font-size: 0.9rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.5rem;">
-              <li><strong>Objective 1:</strong> Distinguish autonomous AI agents from traditional chatbots and raw foundation models.</li>
-              <li><strong>Objective 2:</strong> Master the core 6-part agent architecture: Brain, Instructions, Tools, Memory, Environment, and Runtime.</li>
-              <li><strong>Objective 3:</strong> Understand modern reasoning paradigms (ReAct, Plan-and-Solve, Self-Reflection).</li>
-              <li><strong>Objective 4:</strong> Contrast static DAG workflows, autonomous cyclic loops, and state graph orchestrations.</li>
-              <li><strong>Objective 5:</strong> Compare 4 major production frameworks and inspect production-grade safety and evaluation benchmarks.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="citation-footer">
-          <span>Curriculum grounding: Karpathy LLM Wiki Architecture</span>
-          <span class="citation-badge">Evidence: S01–S08 | CLM-001</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE 02: What Is an AI Agent? -->
-    <section class="slide" id="slide-2" data-slide="2">
-      <div class="slide-content">
-        <div class="slide-header">
-          <span class="slide-tag">CONCEPTUAL FOUNDATIONS &bull; SLIDE 02</span>
-          <h2 class="slide-title">What Is an AI Agent?</h2>
-          <p class="slide-subtitle">Beyond static text generation: Perception, Reasoning, Action, and Feedback</p>
-        </div>
-
-        <div class="columns-2">
-          <div class="card card-highlight">
-            <h3 class="card-title">&#x1F4A1; Academic Definition</h3>
-            <p class="card-text">
-              An <strong>AI Agent</strong> is an autonomous computational system that leverages a foundation model as its reasoning engine. Rather than producing a single static response, it operates inside an environmental feedback loop: perceiving inputs, maintaining internal state, formulating multi-step plans, selecting and invoking external tools, and evaluating outcomes until a defined objective is satisfied.
-            </p>
-            <div style="margin-top: 0.75rem; padding: 0.65rem; background: rgba(56, 189, 248, 0.08); border-left: 3px solid var(--accent-primary); border-radius: 4px;">
-              <code style="font-size: 0.85rem; color: var(--accent-primary);">The Agency Formula: Perception + Reasoning + Action + Feedback Loop = Agency</code>
-            </div>
-          </div>
-
-          <div class="card card-success">
-            <h3 class="card-title">&#x1F373; Beginner Analogy: Chef vs. Recipe Reader</h3>
-            <p class="card-text">
-              <strong>The Recipe Reader (Standard Program / Raw LLM):</strong><br>
-              Follows a printed list of static instructions linearly. If an ingredient is missing, the pan burns, or the oven fails, it blindly proceeds or crashes because it lacks environmental feedback.
-            </p>
-            <p class="card-text" style="margin-top: 0.4rem;">
-              <strong>The Executive Chef (Autonomous AI Agent):</strong><br>
-              Receives a high-level goal: <em>"Prepare dinner for four."</em> It inspects the pantry (Perception), plans the menu (Reasoning), slices and cooks (Action), tastes the sauce and adjusts seasoning (Feedback), and pivots to substitute ingredients when needed until a delicious meal is served.
-            </p>
-          </div>
-        </div>
-
-        <div class="columns-3" style="margin-top: 0.25rem;">
-          <div class="card">
-            <div style="color: var(--accent-primary); font-weight: bold; font-size: 0.85rem;">1. PERCEIVE</div>
-            <p class="card-text" style="font-size: 0.85rem;">Ingests user prompts, environment observations, system states, and tool return data.</p>
-          </div>
-          <div class="card">
-            <div style="color: var(--accent-purple); font-weight: bold; font-size: 0.85rem;">2. REASON &amp; ACT</div>
-            <p class="card-text" style="font-size: 0.85rem;">Synthesizes thoughts, selects tools via JSON schemas, and modifies external state.</p>
-          </div>
-          <div class="card">
-            <div style="color: var(--accent-success); font-weight: bold; font-size: 0.85rem;">3. REFLECT</div>
-            <p class="card-text" style="font-size: 0.85rem;">Evaluates tool outputs against goals, handles errors, and decides when the task is complete.</p>
-          </div>
-        </div>
-
-        <div class="citation-footer">
-          <span>Primary Sources: Anthropic &bull; Google Cloud Architecture</span>
-          <span class="citation-badge">Citations: [S03, What are agents?] | [S04, Core components] | CLM-001, CLM-002</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE 03: AI Agent vs. Traditional Chatbot -->
-    <section class="slide" id="slide-3" data-slide="3">
-      <div class="slide-content">
-        <div class="slide-header">
-          <span class="slide-tag">COMPARATIVE ANALYSIS &bull; SLIDE 03</span>
-          <h2 class="slide-title">AI Agent vs. Traditional Chatbot</h2>
-          <p class="slide-subtitle">Understanding the architectural chasm between reactive conversation and proactive execution</p>
-        </div>
-
-        <div class="table-container">
-          <table>
-            <thead>
-              <tr>
-                <th style="width: 20%;">Architectural Dimension</th>
-                <th style="width: 40%;">Traditional Conversational Chatbot</th>
-                <th style="width: 40%;">Autonomous AI Agent</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Primary Objective</strong></td>
-                <td>Generate fluent, contextually relevant textual responses to user queries.</td>
-                <td>Achieve multi-step real-world goals through autonomous planning and action.</td>
-              </tr>
-              <tr>
-                <td><strong>Execution Model</strong></td>
-                <td>Single-turn request/response pipeline (passive &amp; reactive).</td>
-                <td>Multi-step iterative cycle (`Thought &rarr; Action &rarr; Observation`) driven by an agent runtime.</td>
-              </tr>
-              <tr>
-                <td><strong>Environmental Agency</strong></td>
-                <td>None. Confined strictly to emitting tokens within the active chat window.</td>
-                <td>High. Interacts with external systems: calls REST APIs, executes code, reads databases, queries files.</td>
-              </tr>
-              <tr>
-                <td><strong>Error Handling</strong></td>
-                <td>Cannot detect errors in its own outputs; relies entirely on human follow-up prompts.</td>
-                <td>Autonomous self-correction: reads error messages from tool outputs and replans dynamically.</td>
-              </tr>
-              <tr>
-                <td><strong>Memory Architecture</strong></td>
-                <td>Transient conversational history bounded strictly by the context window.</td>
-                <td>Hierarchical: short-term working context plus long-term persistent memory (Vector DBs, KV stores).</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="card card-highlight">
-          <p class="card-text" style="font-size: 0.9rem;">
-            <strong>Key Insight for AI Beginners:</strong> Chatbots communicate with humans; AI agents collaborate with environments. A chatbot answers: <em>"Here is how you check flight prices."</em> An agent searches 5 airlines, books the optimal ticket via API, updates your calendar, and emails your confirmation.
+    <!-- SLIDE 01: Hero Split on Deep Dark Canvas -->
+    <section class="slide slide-dark active" id="slide-1" data-slide="1">
+      <div class="layout-hero">
+        <div class="hero-left">
+          <div class="section-eyebrow">FIELD GUIDE TO AGENTIC COMPUTATION &bull; SLIDE 01</div>
+          <h1 class="hero-main-title">AI Agents:<br>Concepts, Architecture<br>and Workflow</h1>
+          <p class="hero-lead">
+            Artificial Intelligence is undergoing a fundamental paradigm shift from passive text completion to <strong>active, goal-directed autonomous execution</strong>. This curriculum bridges passive language models and autonomous runtime systems, grounded in primary research and production enterprise frameworks.
           </p>
+          <div class="hero-metadata-strip">
+            <span>Author: <strong>PHUONG KHANG MINH</strong></span>
+            <span>Student ID: <strong>4B517024</strong></span>
+            <span>Institution: <strong>NCUT CSIE</strong></span>
+          </div>
+          <div class="hero-chapter-ribbon">
+            <div class="ribbon-item">
+              <strong>PILLAR I (01–03)</strong>
+              <span>Fundamentals &amp; Agency vs. Chatbots</span>
+            </div>
+            <div class="ribbon-item">
+              <strong>PILLAR II (04–07)</strong>
+              <span>Core Architecture, Memory &amp; Tools</span>
+            </div>
+            <div class="ribbon-item">
+              <strong>PILLAR III (08–10)</strong>
+              <span>ReAct, Graph Topologies &amp; MAS</span>
+            </div>
+            <div class="ribbon-item">
+              <strong>PILLAR IV (11–12)</strong>
+              <span>Frameworks, Safety &amp; Evaluation</span>
+            </div>
+          </div>
         </div>
 
-        <div class="citation-footer">
-          <span>Architectural Distinctions: Anthropic Engineering &bull; Google Cloud</span>
-          <span class="citation-badge">Citations: [S03, What are agents?] | [S04, Core components] | CLM-002, CLM-003</span>
+        <div class="hero-right-schematic">
+          <svg class="hero-svg-hub" viewBox="0 0 420 380" aria-label="Systemic Feedback Cycle Hub">
+            <!-- Pulsing dashed orbit line -->
+            <circle cx="210" cy="190" r="140" fill="none" stroke="#2B3A48" stroke-width="2" stroke-dasharray="6 6" id="hub-orbit" />
+            <!-- Inner orbit ring -->
+            <circle cx="210" cy="190" r="139" fill="none" stroke="rgba(35, 79, 219, 0.2)" stroke-width="1.5" />
+
+            <!-- Center State Node -->
+            <circle cx="210" cy="190" r="38" fill="#18222B" stroke="#3B82F6" stroke-width="2.5" />
+            <text x="210" y="186" fill="#7DD3FC" font-size="10" font-family="var(--font-mono)" font-weight="700" text-anchor="middle" letter-spacing="1">AGENT</text>
+            <text x="210" y="202" fill="#F3F0E7" font-size="12" font-family="var(--font-mono)" font-weight="700" text-anchor="middle">STATE</text>
+
+            <!-- 1. PERCEPTION NODE (TOP) -->
+            <g class="hub-node" id="hub-node-1" transform="translate(210, 50)">
+              <rect x="-70" y="-20" width="140" height="40" rx="4" fill="#18222B" stroke="#38BDF8" stroke-width="2" />
+              <text x="0" y="5" fill="#38BDF8" font-size="11" font-family="var(--font-mono)" font-weight="700" text-anchor="middle">1. PERCEPTION</text>
+            </g>
+
+            <!-- 2. REASONING NODE (RIGHT) -->
+            <g class="hub-node" id="hub-node-2" transform="translate(350, 190)">
+              <rect x="-65" y="-20" width="130" height="40" rx="4" fill="#18222B" stroke="#60A5FA" stroke-width="2" />
+              <text x="0" y="5" fill="#93C5FD" font-size="11" font-family="var(--font-mono)" font-weight="700" text-anchor="middle">2. REASONING</text>
+            </g>
+
+            <!-- 3. ACTION NODE (BOTTOM) -->
+            <g class="hub-node" id="hub-node-3" transform="translate(210, 330)">
+              <rect x="-70" y="-20" width="140" height="40" rx="4" fill="#18222B" stroke="#F87171" stroke-width="2" />
+              <text x="0" y="5" fill="#FCA5A5" font-size="11" font-family="var(--font-mono)" font-weight="700" text-anchor="middle">3. ACTION</text>
+            </g>
+
+            <!-- 4. FEEDBACK NODE (LEFT) -->
+            <g class="hub-node" id="hub-node-4" transform="translate(70, 190)">
+              <rect x="-65" y="-20" width="130" height="40" rx="4" fill="#18222B" stroke="#4ADE80" stroke-width="2" />
+              <text x="0" y="5" fill="#86EFAC" font-size="11" font-family="var(--font-mono)" font-weight="700" text-anchor="middle">4. FEEDBACK</text>
+            </g>
+
+            <!-- Flow Connecting Arrows (fill=none strictly enforced) -->
+            <path d="M 270 65 Q 350 95 350 160" fill="none" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" />
+            <path d="M 350 220 Q 340 310 270 325" fill="none" stroke="#60A5FA" stroke-width="2" stroke-linecap="round" />
+            <path d="M 150 325 Q 70 310 70 220" fill="none" stroke="#F87171" stroke-width="2" stroke-linecap="round" />
+            <path d="M 70 160 Q 70 85 150 65" fill="none" stroke="#4ADE80" stroke-width="2" stroke-linecap="round" />
+          </svg>
+        </div>
+      </div>
+
+      <div class="editorial-citations">
+        <span>Curriculum Grounding: Karpathy LLM Wiki Architecture</span>
+        <span class="citation-chip">Evidence: S01–S08 | CLM-001</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 02: Agency Definition & Executive Chef Journey on Warm Paper -->
+    <section class="slide slide-paper" id="slide-2" data-slide="2">
+      <div class="editorial-header">
+        <div class="section-eyebrow">CONCEPTUAL FOUNDATIONS &bull; SLIDE 02</div>
+        <h2 class="editorial-title">What Is an AI Agent?</h2>
+        <p class="editorial-subtitle">Beyond static text completion: The convergence of perception, internal state, reasoning, and environmental feedback</p>
+      </div>
+
+      <div class="layout-journey">
+        <div class="agency-theorem-bar">
+          <span>THE AGENCY THEOREM</span>
+          <span class="formula">Perception + Internal State + Reasoning + Action + Environmental Feedback = Agency</span>
+        </div>
+
+        <div class="analogy-dual-columns">
+          <div class="analogy-column">
+            <h3>&#x1F4D6; The Recipe Reader (Raw LLM)</h3>
+            <p>
+              Follows a printed list of instructions linearly. If an ingredient is missing, the flame burns too high, or an oven malfunctions, it blindly proceeds or crashes because it lacks sensory perception and environmental feedback. It emits tokens without knowing reality.
+            </p>
+          </div>
+
+          <div class="analogy-column">
+            <h3>&#x1F373; The Executive Chef (Autonomous Agent)</h3>
+            <p>
+              Given an open-ended goal (<em>"Prepare dinner for four"</em>), it inspects the pantry (Perception), plans courses (Reasoning), cooks (Action), tastes the sauce and adjusts seasoning (Feedback), and substitutes ingredients dynamically until a delicious meal is achieved.
+            </p>
+          </div>
+        </div>
+
+        <div class="journey-stages-route">
+          <div class="stage-step-unit">
+            <span class="num">STAGE 01</span>
+            <h4>Perception Phase</h4>
+            <p>Ingests user prompts, environment state, file trees, database schemas, and structured return data from previous tool executions.</p>
+          </div>
+          <div class="stage-step-unit">
+            <span class="num">STAGE 02</span>
+            <h4>Reasoning &amp; Action</h4>
+            <p>Synthesizes structured thoughts, decomposes tasks, validates arguments via JSON schemas, and invokes tools to affect reality.</p>
+          </div>
+          <div class="stage-step-unit">
+            <span class="num">STAGE 03</span>
+            <h4>Reflection &amp; Adaptation</h4>
+            <p>Evaluates real-world observations against criteria, diagnoses error messages, and dynamically adapts plans until completion.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="editorial-citations">
+        <span>Primary Sources: Anthropic &bull; Google Cloud Architecture</span>
+        <span class="citation-chip">Citations: [S03, What are agents?] | [S04, Core components] | CLM-001, CLM-002</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 03: Split-Tone Contrast (Chatbot vs. Agent) -->
+    <section class="slide slide-paper" id="slide-3" data-slide="3">
+      <div class="layout-split-contrast">
+        <!-- Left Side: Chatbot (Paper) -->
+        <div class="split-side side-chatbot">
+          <div class="split-side-header">
+            <div class="section-eyebrow" style="color: var(--ink-dim);">REACTIVE INTERACTION</div>
+            <h2>Traditional Chatbot</h2>
+            <span class="sub">Passive conversational token generator</span>
+          </div>
+
+          <div class="split-comparison-list">
+            <div class="split-row-item">
+              <span class="dimension-tag">1. Primary Objective</span>
+              <p>Generate fluent, contextually plausible textual responses to human prompts.</p>
+            </div>
+            <div class="split-row-item">
+              <span class="dimension-tag">2. Execution Model</span>
+              <p>Single-turn request/response pipeline. Execution stops immediately when the token stream finishes.</p>
+            </div>
+            <div class="split-row-item">
+              <span class="dimension-tag">3. Environmental Agency</span>
+              <p><strong>Zero Agency.</strong> Confined strictly to emitting tokens within the active chat window.</p>
+            </div>
+            <div class="split-row-item">
+              <span class="dimension-tag">4. Error Recovery</span>
+              <p>Cannot detect errors in its own output; relies entirely on human follow-up prompts to re-steer.</p>
+            </div>
+            <div class="split-row-item">
+              <span class="dimension-tag">5. Memory Architecture</span>
+              <p>Transient conversational buffer strictly bounded by context window limits. Forgets across sessions.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Side: Autonomous Agent (Dark Canvas) -->
+        <div class="split-side side-agent">
+          <div class="split-side-header">
+            <div class="section-eyebrow">AUTONOMOUS EXECUTION</div>
+            <h2>Autonomous AI Agent</h2>
+            <span class="sub">Proactive environmental operator &amp; reasoning engine</span>
+          </div>
+
+          <div class="split-comparison-list">
+            <div class="split-row-item">
+              <span class="dimension-tag">1. Primary Objective</span>
+              <p>Achieve multi-step real-world objectives through autonomous planning and execution.</p>
+            </div>
+            <div class="split-row-item">
+              <span class="dimension-tag">2. Execution Model</span>
+              <p>Multi-turn iterative cycle (<code>Thought &rarr; Action &rarr; Observation</code>) driven by an agent runtime loop.</p>
+            </div>
+            <div class="split-row-item">
+              <span class="dimension-tag">3. Environmental Agency</span>
+              <p><strong>High Agency.</strong> Executes code, queries SQL databases, invokes REST APIs, and modifies files.</p>
+            </div>
+            <div class="split-row-item">
+              <span class="dimension-tag">4. Error Recovery</span>
+              <p>Autonomous self-correction: reads error logs from tool observations and replans dynamically.</p>
+            </div>
+            <div class="split-row-item">
+              <span class="dimension-tag">5. Memory Architecture</span>
+              <p>Hierarchical: short-term working context plus persistent long-term storage (Vector DBs, KV stores).</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Full-Bleed Synthesis Bottom Bar -->
+        <div class="split-footer-banner">
+          <span><strong>Key Takeaway:</strong> Chatbots communicate with humans; AI agents collaborate with environments to accomplish work.</span>
+          <span style="font-family: var(--font-mono); font-size: 0.78rem; opacity: 0.9;">[S03] &bull; [S04] &bull; CLM-002, CLM-003</span>
         </div>
       </div>
     </section>
 
-    <!-- SLIDE 04: Core Agent Architecture -->
-    <section class="slide" id="slide-4" data-slide="4">
-      <div class="slide-content">
-        <div class="slide-header">
-          <span class="slide-tag">SYSTEM ARCHITECTURE &bull; SLIDE 04</span>
-          <h2 class="slide-title">Core Agent Architecture</h2>
-          <p class="slide-subtitle">The six structural pillars that transform a language model into an autonomous system</p>
-        </div>
+    <!-- SLIDE 04: Dark Systems Schematic (Zero Defect SVG Canvas) -->
+    <section class="slide slide-deep" id="slide-4" data-slide="4">
+      <div class="editorial-header">
+        <div class="section-eyebrow">SYSTEM ARCHITECTURE &bull; SLIDE 04</div>
+        <h2 class="editorial-title">Core Agent Architecture</h2>
+        <p class="editorial-subtitle">The six structural pillars that transform a foundation model into an autonomous agent runtime</p>
+      </div>
 
-        <!-- Inline Responsive SVG Architecture Diagram -->
-        <div style="background: #090d16; border: 1px solid var(--border-color); border-radius: 8px; padding: 1rem; display: flex; justify-content: center;">
-          <svg viewBox="0 0 920 260" style="width: 100%; max-height: 240px; font-family: system-ui, sans-serif;" aria-label="Core Agent Architecture Diagram">
-            <!-- Background & Outer Runtime Boundary -->
-            <rect x="10" y="10" width="900" height="240" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
-            <text x="30" y="32" fill="#94a3b8" font-size="12" font-weight="bold" letter-spacing="1">AGENT RUNTIME &amp; ORCHESTRATION LOOP</text>
+      <div class="layout-arch-canvas">
+        <div class="arch-schematic-wrap">
+          <svg class="arch-svg-map" viewBox="0 0 940 320" aria-label="Core Agent Architecture Schematic Map">
+            <!-- Defs for markers to ensure arrowheads are crisp -->
+            <defs>
+              <marker id="arrow-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1 L 10 5 L 0 9 z" fill="#38BDF8" />
+              </marker>
+              <marker id="arrow-orange" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1 L 10 5 L 0 9 z" fill="#F87171" />
+              </marker>
+              <marker id="arrow-sage" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1 L 10 5 L 0 9 z" fill="#4ADE80" />
+              </marker>
+              <marker id="arrow-yellow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1 L 10 5 L 0 9 z" fill="#FBBF24" />
+              </marker>
+            </defs>
 
-            <!-- 1. Foundation Model (Center) -->
-            <rect x="340" y="55" width="240" height="90" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="2" />
-            <text x="460" y="88" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">&#x1F9E0; Foundation Model</text>
-            <text x="460" y="108" fill="#38bdf8" font-size="11" text-anchor="middle">Central Reasoning Engine</text>
-            <text x="460" y="125" fill="#94a3b8" font-size="10" text-anchor="middle">Decides next thoughts, plans &amp; tool calls</text>
+            <!-- Outer Runtime Boundary Frame (fill=none strictly enforced!) -->
+            <rect x="15" y="15" width="910" height="290" rx="6" fill="#141E26" stroke="#2B3A48" stroke-width="1.5" />
+            <text x="35" y="38" fill="#7DD3FC" font-size="11" font-family="var(--font-mono)" font-weight="700" letter-spacing="1.5">AGENT RUNTIME BOUNDARY &bull; ITERATIVE STATE LOOP</text>
 
-            <!-- 2. Instructions / Persona (Top Left) -->
-            <rect x="35" y="55" width="240" height="65" rx="6" fill="#27354a" stroke="#475569" stroke-width="1.5" />
-            <text x="155" y="82" fill="#f8fafc" font-size="13" font-weight="bold" text-anchor="middle">&#x1F4DC; System Instructions</text>
-            <text x="155" y="101" fill="#94a3b8" font-size="10.5" text-anchor="middle">Personas, behavioral bounds &amp; goals</text>
+            <!-- 1. System Prompt / Instructions (Top Left) -->
+            <rect x="40" y="65" width="230" height="85" rx="4" fill="#18222B" stroke="#38BDF8" stroke-width="1.5" />
+            <text x="155" y="94" fill="#F3F0E7" font-size="13" font-family="var(--font-serif)" font-weight="700" text-anchor="middle">1. System Instructions</text>
+            <text x="155" y="115" fill="#94A3B8" font-size="10.5" font-family="var(--font-mono)" text-anchor="middle">Persona, boundaries, goals &amp; rules</text>
+            <text x="155" y="132" fill="#64748B" font-size="9.5" font-family="var(--font-mono)" text-anchor="middle">Constrains LLM inference space</text>
+
+            <!-- 2. Foundation Model / Brain (Center Anchor) -->
+            <rect x="330" y="65" width="280" height="110" rx="6" fill="#0D1318" stroke="#3B82F6" stroke-width="2.5" />
+            <text x="470" y="100" fill="#F3F0E7" font-size="15" font-family="var(--font-serif)" font-weight="700" text-anchor="middle">2. Foundation Model (Brain)</text>
+            <text x="470" y="124" fill="#7DD3FC" font-size="11" font-family="var(--font-mono)" font-weight="600" text-anchor="middle">Central Reasoning &amp; Planning Engine</text>
+            <text x="470" y="145" fill="#94A3B8" font-size="10" font-family="var(--font-mono)" text-anchor="middle">Infers next thought, plan &amp; tool call</text>
 
             <!-- 3. Memory Subsystem (Bottom Left) -->
-            <rect x="35" y="145" width="240" height="85" rx="6" fill="#27354a" stroke="#475569" stroke-width="1.5" />
-            <text x="155" y="172" fill="#f8fafc" font-size="13" font-weight="bold" text-anchor="middle">&#x1F4BE; Memory Subsystem</text>
-            <text x="155" y="193" fill="#38bdf8" font-size="10" text-anchor="middle">Short-term: Context Window buffer</text>
-            <text x="155" y="211" fill="#a855f7" font-size="10" text-anchor="middle">Long-term: Vector DB / KV store</text>
+            <rect x="40" y="175" width="230" height="95" rx="4" fill="#18222B" stroke="#4ADE80" stroke-width="1.5" />
+            <text x="155" y="204" fill="#F3F0E7" font-size="13" font-family="var(--font-serif)" font-weight="700" text-anchor="middle">3. Memory Subsystem</text>
+            <text x="155" y="226" fill="#86EFAC" font-size="10" font-family="var(--font-mono)" text-anchor="middle">Short-term: Context Window Buffer</text>
+            <text x="155" y="245" fill="#94A3B8" font-size="10" font-family="var(--font-mono)" text-anchor="middle">Long-term: Vector DB &amp; KV Store</text>
 
-            <!-- 4. Tools / Actuators (Top Right) -->
-            <rect x="645" y="55" width="240" height="75" rx="6" fill="#27354a" stroke="#10b981" stroke-width="1.5" />
-            <text x="765" y="82" fill="#f8fafc" font-size="13" font-weight="bold" text-anchor="middle">&#x1F6E0;&#xFE0F; Tools / Actuators</text>
-            <text x="765" y="101" fill="#10b981" font-size="10.5" text-anchor="middle">APIs, Search, Calculators, Shell</text>
-            <text x="765" y="117" fill="#94a3b8" font-size="9.5" text-anchor="middle">Schemas defined via JSON Schema</text>
+            <!-- 4. Tools & Actuators (Top Right) -->
+            <rect x="670" y="65" width="230" height="85" rx="4" fill="#18222B" stroke="#F87171" stroke-width="1.5" />
+            <text x="785" y="94" fill="#F3F0E7" font-size="13" font-family="var(--font-serif)" font-weight="700" text-anchor="middle">4. Tools &amp; Actuators</text>
+            <text x="785" y="115" fill="#FCA5A5" font-size="10" font-family="var(--font-mono)" text-anchor="middle">APIs, Search, Sandbox, SQL Schemas</text>
+            <text x="785" y="132" fill="#94A3B8" font-size="9.5" font-family="var(--font-mono)" text-anchor="middle">Registered via JSON Schema</text>
 
             <!-- 5. External Environment (Bottom Right) -->
-            <rect x="645" y="155" width="240" height="75" rx="6" fill="#090d16" stroke="#f59e0b" stroke-width="1.5" />
-            <text x="765" y="182" fill="#f8fafc" font-size="13" font-weight="bold" text-anchor="middle">&#x1F30E; External Environment</text>
-            <text x="765" y="201" fill="#f59e0b" font-size="10.5" text-anchor="middle">Web, File System, Code Sandbox, DB</text>
-            <text x="765" y="217" fill="#94a3b8" font-size="9.5" text-anchor="middle">Produces observations / returns states</text>
+            <rect x="670" y="175" width="230" height="95" rx="4" fill="#18222B" stroke="#FBBF24" stroke-width="1.5" />
+            <text x="785" y="204" fill="#F3F0E7" font-size="13" font-family="var(--font-serif)" font-weight="700" text-anchor="middle">5. External Environment</text>
+            <text x="785" y="226" fill="#FEF08A" font-size="10" font-family="var(--font-mono)" text-anchor="middle">Web, File System, Code Sandbox, DB</text>
+            <text x="785" y="245" fill="#94A3B8" font-size="9.5" font-family="var(--font-mono)" text-anchor="middle">Produces real-world observations</text>
 
-            <!-- Flow Arrows -->
-            <!-- Instructions to Model -->
-            <path d="M 275 87 L 335 87" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)" />
-            <!-- Memory to Model (bidirectional) -->
-            <path d="M 275 175 L 340 120" stroke="#a855f7" stroke-width="2" />
-            <!-- Model to Tools -->
-            <path d="M 580 87 L 640 87" stroke="#10b981" stroke-width="2" />
-            <!-- Tools to Environment -->
-            <path d="M 765 130 L 765 150" stroke="#f59e0b" stroke-width="2" />
-            <!-- Environment to Model Feedback Loop -->
-            <path d="M 645 195 L 460 195 L 460 150" stroke="#38bdf8" stroke-width="2" stroke-dasharray="4" />
-            <text x="545" y="212" fill="#38bdf8" font-size="10" text-anchor="middle">Observation Feedback Loop</text>
+            <!-- CONNECTOR PATHS (Strictly fill="none" to prevent black wedge artifacts!) -->
+            <!-- 1. Instructions to Model -->
+            <path d="M 270 107 L 330 107" fill="none" stroke="#38BDF8" stroke-width="2" marker-end="url(#arrow-blue)" />
+
+            <!-- 2. Memory <-> Model (bidirectional) -->
+            <path d="M 270 215 L 305 215 L 330 155" fill="none" stroke="#4ADE80" stroke-width="2" marker-end="url(#arrow-sage)" />
+
+            <!-- 3. Model to Tools -->
+            <path d="M 610 107 L 670 107" fill="none" stroke="#F87171" stroke-width="2" marker-end="url(#arrow-orange)" />
+
+            <!-- 4. Tools to Environment -->
+            <path d="M 785 150 L 785 175" fill="none" stroke="#FBBF24" stroke-width="2" marker-end="url(#arrow-yellow)" />
+
+            <!-- 6. Observation Feedback Loop (Environment -> Model) -->
+            <path d="M 670 225 L 470 225 L 470 175" fill="none" stroke="#38BDF8" stroke-width="2.5" stroke-dasharray="6 6" marker-end="url(#arrow-blue)" />
+            <text x="570" y="244" fill="#7DD3FC" font-size="10" font-family="var(--font-mono)" font-weight="600" text-anchor="middle">6. OBSERVATION FEEDBACK RE-ENTRY</text>
           </svg>
         </div>
 
-        <div class="columns-3" style="margin-top: 0.25rem;">
-          <div class="card">
-            <h4 style="font-size: 0.95rem; color: #ffffff;">1. Instructions &amp; Brain</h4>
-            <p class="card-text" style="font-size: 0.85rem;">System prompts constrain role, safety guidelines, and task criteria. The model performs contextual inference.</p>
+        <!-- Open Annotation Margin Strip (Zero Bottom Cards!) -->
+        <div class="arch-annotations-strip">
+          <div class="annotation-item">
+            <h4>INSTRUCTIONS &amp; REASONING</h4>
+            <p>System prompts constrain role, safety guidelines, and task criteria. The foundation model performs contextual inference without modifying its weights.</p>
           </div>
-          <div class="card">
-            <h4 style="font-size: 0.95rem; color: #ffffff;">2. Tools &amp; Actuators</h4>
-            <p class="card-text" style="font-size: 0.85rem;">Executable interfaces registered with type definitions allowing the model to affect the external world.</p>
+          <div class="annotation-item">
+            <h4>TOOLS &amp; ENVIRONMENT</h4>
+            <p>Registered executable interfaces allow the model to interact with reality. The model never modifies reality directly; tools act as its effector organs.</p>
           </div>
-          <div class="card">
-            <h4 style="font-size: 0.95rem; color: #ffffff;">3. Memory &amp; Runtime</h4>
-            <p class="card-text" style="font-size: 0.85rem;">Maintains short-term state and long-term knowledge while the runtime schedules execution turns until completion.</p>
+          <div class="annotation-item">
+            <h4>MEMORY &amp; RUNTIME LOOP</h4>
+            <p>Maintains short-term state and long-term knowledge across turns while the runtime schedules execution turns until an objective or stop condition is met.</p>
           </div>
         </div>
+      </div>
 
-        <div class="citation-footer">
-          <span>Structural Taxonomy: Google Cloud Architecture &bull; Anthropic</span>
-          <span class="citation-badge">Citations: [S04, Core components] | [S03, What are agents?] | CLM-003</span>
-        </div>
+      <div class="editorial-citations">
+        <span>Structural Taxonomy: Google Cloud Architecture &bull; Anthropic</span>
+        <span class="citation-chip">Citations: [S04, Core components] | [S03, What are agents?] | CLM-003</span>
       </div>
     </section>
 
-    <!-- SLIDE 05: Planning and Reasoning -->
-    <section class="slide" id="slide-5" data-slide="5">
-      <div class="slide-content">
-        <div class="slide-header">
-          <span class="slide-tag">COGNITIVE STRATEGIES &bull; SLIDE 05</span>
-          <h2 class="slide-title">Planning and Reasoning</h2>
-          <p class="slide-subtitle">How intelligent agents break down intractable objectives and recover from intermediate failures</p>
-        </div>
+    <!-- SLIDE 05: Planning and Reasoning Editorial Timeline -->
+    <section class="slide slide-paper" id="slide-5" data-slide="5">
+      <div class="editorial-header">
+        <div class="section-eyebrow">COGNITIVE STRATEGIES &bull; SLIDE 05</div>
+        <h2 class="editorial-title">Planning and Reasoning</h2>
+        <p class="editorial-subtitle">How intelligent agents break down intractable objectives and recover from intermediate failures</p>
+      </div>
 
-        <div class="columns-3">
-          <div class="card card-highlight">
-            <h3 class="card-title">&#x1F9E9; 1. Task Decomposition</h3>
-            <p class="card-text">
-              Raw foundation models suffer from <em>myopic token generation</em>: predicting next tokens without global foresight leads to compounding drift.
+      <div class="layout-timeline">
+        <div class="timeline-horizontal-flow">
+          <div class="timeline-step-column">
+            <span class="step-marker-large">01</span>
+            <h3 class="step-header-title">Task Decomposition</h3>
+            <p class="step-body-text">
+              Raw language models suffer from <em>myopic token generation</em>: predicting next tokens without global foresight leads to compounding drift.
             </p>
-            <p class="card-text" style="margin-top: 0.5rem;">
-              <strong>Decomposition</strong> forces the agent to break an ambiguous goal (e.g. <em>"Deploy web app"</em>) into an ordered set of discrete sub-problems: provision DB, configure DNS, run tests, and deploy.
+            <p class="step-body-text">
+              <strong>Decomposition</strong> forces the agent to break an ambiguous objective (e.g. <em>"Deploy web app"</em>) into an ordered sequence of discrete sub-problems: provision DB, configure DNS, execute unit tests, and deploy.
             </p>
           </div>
 
-          <div class="card card-highlight">
-            <h3 class="card-title">&#x1F5FA;&#xFE0F; 2. Plan-and-Solve</h3>
-            <p class="card-text">
-              Separates the reasoning phase from execution. The agent first synthesizes a formal execution graph or step list before executing any tool actions.
+          <div class="timeline-step-column">
+            <span class="step-marker-large">02</span>
+            <h3 class="step-header-title">Plan-and-Solve</h3>
+            <p class="step-body-text">
+              Separates the deliberation phase from execution. The agent first synthesizes a formal execution graph or step list before executing any external tool actions.
             </p>
-            <p class="card-text" style="margin-top: 0.5rem;">
+            <p class="step-body-text">
               <strong>Benefit:</strong> Dramatically reduces token waste and wandering by establishing an explicit roadmap before invoking external APIs.
             </p>
           </div>
 
-          <div class="card card-highlight">
-            <h3 class="card-title">&#x1F504; 3. Self-Reflection</h3>
-            <p class="card-text">
-              When an intermediate tool returns an unexpected error (e.g. <code>404 Not Found</code> or <code>SyntaxError</code>), the agent does not quit.
+          <div class="timeline-step-column">
+            <span class="step-marker-large">03</span>
+            <h3 class="step-header-title">Self-Reflection</h3>
+            <p class="step-body-text">
+              When an intermediate tool returns an unexpected error (e.g. <code>404 Not Found</code> or <code>SyntaxError</code>), the agent does not crash.
             </p>
-            <p class="card-text" style="margin-top: 0.5rem;">
-              <strong>Reflection Loop:</strong> The agent inspects the diagnostic trace, formulates a hypothesis of failure, alters parameters, and replans dynamically.
+            <p class="step-body-text">
+              <strong>Reflection Loop:</strong> The agent inspects the diagnostic trace, formulates a hypothesis of failure, alters arguments, and replans dynamically.
             </p>
           </div>
         </div>
 
-        <div class="card card-warning" style="margin-top: 0.25rem;">
-          <h4 style="color: var(--accent-warning); font-size: 0.95rem;">&#x26A0;&#xFE0F; The Architectural Tradeoff: Latency &amp; Cost vs. Reliability</h4>
-          <p class="card-text" style="font-size: 0.88rem;">
+        <div class="tradeoff-scale-bar">
+          <span class="scale-label">ARCHITECTURAL TRADEOFF: LATENCY &amp; COST VS. RELIABILITY</span>
+          <p>
             Extensive multi-step planning and reflection improve task completion rates on complex benchmarks, but each planning turn consumes token quota and adds 1–3 seconds of latency. Practical systems balance deterministic workflows for predictable tasks with agentic loops for exploratory tasks.
           </p>
         </div>
+      </div>
 
-        <div class="citation-footer">
-          <span>Foundational Reasoning: Yao et al. (ReAct) &bull; Anthropic</span>
-          <span class="citation-badge">Citations: [S01, Section 1] | [S03, Building effective agents] | CLM-006, CLM-007</span>
-        </div>
+      <div class="editorial-citations">
+        <span>Foundational Reasoning: Yao et al. (ReAct) &bull; Anthropic</span>
+        <span class="citation-chip">Citations: [S01, Section 1] | [S03, Building effective agents] | CLM-006, CLM-007</span>
       </div>
     </section>
 
-    <!-- SLIDE 06: Memory and Context -->
-    <section class="slide" id="slide-6" data-slide="6">
-      <div class="slide-content">
-        <div class="slide-header">
-          <span class="slide-tag">STATE MANAGEMENT &bull; SLIDE 06</span>
-          <h2 class="slide-title">Memory and Context</h2>
-          <p class="slide-subtitle">Bridging transient context windows and persistent long-term knowledge</p>
-        </div>
+    <!-- SLIDE 06: Memory Strata Architectural Cross-Section -->
+    <section class="slide slide-paper" id="slide-6" data-slide="6">
+      <div class="editorial-header">
+        <div class="section-eyebrow">STATE MANAGEMENT &bull; SLIDE 06</div>
+        <h2 class="editorial-title">Memory and Context</h2>
+        <p class="editorial-subtitle">Bridging transient context windows and persistent long-term knowledge across sessions</p>
+      </div>
 
-        <div class="columns-2">
-          <div class="card">
-            <h3 class="card-title">&#x23F1;&#xFE0F; Short-Term Working Memory</h3>
-            <p class="card-text">
-              Maintained directly within the foundation model's active <strong>Context Window</strong>.
-            </p>
-            <ul style="margin-left: 1.25rem; font-size: 0.88rem; color: var(--text-muted); margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.4rem;">
-              <li><strong>Contents:</strong> System persona, user prompt, conversational history, and immediate tool execution observations.</li>
-              <li><strong>Characteristics:</strong> Extremely fast, highly attentive, but strictly bounded and volatile (cleared when session ends).</li>
-              <li><strong>Compaction:</strong> As turns accumulate, summarization agents compress older turns to prevent context overflow.</li>
-            </ul>
+      <div class="layout-strata">
+        <div class="strata-container">
+          <!-- Stratum 1: Working Memory -->
+          <div class="stratum-level tier-working">
+            <div class="stratum-meta">
+              <h3>Tier 1: Short-Term Working Memory</h3>
+              <span>Active Context Window Buffer</span>
+            </div>
+            <div class="stratum-content-grid">
+              <div class="stratum-card-mini">
+                <h4>Active Working State</h4>
+                <p>System persona, user prompt, and immediate conversational turn history.</p>
+              </div>
+              <div class="stratum-card-mini">
+                <h4>Tool Observations</h4>
+                <p>Ingests raw outputs from executed APIs, SQL queries, and bash scripts.</p>
+              </div>
+              <div class="stratum-card-mini">
+                <h4>Context Compaction</h4>
+                <p>Summarization agents compress older turns to prevent context window overflow.</p>
+              </div>
+            </div>
           </div>
 
-          <div class="card">
-            <h3 class="card-title">&#x1F4BE; Long-Term Persistent Memory</h3>
-            <p class="card-text">
-              External storage layers that survive across disparate sessions and days.
-            </p>
-            <ul style="margin-left: 1.25rem; font-size: 0.88rem; color: var(--text-muted); margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.4rem;">
-              <li><strong>Vector Databases (Semantic Memory):</strong> Stores embeddings of past experiences, documents, and historical codebases for RAG retrieval.</li>
-              <li><strong>Key-Value Stores (Episodic / User Memory):</strong> Stores persistent facts (e.g. user preferences, API tokens, project configurations).</li>
-              <li><strong>Relational DBs (Structured State):</strong> Tracks transactional state machines and multi-step workflow progress.</li>
-            </ul>
+          <!-- Stratum 2: Persistent Storage -->
+          <div class="stratum-level tier-persistent">
+            <div class="stratum-meta">
+              <h3>Tier 2: Long-Term Persistent Memory</h3>
+              <span>Durable Multi-Session Storage</span>
+            </div>
+            <div class="stratum-content-grid">
+              <div class="stratum-card-mini">
+                <h4>Vector Databases</h4>
+                <p>Stores semantic embeddings of past experiences, docs, and codebases for RAG retrieval.</p>
+              </div>
+              <div class="stratum-card-mini">
+                <h4>Key-Value Stores</h4>
+                <p>Stores persistent facts: user preferences, API configurations, and project identities.</p>
+              </div>
+              <div class="stratum-card-mini">
+                <h4>Relational DBs</h4>
+                <p>Tracks transactional state machines, checkpoints, and multi-step workflow graphs.</p>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="card card-highlight">
-          <h4 style="font-size: 0.95rem; color: #ffffff;">&#x1F50D; The Memory Consolidation Pipeline</h4>
-          <p class="card-text" style="font-size: 0.88rem;">
+        <!-- Stratum 3: Memory Consolidation Pipeline -->
+        <div class="pipeline-consolidation-strip">
+          <strong>MEMORY CONSOLIDATION PIPELINE</strong>
+          <p>
             When an agent finishes a task, modern frameworks run an offline <em>memory consolidation</em> step: extracting key learnings, user preferences, and failure patterns from working memory, embedding them, and indexing them in the vector store so future agent runs benefit from past experience.
           </p>
         </div>
+      </div>
 
-        <div class="citation-footer">
-          <span>Memory Architecture: Google Cloud Architecture &bull; LangGraph Persistence</span>
-          <span class="citation-badge">Citations: [S04, Agent memory] | [S06, Persistence] | CLM-004, CLM-005</span>
-        </div>
+      <div class="editorial-citations">
+        <span>Memory Architecture: Google Cloud Architecture &bull; LangGraph Persistence</span>
+        <span class="citation-chip">Citations: [S04, Agent memory] | [S06, Persistence] | CLM-004, CLM-005</span>
       </div>
     </section>
 
-    <!-- SLIDE 07: Tools and Function Calling -->
-    <section class="slide" id="slide-7" data-slide="7">
-      <div class="slide-content">
-        <div class="slide-header">
-          <span class="slide-tag">ENVIRONMENTAL INTERFACES &bull; SLIDE 07</span>
-          <h2 class="slide-title">Tools and Function Calling</h2>
-          <p class="slide-subtitle">Actuators that transform language models into real-world software operators</p>
-        </div>
+    <!-- SLIDE 07: Tools & Function Calling Technical Workspace -->
+    <section class="slide slide-paper" id="slide-7" data-slide="7">
+      <div class="editorial-header">
+        <div class="section-eyebrow">ENVIRONMENTAL INTERFACES &bull; SLIDE 07</div>
+        <h2 class="editorial-title">Tools and Function Calling</h2>
+        <p class="editorial-subtitle">Actuators that transform language models into real-world software operators</p>
+      </div>
 
-        <div class="columns-2">
-          <div class="card">
-            <h3 class="card-title">&#x1F6E0;&#xFE0F; The 4-Step Tool Execution Cycle</h3>
-            <ol style="margin-left: 1.25rem; font-size: 0.88rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.5rem;">
-              <li>
-                <strong>1. Tool Registration:</strong> Developer exposes tool signatures to the model using JSON Schema (declaring function name, docstring description, parameter types, and required fields).
-              </li>
-              <li>
-                <strong>2. Tool Call Generation:</strong> The LLM analyzes the user prompt, determines that an external calculation or API lookup is needed, and emits a structured tool invocation object:
-                <code style="font-size: 0.8rem; display: block; margin-top: 0.25rem;">{"name": "fetch_weather", "arguments": {"city": "Tokyo"}}</code>
-              </li>
-              <li>
-                <strong>3. Client Execution:</strong> The agent runtime intercepts the tool call, validates the parameters, and executes the actual Python function, SQL query, or REST API request.
-              </li>
-              <li>
-                <strong>4. Observation Injection:</strong> The runtime formats the tool output and injects it back into the model's context as a new message with <code>role: "tool"</code>.
-              </li>
-            </ol>
+      <div class="layout-workspace">
+        <div class="workspace-left-flow">
+          <div class="workspace-step">
+            <span class="step-num">01</span>
+            <div class="workspace-step-body">
+              <h4>Tool Registration</h4>
+              <p>Developer exposes tool signatures to the model using JSON Schema (declaring function name, docstring description, parameter types, and required fields).</p>
+            </div>
           </div>
 
-          <div class="card card-highlight">
-            <h3 class="card-title">&#x1F4DC; Standardized Tool Schema Example</h3>
-            <pre><code>{
+          <div class="workspace-step">
+            <span class="step-num">02</span>
+            <div class="workspace-step-body">
+              <h4>Tool Call Generation</h4>
+              <p>The LLM analyzes the user prompt, determines that an external calculation or API lookup is needed, and emits a structured tool invocation object: <code style="font-family: var(--font-mono); color: var(--blueprint-blue);">{"name": "fetch_weather", "arguments": {"city": "Tokyo"}}</code></p>
+            </div>
+          </div>
+
+          <div class="workspace-step">
+            <span class="step-num">03</span>
+            <div class="workspace-step-body">
+              <h4>Client Execution</h4>
+              <p>The agent runtime intercepts the tool call, validates the parameters, and executes the actual Python function, SQL query, or REST API request.</p>
+            </div>
+          </div>
+
+          <div class="workspace-step">
+            <span class="step-num">04</span>
+            <div class="workspace-step-body">
+              <h4>Observation Injection</h4>
+              <p>The runtime formats the tool output and injects it back into the model's context as a new message with <code>role: "tool"</code>.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="workspace-right-ide">
+          <div class="ide-header">
+            <span>tool_definition.json &bull; JSON Schema</span>
+            <span style="color: #86efac;">VALIDATED</span>
+          </div>
+          <pre class="ide-code-body"><code>{
   "name": "search_documentation",
   "description": "Searches the official knowledge base.",
   "parameters": {
@@ -425,238 +541,309 @@
     "required": ["query"]
   }
 }</code></pre>
-            <div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 0.25rem;">
-              <strong>Model Context Protocol (MCP):</strong> Emerging open standard allowing agents to securely discover and invoke tools across diverse platforms and servers.
-            </div>
+          <div class="ide-footer-callout">
+            <strong>Model Context Protocol (MCP):</strong> Emerging open standard allowing agents to securely discover and invoke tools across diverse platforms and servers.
           </div>
         </div>
+      </div>
 
-        <div class="citation-footer">
-          <span>Tool Calling Foundations: Schick et al. (Toolformer) &bull; Google Cloud</span>
-          <span class="citation-badge">Citations: [S02, Section 2] | [S04, Tools and extensions] | CLM-009, CLM-010</span>
-        </div>
+      <div class="editorial-citations">
+        <span>Tool Calling Foundations: Schick et al. (Toolformer) &bull; Google Cloud</span>
+        <span class="citation-chip">Citations: [S02, Section 2] | [S04, Tools and extensions] | CLM-009, CLM-010</span>
       </div>
     </section>
 
-    <!-- SLIDE 08: The ReAct Pattern -->
-    <section class="slide" id="slide-8" data-slide="8">
-      <div class="slide-content">
-        <div class="slide-header">
-          <span class="slide-tag">CANONICAL REASONING PARADIGM &bull; SLIDE 08</span>
-          <h2 class="slide-title">The ReAct Pattern: Reasoning and Acting</h2>
-          <p class="slide-subtitle">Synergizing reasoning traces and task-specific actions to eliminate hallucinations</p>
-        </div>
+    <!-- SLIDE 08: ReAct Orbital & Execution Trace on Dark Canvas -->
+    <section class="slide slide-dark" id="slide-8" data-slide="8">
+      <div class="editorial-header">
+        <div class="section-eyebrow">CANONICAL REASONING PARADIGM &bull; SLIDE 08</div>
+        <h2 class="editorial-title">The ReAct Pattern: Reasoning and Acting</h2>
+        <p class="editorial-subtitle">Synergizing reasoning traces and task-specific actions to eliminate hallucinations (Yao et al., 2022)</p>
+      </div>
 
-        <div class="columns-2">
-          <div class="card card-highlight">
-            <h3 class="card-title">&#x1F501; The Tripartite ReAct Loop</h3>
-            <p class="card-text">
-              Introduced by Shunyu Yao et al. (2022), <strong>ReAct</strong> tightly interleaves reasoning traces (<em>Thoughts</em>) and environment interactions (<em>Actions</em> and <em>Observations</em>).
-            </p>
-            <div style="margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
-              <div style="padding: 0.5rem 0.75rem; background: rgba(56, 189, 248, 0.1); border-left: 3px solid var(--accent-primary); border-radius: 4px;">
-                <strong style="color: var(--accent-primary); font-size: 0.85rem;">THOUGHT:</strong>
-                <span style="font-size: 0.85rem; color: var(--text-main);"> The model verbalizes its internal reasoning, tracks progress, and plans the next action.</span>
-              </div>
-              <div style="padding: 0.5rem 0.75rem; background: rgba(16, 185, 129, 0.1); border-left: 3px solid var(--accent-success); border-radius: 4px;">
-                <strong style="color: var(--accent-success); font-size: 0.85rem;">ACTION:</strong>
-                <span style="font-size: 0.85rem; color: var(--text-main);"> The model emits an explicit tool invocation with verified arguments.</span>
-              </div>
-              <div style="padding: 0.5rem 0.75rem; background: rgba(245, 158, 11, 0.1); border-left: 3px solid var(--accent-warning); border-radius: 4px;">
-                <strong style="color: var(--accent-warning); font-size: 0.85rem;">OBSERVATION:</strong>
-                <span style="font-size: 0.85rem; color: var(--text-main);"> The environment returns the actual ground-truth result back into the prompt.</span>
-              </div>
+      <div class="layout-react-orbital">
+        <div class="react-left-orbital">
+          <!-- Orbital Tripartite SVG Loop -->
+          <svg class="react-orbital-svg" viewBox="0 0 340 220" aria-label="ReAct Tripartite Orbital Loop">
+            <!-- Central dashed orbit -->
+            <ellipse cx="170" cy="110" rx="120" ry="65" fill="none" stroke="#2B3A48" stroke-width="2" stroke-dasharray="5 5" />
+
+            <!-- Thought Node (Top) -->
+            <g transform="translate(170, 45)">
+              <rect x="-65" y="-18" width="130" height="36" rx="4" fill="#18222B" stroke="#38BDF8" stroke-width="2" />
+              <text x="0" y="5" fill="#7DD3FC" font-size="11" font-family="var(--font-mono)" font-weight="700" text-anchor="middle">1. THOUGHT</text>
+            </g>
+
+            <!-- Action Node (Bottom Right) -->
+            <g transform="translate(260, 160)">
+              <rect x="-60" y="-18" width="120" height="36" rx="4" fill="#18222B" stroke="#F87171" stroke-width="2" />
+              <text x="0" y="5" fill="#FCA5A5" font-size="11" font-family="var(--font-mono)" font-weight="700" text-anchor="middle">2. ACTION</text>
+            </g>
+
+            <!-- Observation Node (Bottom Left) -->
+            <g transform="translate(80, 160)">
+              <rect x="-70" y="-18" width="140" height="36" rx="4" fill="#18222B" stroke="#4ADE80" stroke-width="2" />
+              <text x="0" y="5" fill="#86EFAC" font-size="11" font-family="var(--font-mono)" font-weight="700" text-anchor="middle">3. OBSERVATION</text>
+            </g>
+
+            <!-- Orbital connecting flow paths (strictly fill="none"!) -->
+            <path d="M 235 48 C 280 60 300 110 260 142" fill="none" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" />
+            <path d="M 200 160 L 150 160" fill="none" stroke="#F87171" stroke-width="2" stroke-linecap="round" />
+            <path d="M 80 142 C 40 110 60 60 105 48" fill="none" stroke="#4ADE80" stroke-width="2" stroke-linecap="round" />
+          </svg>
+
+          <div class="react-triad-legend">
+            <div class="legend-tier thought">
+              <strong>THOUGHT (Internal Reasoning)</strong>
+              <span>Model verbalizes logic, tracks goals &amp; plans next action.</span>
             </div>
-            <p class="card-text" style="font-size: 0.85rem; margin-top: 0.5rem;">
-              <strong>Why it works:</strong> Reasoning prevents blind action; ground-truth observations prevent hallucinated reasoning.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3 class="card-title">&#x1F4DC; Real-World Execution Trace</h3>
-            <pre><code>Question: What is the population of Paris divided by 2?
-
-Thought 1: I need to find the current population of Paris.
-Action 1: search_kb["population of Paris"]
-Observation 1: The population of Paris is 2,161,000.
-
-Thought 2: Now I must divide 2,161,000 by 2.
-Action 2: calculate["2161000 / 2"]
-Observation 2: 1080500.0
-
-Thought 3: I have verified the result via calculation.
-Action 3: finish["The population of Paris divided by 2 is 1,080,500."]</code></pre>
-            <div style="font-size: 0.82rem; color: var(--accent-success); margin-top: 0.25rem;">
-              &#x2714; Verified ground truth obtained at each step. No hallucination.
+            <div class="legend-tier action">
+              <strong>ACTION (External Actuator)</strong>
+              <span>Emits explicit tool call with verified schema arguments.</span>
+            </div>
+            <div class="legend-tier observation">
+              <strong>OBSERVATION (Ground Truth)</strong>
+              <span>Environment returns actual empirical result back into context.</span>
             </div>
           </div>
         </div>
 
-        <div class="citation-footer">
-          <span>Seminal Paper: Yao et al. (Princeton &bull; Google Brain, 2022)</span>
-          <span class="citation-badge">Citations: [S01, Section 2 &amp; 3] | CLM-011</span>
+        <div class="react-right-trace">
+          <div class="trace-line-unit q"><strong>Goal:</strong> What is the population of Paris divided by 2?</div>
+          <div class="trace-line-unit t"><strong>Thought 1:</strong> I need to find the current population of Paris.</div>
+          <div class="trace-line-unit a"><strong>Action 1:</strong> search_kb["population of Paris"]</div>
+          <div class="trace-line-unit o"><strong>Observation 1:</strong> The population of Paris is 2,161,000.</div>
+          <div class="trace-line-unit t"><strong>Thought 2:</strong> Now I must divide 2,161,000 by 2.</div>
+          <div class="trace-line-unit a"><strong>Action 2:</strong> calculate["2161000 / 2"]</div>
+          <div class="trace-line-unit o"><strong>Observation 2:</strong> 1080500.0</div>
+          <div class="trace-line-unit t"><strong>Thought 3:</strong> I have verified the result via calculation.</div>
+          <div class="trace-line-unit f"><strong>Final Action:</strong> finish["The population of Paris divided by 2 is 1,080,500."]</div>
         </div>
+      </div>
+
+      <div class="editorial-citations">
+        <span>Seminal Paper: Yao et al. (Princeton &bull; Google Brain, 2022)</span>
+        <span class="citation-chip">Citations: [S01, Section 2 &amp; 3] | CLM-011</span>
       </div>
     </section>
 
-    <!-- SLIDE 09: Agent Loop vs. Graph Orchestration -->
-    <section class="slide" id="slide-9" data-slide="9">
-      <div class="slide-content">
-        <div class="slide-header">
-          <span class="slide-tag">ORCHESTRATION TOPOLOGIES &bull; SLIDE 09</span>
-          <h2 class="slide-title">Agent Loops vs. Graph Orchestration</h2>
-          <p class="slide-subtitle">Deterministic workflows, autonomous loops, and the unified state graph architecture</p>
+    <!-- SLIDE 09: Orchestration Topologies Trio -->
+    <section class="slide slide-paper" id="slide-9" data-slide="9">
+      <div class="editorial-header">
+        <div class="section-eyebrow">ORCHESTRATION TOPOLOGIES &bull; SLIDE 09</div>
+        <h2 class="editorial-title">Agent Loops vs. Graph Orchestration</h2>
+        <p class="editorial-subtitle">Deterministic workflows, autonomous loops, and the unified state graph architecture</p>
+      </div>
+
+      <div class="layout-topology-trio">
+        <div class="trio-regions-grid">
+          <!-- Topology 1: Static DAG -->
+          <div class="topology-zone dag">
+            <h3>Static DAG Workflows</h3>
+            <svg class="topology-svg-diagram" viewBox="0 0 240 100" aria-label="Static DAG Workflow Diagram">
+              <!-- Nodes -->
+              <rect x="10" y="35" width="55" height="30" rx="3" fill="#F3F0E7" stroke="#234FDB" stroke-width="1.5" />
+              <text x="37" y="54" fill="#234FDB" font-size="10" font-family="var(--font-mono)" font-weight="700" text-anchor="middle">Step A</text>
+              <rect x="90" y="35" width="55" height="30" rx="3" fill="#F3F0E7" stroke="#234FDB" stroke-width="1.5" />
+              <text x="117" y="54" fill="#234FDB" font-size="10" font-family="var(--font-mono)" font-weight="700" text-anchor="middle">Step B</text>
+              <rect x="170" y="35" width="55" height="30" rx="3" fill="#F3F0E7" stroke="#234FDB" stroke-width="1.5" />
+              <text x="197" y="54" fill="#234FDB" font-size="10" font-family="var(--font-mono)" font-weight="700" text-anchor="middle">Step C</text>
+              <!-- Edges (fill=none strictly enforced!) -->
+              <path d="M 65 50 L 90 50" fill="none" stroke="#234FDB" stroke-width="2" />
+              <path d="M 145 50 L 170 50" fill="none" stroke="#234FDB" stroke-width="2" />
+            </svg>
+            <p><strong>Deterministic code pipelines:</strong> Execution flow is hardcoded in advance (Prompt Chaining, Parallel Routing, Evaluator-Optimizer).</p>
+            <p><strong>Anthropic View [S03]:</strong> Prefers deterministic workflows wherever possible. LLMs generate content, but human code directs the flow for predictable cost and safety.</p>
+          </div>
+
+          <!-- Topology 2: Autonomous Loop -->
+          <div class="topology-zone loop">
+            <h3>Autonomous Cyclic Loops</h3>
+            <svg class="topology-svg-diagram" viewBox="0 0 240 100" aria-label="Autonomous Cyclic Loop Diagram">
+              <!-- Nodes -->
+              <rect x="25" y="35" width="70" height="30" rx="3" fill="#F3F0E7" stroke="#E36E46" stroke-width="1.5" />
+              <text x="60" y="54" fill="#E36E46" font-size="10" font-family="var(--font-mono)" font-weight="700" text-anchor="middle">LLM Brain</text>
+              <rect x="145" y="35" width="70" height="30" rx="3" fill="#F3F0E7" stroke="#E36E46" stroke-width="1.5" />
+              <text x="180" y="54" fill="#E36E46" font-size="10" font-family="var(--font-mono)" font-weight="700" text-anchor="middle">Tools/Env</text>
+              <!-- Cyclic edges (fill=none strictly enforced!) -->
+              <path d="M 95 45 L 145 45" fill="none" stroke="#E36E46" stroke-width="2" />
+              <path d="M 180 65 C 180 85 60 85 60 65" fill="none" stroke="#E36E46" stroke-width="2" stroke-dasharray="3 3" />
+            </svg>
+            <p><strong>Dynamic while-loops:</strong> The foundation model controls its own path: choosing tools, iterating, and deciding when to terminate.</p>
+            <p><strong>Characteristics:</strong> Essential for open-ended tasks (e.g. debugging code, deep web research), but harder to predict and bound against runaway loops.</p>
+          </div>
+
+          <!-- Topology 3: Stateful Graph -->
+          <div class="topology-zone graph">
+            <h3>Stateful Graphs (LangGraph)</h3>
+            <svg class="topology-svg-diagram" viewBox="0 0 240 100" aria-label="Stateful Graph Diagram">
+              <!-- Nodes -->
+              <circle cx="40" cy="50" r="18" fill="#F3F0E7" stroke="#5C7568" stroke-width="1.5" />
+              <text x="40" y="53" fill="#5C7568" font-size="9" font-family="var(--font-mono)" font-weight="700" text-anchor="middle">Agent</text>
+              <polygon points="120,32 145,50 120,68 95,50" fill="#F3F0E7" stroke="#5C7568" stroke-width="1.5" />
+              <text x="120" y="53" fill="#5C7568" font-size="9" font-family="var(--font-mono)" font-weight="700" text-anchor="middle">Check</text>
+              <circle cx="200" cy="50" r="18" fill="#F3F0E7" stroke="#5C7568" stroke-width="1.5" />
+              <text x="200" y="53" fill="#5C7568" font-size="9" font-family="var(--font-mono)" font-weight="700" text-anchor="middle">Tool</text>
+              <!-- Edges (fill=none strictly enforced!) -->
+              <path d="M 58 50 L 95 50" fill="none" stroke="#5C7568" stroke-width="2" />
+              <path d="M 145 50 L 182 50" fill="none" stroke="#5C7568" stroke-width="2" />
+              <path d="M 200 32 C 200 15 40 15 40 32" fill="none" stroke="#5C7568" stroke-width="2" stroke-dasharray="3 3" />
+            </svg>
+            <p><strong>Unified Graph Abstraction:</strong> Reconciles deterministic workflows and autonomous loops as Nodes (computations) and Edges (transitions).</p>
+            <p><strong>LangChain View [S06]:</strong> A state graph provides cyclic transitions with deterministic state channels, persistence, and human checkpoints.</p>
+          </div>
         </div>
 
-        <div class="columns-3">
-          <div class="card">
-            <h3 class="card-title">&#x27A1;&#xFE0F; Static DAG Workflows</h3>
-            <p class="card-text" style="font-size: 0.88rem;">
-              <strong>Model:</strong> Deterministic code pipelines where execution flow is hardcoded in advance (e.g., Prompt Chaining, Parallel Routing, Evaluator-Optimizer).
-            </p>
-            <p class="card-text" style="font-size: 0.88rem; margin-top: 0.5rem;">
-              <strong>Anthropic View [S03]:</strong> Prefers deterministic workflows wherever possible. LLMs generate content, but human-written code directs the flow for predictable cost and safety.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3 class="card-title">&#x1F501; Autonomous Cyclic Loops</h3>
-            <p class="card-text" style="font-size: 0.88rem;">
-              <strong>Model:</strong> Dynamic while-loops where the foundation model controls its own path: choosing tools, iterating, and deciding when to terminate.
-            </p>
-            <p class="card-text" style="font-size: 0.88rem; margin-top: 0.5rem;">
-              <strong>Characteristics:</strong> Essential for open-ended tasks (e.g. debugging code, deep web research), but harder to predict and bound against runaway loops.
-            </p>
-          </div>
-
-          <div class="card card-highlight">
-            <h3 class="card-title">&#x1F578;&#xFE0F; Stateful Graphs (LangGraph)</h3>
-            <p class="card-text" style="font-size: 0.88rem;">
-              <strong>Model:</strong> Unifies deterministic workflows and autonomous loops as <em>Nodes</em> (computations) and <em>Edges</em> (conditional transitions).
-            </p>
-            <p class="card-text" style="font-size: 0.88rem; margin-top: 0.5rem;">
-              <strong>LangChain View [S06]:</strong> Reconciles the dichotomy. A graph provides cyclic transitions with deterministic state channels, persistence, and human checkpoints.
-            </p>
-          </div>
-        </div>
-
-        <div class="card card-warning" style="margin-top: 0.25rem;">
-          <h4 style="color: var(--accent-warning); font-size: 0.95rem;">&#x2696;&#xFE0F; Architectural Reconciliation (Documented Disagreement)</h4>
-          <p class="card-text" style="font-size: 0.88rem;">
+        <div class="reconciliation-full-banner">
+          <strong>ARCHITECTURAL RECONCILIATION (DOCUMENTED DISAGREEMENT)</strong>
+          <p>
             Anthropic [S03] draws a sharp conceptual dichotomy between <em>Workflows</em> (deterministic code routing) and <em>Agents</em> (model-directed loops). LangGraph [S06] resolves this by demonstrating that both are instances of stateful computational graphs differing only in whether edge branching is static or conditional.
           </p>
         </div>
+      </div>
 
-        <div class="citation-footer">
-          <span>Divergent Architectural Philosophies: Anthropic vs. LangChain</span>
-          <span class="citation-badge">Citations: [S03, Workflows vs agents] | [S06, Build with the Graph API] | CLM-008, CLM-014</span>
-        </div>
+      <div class="editorial-citations">
+        <span>Divergent Architectural Philosophies: Anthropic vs. LangChain</span>
+        <span class="citation-chip">Citations: [S03, Workflows vs agents] | [S06, Build with the Graph API] | CLM-008, CLM-014</span>
       </div>
     </section>
 
-    <!-- SLIDE 10: Single-Agent vs. Multi-Agent Systems -->
-    <section class="slide" id="slide-10" data-slide="10">
-      <div class="slide-content">
-        <div class="slide-header">
-          <span class="slide-tag">COLLABORATIVE ARCHITECTURES &bull; SLIDE 10</span>
-          <h2 class="slide-title">Single-Agent vs. Multi-Agent Systems</h2>
-          <p class="slide-subtitle">Coordination topologies: Sequential pipelines, hierarchical supervisors, and swarm hand-offs</p>
-        </div>
+    <!-- SLIDE 10: Multi-Agent Systems & Coordination Topologies -->
+    <section class="slide slide-paper" id="slide-10" data-slide="10">
+      <div class="editorial-header">
+        <div class="section-eyebrow">COLLABORATIVE ARCHITECTURES &bull; SLIDE 10</div>
+        <h2 class="editorial-title">Single-Agent vs. Multi-Agent Systems</h2>
+        <p class="editorial-subtitle">Coordination topologies: Sequential pipelines, hierarchical supervisors, and swarm hand-offs</p>
+      </div>
 
-        <div class="columns-2">
-          <div class="card">
-            <h3 class="card-title">&#x1F464; Single-Agent Systems</h3>
-            <ul style="margin-left: 1.25rem; font-size: 0.88rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.4rem;">
-              <li><strong>Architecture:</strong> One centralized foundation model with all instructions and tools loaded into a single context window.</li>
-              <li><strong>Pros:</strong> Low latency, straightforward debugging, zero inter-agent communication overhead.</li>
-              <li><strong>Cons:</strong> Context saturation, prompt interference, and performance degradation when juggling disparate domain instructions.</li>
-            </ul>
+      <div class="layout-network-map">
+        <div class="network-contrast-strip">
+          <div class="network-mode">
+            <h3>&#x1F464; Single-Agent Systems</h3>
+            <p>
+              One centralized foundation model with all instructions and tools loaded into a single context window. Straightforward to debug with low latency and zero inter-agent communication overhead, but vulnerable to context saturation, prompt interference, and performance degradation when juggling disparate domain instructions.
+            </p>
           </div>
 
-          <div class="card card-highlight">
-            <h3 class="card-title">&#x1F465; Multi-Agent Systems (MAS)</h3>
-            <ul style="margin-left: 1.25rem; font-size: 0.88rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.4rem;">
-              <li><strong>Architecture:</strong> A team of specialized agents, each with dedicated system prompts, constrained toolsets, and isolated contexts.</li>
-              <li><strong>Pros:</strong> Role specialization (e.g. Researcher + Coder + Reviewer), parallel execution, modular maintenance.</li>
-              <li><strong>Cons:</strong> Higher token consumption, potential communication loops, and coordination overhead.</li>
-            </ul>
+          <div class="network-mode">
+            <h3>&#x1F465; Multi-Agent Systems (MAS)</h3>
+            <p>
+              A team of specialized agents, each with dedicated system prompts, constrained toolsets, and isolated context windows. Enables clean role specialization (Researcher + Coder + Reviewer) and parallel execution, but incurs higher token consumption, potential communication loops, and coordination overhead.
+            </p>
           </div>
         </div>
 
-        <div class="columns-3" style="margin-top: 0.25rem;">
-          <div class="card">
-            <h4 style="font-size: 0.95rem; color: #ffffff;">1. Sequential Pipeline</h4>
-            <p class="card-text" style="font-size: 0.85rem;">Agent A performs research &rarr; passes brief to Agent B (Writer) &rarr; passes draft to Agent C (Editor). Linear handoff.</p>
+        <div class="three-topologies-grid">
+          <div class="topology-card-open">
+            <h4>1. Sequential Pipeline</h4>
+            <svg class="topology-net-svg" viewBox="0 0 240 70" aria-label="Sequential Pipeline Diagram">
+              <rect x="10" y="20" width="55" height="30" rx="3" fill="#F3F0E7" stroke="#234FDB" stroke-width="1.5" />
+              <text x="37" y="38" fill="#234FDB" font-size="9" font-family="var(--font-mono)" font-weight="700" text-anchor="middle">Agent A</text>
+              <rect x="90" y="20" width="55" height="30" rx="3" fill="#F3F0E7" stroke="#234FDB" stroke-width="1.5" />
+              <text x="117" y="38" fill="#234FDB" font-size="9" font-family="var(--font-mono)" font-weight="700" text-anchor="middle">Agent B</text>
+              <rect x="170" y="20" width="55" height="30" rx="3" fill="#F3F0E7" stroke="#234FDB" stroke-width="1.5" />
+              <text x="197" y="38" fill="#234FDB" font-size="9" font-family="var(--font-mono)" font-weight="700" text-anchor="middle">Agent C</text>
+              <path d="M 65 35 L 90 35" fill="none" stroke="#234FDB" stroke-width="2" />
+              <path d="M 145 35 L 170 35" fill="none" stroke="#234FDB" stroke-width="2" />
+            </svg>
+            <p>Agent A performs research &rarr; passes brief to Agent B (Writer) &rarr; passes draft to Agent C (Editor). Linear handoff.</p>
           </div>
-          <div class="card">
-            <h4 style="font-size: 0.95rem; color: #ffffff;">2. Hierarchical Supervisor</h4>
-            <p class="card-text" style="font-size: 0.85rem;">A central Router / Manager agent receives the primary goal, decomposes tasks, dispatches worker sub-agents, and synthesizes output.</p>
-          </div>
-          <div class="card">
-            <h4 style="font-size: 0.95rem; color: #ffffff;">3. Peer Handoff / Swarm</h4>
-            <p class="card-text" style="font-size: 0.85rem;">Agents transfer conversation control dynamically to specialized peers (e.g., Triage &rarr; Billing &rarr; Tech Support) via direct delegation.</p>
-          </div>
-        </div>
 
-        <div class="citation-footer">
-          <span>Multi-Agent Paradigms: OpenAI SDK &bull; CrewAI &bull; Microsoft Agent Framework</span>
-          <span class="citation-badge">Citations: [S05, Core concepts] | [S07, Core Concepts] | [S08, Why Agent Framework?] | CLM-012, CLM-013</span>
+          <div class="topology-card-open">
+            <h4>2. Hierarchical Supervisor</h4>
+            <svg class="topology-net-svg" viewBox="0 0 240 70" aria-label="Hierarchical Supervisor Diagram">
+              <rect x="85" y="5" width="70" height="24" rx="3" fill="#F3F0E7" stroke="#E36E46" stroke-width="1.5" />
+              <text x="120" y="21" fill="#E36E46" font-size="9" font-family="var(--font-mono)" font-weight="700" text-anchor="middle">Supervisor</text>
+              <rect x="15" y="42" width="60" height="24" rx="3" fill="#F3F0E7" stroke="#E36E46" stroke-width="1.5" />
+              <text x="45" y="58" fill="#E36E46" font-size="9" font-family="var(--font-mono)" font-weight="700" text-anchor="middle">Worker 1</text>
+              <rect x="90" y="42" width="60" height="24" rx="3" fill="#F3F0E7" stroke="#E36E46" stroke-width="1.5" />
+              <text x="120" y="58" fill="#E36E46" font-size="9" font-family="var(--font-mono)" font-weight="700" text-anchor="middle">Worker 2</text>
+              <rect x="165" y="42" width="60" height="24" rx="3" fill="#F3F0E7" stroke="#E36E46" stroke-width="1.5" />
+              <text x="195" y="58" fill="#E36E46" font-size="9" font-family="var(--font-mono)" font-weight="700" text-anchor="middle">Worker 3</text>
+              <path d="M 100 29 L 45 42" fill="none" stroke="#E36E46" stroke-width="1.5" />
+              <path d="M 120 29 L 120 42" fill="none" stroke="#E36E46" stroke-width="1.5" />
+              <path d="M 140 29 L 195 42" fill="none" stroke="#E36E46" stroke-width="1.5" />
+            </svg>
+            <p>A central Router / Manager agent receives the primary goal, decomposes tasks, dispatches worker sub-agents, and synthesizes output.</p>
+          </div>
+
+          <div class="topology-card-open">
+            <h4>3. Peer Handoff / Swarm</h4>
+            <svg class="topology-net-svg" viewBox="0 0 240 70" aria-label="Peer Swarm Diagram">
+              <circle cx="40" cy="35" r="16" fill="#F3F0E7" stroke="#5C7568" stroke-width="1.5" />
+              <text x="40" y="38" fill="#5C7568" font-size="8.5" font-family="var(--font-mono)" font-weight="700" text-anchor="middle">Triage</text>
+              <circle cx="120" cy="20" r="16" fill="#F3F0E7" stroke="#5C7568" stroke-width="1.5" />
+              <text x="120" y="23" fill="#5C7568" font-size="8.5" font-family="var(--font-mono)" font-weight="700" text-anchor="middle">Billing</text>
+              <circle cx="190" cy="45" r="16" fill="#F3F0E7" stroke="#5C7568" stroke-width="1.5" />
+              <text x="190" y="48" fill="#5C7568" font-size="8.5" font-family="var(--font-mono)" font-weight="700" text-anchor="middle">Tech</text>
+              <path d="M 55 30 L 105 23" fill="none" stroke="#5C7568" stroke-width="1.5" stroke-dasharray="2 2" />
+              <path d="M 135 25 L 175 40" fill="none" stroke="#5C7568" stroke-width="1.5" stroke-dasharray="2 2" />
+              <path d="M 175 48 L 56 38" fill="none" stroke="#5C7568" stroke-width="1.5" stroke-dasharray="2 2" />
+            </svg>
+            <p>Agents transfer conversation control dynamically to specialized peers (e.g. Triage &rarr; Billing &rarr; Tech Support) via direct delegation.</p>
+          </div>
         </div>
+      </div>
+
+      <div class="editorial-citations">
+        <span>Multi-Agent Paradigms: OpenAI SDK &bull; CrewAI &bull; Microsoft Agent Framework</span>
+        <span class="citation-chip">Citations: [S05, Core concepts] | [S07, Core Concepts] | [S08, Why Agent Framework?] | CLM-012, CLM-013</span>
       </div>
     </section>
 
-    <!-- SLIDE 11: Frameworks & Python Implementation -->
-    <section class="slide" id="slide-11" data-slide="11">
-      <div class="slide-content">
-        <div class="slide-header">
-          <span class="slide-tag">PRACTICAL IMPLEMENTATION &bull; SLIDE 11</span>
-          <h2 class="slide-title">Frameworks &amp; Python Implementation</h2>
-          <p class="slide-subtitle">Comparing production frameworks alongside an educational simulated ReAct agent</p>
-        </div>
+    <!-- SLIDE 11: Frameworks Matrix & Contrapuntal Code Terminals -->
+    <section class="slide slide-paper" id="slide-11" data-slide="11">
+      <div class="editorial-header">
+        <div class="section-eyebrow">PRACTICAL IMPLEMENTATION &bull; SLIDE 11</div>
+        <h2 class="editorial-title">Frameworks &amp; Python Implementation</h2>
+        <p class="editorial-subtitle">Comparing production enterprise frameworks alongside an educational simulated ReAct agent</p>
+      </div>
 
-        <div class="table-container">
-          <table>
-            <thead>
-              <tr>
-                <th>Framework</th>
-                <th>Core Abstraction</th>
-                <th>Primary Strength</th>
-                <th>Ideal Use Case</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>OpenAI Agents SDK [S05]</strong></td>
-                <td>Agents, Tools, Handoffs</td>
-                <td>Minimalist, Pythonic, native tool calling</td>
-                <td>Customer support routing, single/multi-agent handoffs</td>
-              </tr>
-              <tr>
-                <td><strong>LangGraph [S06]</strong></td>
-                <td>StateGraph, Nodes, Edges</td>
-                <td>Fine-grained cyclic control, durable persistence</td>
-                <td>Complex enterprise workflows, human-in-the-loop audit</td>
-              </tr>
-              <tr>
-                <td><strong>CrewAI [S07]</strong></td>
-                <td>Agents, Tasks, Crews</td>
-                <td>Intuitive role-playing personas &amp; team choreography</td>
-                <td>Automated research, content creation, collaborative pipelines</td>
-              </tr>
-              <tr>
-                <td><strong>Microsoft Agent Framework [S08]</strong></td>
-                <td>Agents, Workflows, Unified SK</td>
-                <td>Enterprise multi-agent patterns, AutoGen evolution</td>
-                <td>Multi-modal enterprise agent operations across cloud services</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      <div class="layout-frameworks-matrix">
+        <table class="open-matrix-table">
+          <thead>
+            <tr>
+              <th style="width: 26%;">Framework</th>
+              <th style="width: 24%;">Core Abstraction</th>
+              <th style="width: 25%;">Primary Strength</th>
+              <th style="width: 25%;">Ideal Use Case</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>OpenAI Agents SDK [S05]</strong></td>
+              <td>Agents, Tools, Handoffs</td>
+              <td>Minimalist, Pythonic, native tool calling</td>
+              <td>Customer support routing, single/multi-agent handoffs</td>
+            </tr>
+            <tr>
+              <td><strong>LangGraph [S06]</strong></td>
+              <td>StateGraph, Nodes, Edges</td>
+              <td>Fine-grained cyclic control, durable persistence</td>
+              <td>Complex enterprise workflows, human-in-the-loop audit</td>
+            </tr>
+            <tr>
+              <td><strong>CrewAI [S07]</strong></td>
+              <td>Agents, Tasks, Crews</td>
+              <td>Intuitive role-playing personas &amp; team choreography</td>
+              <td>Automated research, content creation, collaborative pipelines</td>
+            </tr>
+            <tr>
+              <td><strong>Microsoft Agent Framework [S08]</strong></td>
+              <td>Agents, Workflows, Unified SK</td>
+              <td>Enterprise multi-agent patterns, AutoGen evolution</td>
+              <td>Multi-modal enterprise agent operations across cloud services</td>
+            </tr>
+          </tbody>
+        </table>
 
-        <div class="columns-2" style="margin-top: 0.25rem;">
-          <div class="card">
-            <h4 style="font-size: 0.9rem; color: var(--accent-primary);">&#x1F40D; Educational Simulated ReAct Loop (Pure Python)</h4>
-            <pre style="font-size: 0.78rem;"><code>def run_react_agent(query, max_steps=3):
+        <div class="code-duo-grid">
+          <div class="terminal-box">
+            <div class="terminal-header sim">
+              <span>simulated_agent.py &bull; Pure Python Loop</span>
+              <span>EDUCATIONAL</span>
+            </div>
+            <pre class="terminal-code"><code>def run_react_agent(query, max_steps=3):
     state = {"query": query, "history": []}
     for step in range(max_steps):
         thought = plan_thought(state)
@@ -668,10 +855,12 @@ Action 3: finish["The population of Paris divided by 2 is 1,080,500."]</code></p
     return "Reached maximum steps."</code></pre>
           </div>
 
-          <div class="card">
-            <h4 style="font-size: 0.9rem; color: var(--accent-success);">&#x26A1; Production LLM Pattern (Structured Calling)</h4>
-            <pre style="font-size: 0.78rem;"><code># Production LLM Runtime Pattern
-messages = [{"role": "system", "content": persona},
+          <div class="terminal-box">
+            <div class="terminal-header prod">
+              <span>production_agent.py &bull; LLM Structured Runtime</span>
+              <span>ENTERPRISE</span>
+            </div>
+            <pre class="terminal-code"><code>messages = [{"role": "system", "content": persona},
             {"role": "user", "content": query}]
 while True:
     response = llm.chat(messages, tools=registered_tools)
@@ -682,35 +871,35 @@ while True:
         messages.append({"role": "tool", "content": obs})</code></pre>
           </div>
         </div>
+      </div>
 
-        <div class="citation-footer">
-          <span>Implementation Foundations: OpenAI &bull; LangChain &bull; CrewAI &bull; Microsoft</span>
-          <span class="citation-badge">Citations: [S05] | [S06] | [S07] | [S08] | CLM-015, CLM-016, CLM-017</span>
-        </div>
+      <div class="editorial-citations">
+        <span>Implementation Foundations: OpenAI &bull; LangChain &bull; CrewAI &bull; Microsoft</span>
+        <span class="citation-chip">Citations: [S05] | [S06] | [S07] | [S08] | CLM-015, CLM-016, CLM-017</span>
       </div>
     </section>
 
-    <!-- SLIDE 12: Evaluation, Safety & Future Horizons -->
-    <section class="slide" id="slide-12" data-slide="12">
-      <div class="slide-content">
-        <div class="slide-header">
-          <span class="slide-tag">SAFETY, EVALUATION &amp; SUMMARY &bull; SLIDE 12</span>
-          <h2 class="slide-title">Evaluation, Safety &amp; Future Horizons</h2>
-          <p class="slide-subtitle">Industry benchmarks, security guardrails, and core curriculum takeaways</p>
-        </div>
+    <!-- SLIDE 12: Evaluation, Safety & Future Horizons on Dark Canvas -->
+    <section class="slide slide-dark" id="slide-12" data-slide="12">
+      <div class="editorial-header">
+        <div class="section-eyebrow">SAFETY, EVALUATION &amp; SUMMARY &bull; SLIDE 12</div>
+        <h2 class="editorial-title">Evaluation, Safety &amp; Future Horizons</h2>
+        <p class="editorial-subtitle">Industry benchmarks, security guardrails, and core curriculum takeaways</p>
+      </div>
 
-        <div class="columns-2">
-          <div class="card">
-            <h3 class="card-title">&#x1F4CA; Standardized Agent Benchmarks</h3>
-            <ul style="margin-left: 1.25rem; font-size: 0.88rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.4rem;">
+      <div class="layout-conclusion-canvas">
+        <div class="conclusion-top-split">
+          <div class="concl-column">
+            <h3>&#x1F4CA; Standardized Agent Benchmarks</h3>
+            <ul>
               <li><strong>SWE-bench:</strong> Evaluates agents on resolving real-world GitHub issues (cloning repos, writing code, executing unit tests). Measures real end-to-end coding ability.</li>
               <li><strong>GAIA (General AI Assistants):</strong> Evaluates multimodal assistants on real-world tasks requiring web browsing, file parsing, multi-modal reasoning, and complex tool usage.</li>
             </ul>
           </div>
 
-          <div class="card card-warning">
-            <h3 class="card-title">&#x1F6E1;&#xFE0F; Critical Safety Guardrails</h3>
-            <ul style="margin-left: 1.25rem; font-size: 0.88rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.4rem;">
+          <div class="concl-column">
+            <h3>&#x1F6E1;&#xFE0F; Critical Safety Guardrails</h3>
+            <ul>
               <li><strong>Prompt Injection (Direct &amp; Indirect):</strong> Malicious text embedded in crawled webpages or emails instructing the agent to exfiltrate private user tokens.</li>
               <li><strong>Tool Sandboxing:</strong> Agents executing shell scripts or SQL must run in isolated containerized environments with least-privilege credentials.</li>
               <li><strong>Human-in-the-Loop (HITL):</strong> Requiring explicit human approval before financial transactions, database mutations, or public messaging.</li>
@@ -718,25 +907,25 @@ while True:
           </div>
         </div>
 
-        <div class="card card-success">
-          <h4 style="font-size: 0.95rem; color: #ffffff;">&#x1F393; Core Curriculum Summary for Beginners</h4>
-          <div class="columns-3" style="margin-top: 0.35rem;">
-            <div style="font-size: 0.85rem; color: var(--text-muted);">
-              <strong style="color: var(--text-main);">1. Agents Act:</strong> LLMs write text; agents perceive environments, execute tools, and handle errors.
-            </div>
-            <div style="font-size: 0.85rem; color: var(--text-muted);">
-              <strong style="color: var(--text-main);">2. ReAct Synergizes:</strong> Interleaving thoughts and external tool observations eliminates hallucination.
-            </div>
-            <div style="font-size: 0.85rem; color: var(--text-muted);">
-              <strong style="color: var(--text-main);">3. Start Simple:</strong> Prefer deterministic workflows first; scale to cyclic graphs or multi-agent swarms only when needed.
-            </div>
+        <div class="takeaways-trio-row">
+          <div class="takeaway-unit">
+            <h4>1. AGENTS ACT</h4>
+            <p style="font-size: 0.88rem; color: var(--light-secondary);">LLMs write text; agents perceive environments, execute tools, and recover from failures autonomously.</p>
+          </div>
+          <div class="takeaway-unit">
+            <h4>2. REACT SYNERGIZES</h4>
+            <p style="font-size: 0.88rem; color: var(--light-secondary);">Interleaving thoughts and empirical tool observations eliminates hallucination and grounds execution.</p>
+          </div>
+          <div class="takeaway-unit">
+            <h4>3. START SIMPLE</h4>
+            <p style="font-size: 0.88rem; color: var(--light-secondary);">Prefer deterministic workflows first; scale to cyclic graphs or multi-agent swarms only when complexity demands.</p>
           </div>
         </div>
+      </div>
 
-        <div class="citation-footer">
-          <span>Safety &amp; Verification: Google Cloud Architecture &bull; Anthropic</span>
-          <span class="citation-badge">Citations: [S03, Building effective agents] | [S04, Guardrails] | CLM-018</span>
-        </div>
+      <div class="editorial-citations">
+        <span>Safety &amp; Verification: Google Cloud Architecture &bull; Anthropic</span>
+        <span class="citation-chip">Citations: [S03, Building effective agents] | [S04, Guardrails] | CLM-018</span>
       </div>
     </section>
 
@@ -745,8 +934,8 @@ while True:
   <!-- Bottom Navigation Bar -->
   <footer>
     <button id="prev-btn" class="btn" disabled>&larr; Previous</button>
-    <div style="font-size: 0.82rem; color: var(--text-dim);">
-      AI Agents Learning Wiki &bull; Karpathy Educational Architecture
+    <div class="footer-meta">
+      AI Systems Atlas &bull; National Chin-Yi University of Technology &bull; CSIE
     </div>
     <button id="next-btn" class="btn btn-primary">Next &rarr;</button>
   </footer>
@@ -755,19 +944,22 @@ while True:
   <div id="overview-modal" role="dialog" aria-modal="true" aria-label="Slide Directory">
     <div class="modal-card">
       <div class="modal-header">
-        <h3 style="font-size: 1.2rem; color: #ffffff;">Presentation Slide Directory</h3>
+        <h3 class="modal-title">AI Systems Atlas — Index</h3>
         <button id="close-modal-btn" class="close-btn" aria-label="Close Overview">&times;</button>
       </div>
       <div id="overview-grid" class="overview-grid">
         <!-- Injected dynamically by slides.js -->
       </div>
-      <div style="margin-top: 1rem; text-align: right;">
-        <button id="close-modal-footer-btn" class="btn" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">Close (Esc)</button>
+      <div style="margin-top: 0.75rem; text-align: right;">
+        <button id="close-modal-footer-btn" class="btn">Close (Esc)</button>
       </div>
     </div>
   </div>
 
-  <!-- Interactive Controller Script -->
+  <!-- Vendor Script: Pinned GSAP 3.15.1 -->
+  <script src="vendor/gsap.min.js"></script>
+
+  <!-- Interactive Presentation Controller Script -->
   <script src="slides.js"></script>
 </body>
 </html>
