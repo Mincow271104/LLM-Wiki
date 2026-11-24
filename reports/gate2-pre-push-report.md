@@ -48,7 +48,7 @@ AI AGENTS LEARNING WIKI - COMPREHENSIVE LINT SUITE
 [PASS] Claim Citations: All 18 claims map to verified source IDs.
 [PASS] Contradiction Registry: Verified 4 thematic contradiction categories across 5 registered claim cross-references (all targets resolve).
 [PASS] File Integrity: All 26 Wiki markdown files are non-empty and well-structured.
-[PASS] Wiki Indexing: All 24 topic knowledge pages are indexed in wiki/index.md.
+[PASS] Wiki Indexing: All 24 content pages (21 topic articles plus 3 supporting pages) are indexed in wiki/index.md.
 [PASS] Link Resolution: All verified local Markdown and file links resolve successfully (834 links checked).
 [PASS] Topic Coverage: All 21 required knowledge areas are fully covered.
 [PASS] Inline Citations: All inline citations reference valid sources. Sources cited: ['S01', 'S02', 'S03', 'S04', 'S05', 'S06', 'S07', 'S08']

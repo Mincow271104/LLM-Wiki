@@ -47,7 +47,7 @@
   - *Fix:* Enforced a hardcoded `CANONICAL_SLUGS` dictionary in `scripts/ingest.py`. Deleted duplicate files, leaving exactly 16 files (8 JSON + 8 MD pairs).
 - **Defect 4: Machine-Specific Local File Links:**
   - *Root Cause:* Batch 1 markdown files used absolute `file:///e:/HƯ/...` links which fail on GitHub web UI and other developer machines.
-  - *Fix:* Executed systematic relative path conversion across all 24 Markdown files. Updated linter Pass 12 to reject `file:///` and Windows drive letter patterns.
+  - *Fix:* Executed systematic relative path conversion across all 24 content pages (and operational Markdown files). Updated linter Pass 12 to reject `file:///` and Windows drive letter patterns.
 - **Defect 5: License Badge Misalignment:**
   - *Root Cause:* `README.md` displayed an MIT License badge while the repository contained no LICENSE file.
   - *Fix:* Removed misleading badge; updated documentation to reflect academic assignment governance.

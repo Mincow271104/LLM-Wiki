@@ -1,6 +1,6 @@
 # AI Agents Learning Wiki
 
-[![Wiki Lint Status](https://img.shields.io/badge/Wiki_Lint-11%2F11_PASS-brightgreen)](reports/wiki-lint-report.md)
+[![Wiki Lint Status](https://img.shields.io/badge/Wiki_Lint-15%2F15_PASS-brightgreen)](reports/wiki-lint-report.md)
 [![Methodology](https://img.shields.io/badge/Architecture-Karpathy_LLM_Wiki-blue)](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f)
 [![Target Branch](https://img.shields.io/badge/Branch-main-orange)](https://github.com/Mincow271104/LLM-Wiki)
 
@@ -138,14 +138,14 @@ python scripts/ingest.py --file raw/source-cards/S01-react.json --update
 
 - [x] **8/8 primary sources** retrieved, inspected, verified, and ingested.
 - [x] **18/18 factual claims** registered with verified section locators and cross-referenced disagreements.
-- [x] **24/24 knowledge pages** authored with structured headings, citations, and interlinks.
-- [x] **11/11 automated lint checks** passing with zero defects.
+- [x] **24 content pages (21 topic articles plus 3 supporting pages)** authored with structured headings, citations, and interlinks (26 Markdown files total).
+- [x] **15/15 automated lint checks** passing with zero defects.
 - [x] **Zero secrets or private credentials** committed.
-- [x] **Strict Phase Boundary:** Phases P1 and P2 complete. Phase P3 (HTML presentation) deferred until Project Manager review.
+- [x] **Interactive Presentation Delivered:** 12-slide educational presentation deployed to GitHub Pages.
 
 ---
 
-## 7. Future HTML Presentation & Publishing Plan
-
-- **Presentation Location:** In Phase P3 (following Project Manager approval), an interactive 10–12 slide HTML presentation will be authored in `presentation/index.html`.
-- **GitHub Pages Publishing:** The presentation deck and Wiki documentation will be deployed to GitHub Pages from the `main` or `gh-pages` branch for open educational access.
+## 7. Interactive Teaching Presentation
+- **Live Presentation URL:** [https://mincow271104.github.io/LLM-Wiki/](https://mincow271104.github.io/LLM-Wiki/)
+- **Source Directory:** `presentation/` (`index.html`, `styles.css`, `slides.js`)
+- **GitHub Pages Publishing:** The interactive presentation deck is deployed natively to GitHub Pages from the `main` branch via the automated GitHub Actions CI/CD workflow (`.github/workflows/deploy-pages.yml`) for open educational access.

@@ -10,12 +10,12 @@
 
 ## 2. Student & Academic Institution Information
 - **Institution:** National Chin-Yi University of Technology (NCUT)
-- **Department:** Department of Computer Science and Information Engineering (CSIE)
-- **Course Title:** [Course Name / e.g., Agentic AI & Advanced Language Models]
-- **Student Name:** [Student Name / NCUT CSIE]
-- **Student ID:** [Student ID / e.g., 3A... / 4A...]
-- **Academic Advisor / Instructor:** [Instructor Name]
+- **Department:** Department of Computer Science and Information Engineering (CSIE) / 資訊工程系
+- **Student Name:** PHUONG KHANG MINH
+- **Student ID:** 4B517024
 - **Submission Date:** November 24, 2026
+- **Moodle Submission Title Format (School + Student ID + Department + Name + Topic):**
+  `NCUT 4B517024 CSIE PHUONG KHANG MINH - AI Agents: Concepts, Architecture and Workflow`
 
 ---
 
@@ -24,7 +24,7 @@ This project delivers an authoritative, persistent **LLM Wiki** and a companion 
 
 Following the methodology formalized by Andrej Karpathy (2026), the repository implements a strict three-layer knowledge architecture:
 1. **Layer A — Immutable Evidence (`raw/`):** 8 canonical primary sources (`S01`–`S08`), bibliographic source cards, and a machine-validated registry of 18 empirical claims (`raw/claims.json`).
-2. **Layer B — Synthesized Knowledge (`wiki/`):** 21 comprehensive conceptual articles across 6 domains, an evidence registry documenting 4 major architectural debates, a master glossary, and an append-only audit log.
+2. **Layer B — Synthesized Knowledge (`wiki/`):** 24 content pages (21 topic articles plus 3 supporting pages), an evidence registry documenting 4 major architectural debates, a master glossary, and an append-only audit log (26 Markdown files total).
 3. **Layer C — Machine Validation Schemas (`schemas/`):** Formal JSON Schema specifications (`source.schema.json`, `claim.schema.json`) enforced by an automated 15-pass integrity linter (`scripts/lint_wiki.py`).
 
 ---
@@ -47,7 +47,7 @@ Hosted natively on GitHub Pages, the presentation features:
 - **Slide 12:** Evaluation, Safety & Future Horizons (SWE-bench, GAIA, prompt injection guardrails, sandboxing, and core beginner takeaways).
 
 ### B. Automated Testing & Verification Suite
-- **15-Pass Knowledge Linter (`scripts/lint_wiki.py`):** Runs `jsonschema` validation, checks source integrity, verifies live URLs (HTTP 200), validates non-empty locators, resolves 429 relative links, rejects non-portable paths, and verifies citation coverage.
+- **15-Pass Knowledge Linter (`scripts/lint_wiki.py`):** Runs `jsonschema` validation, checks source integrity, verifies live URLs (HTTP 200), validates non-empty locators, verifies link portability (465 references scanned, 0 non-portable paths), resolves all 198 local relative links (0 broken, 24 external URI links (HTTP(S)/mailto) skipped, 243 fragment-only links skipped), and verifies citation coverage.
 - **Headless Browser Test Suite (`scripts/test_presentation.py`):** Executes Playwright Chromium tests across Desktop (1366x768) and Mobile (390x844) viewports. Asserts 0 console errors, 0 uncaught exceptions, and captures 6 visual evidence screenshots in `reports/evidence/`.
 - **Controlled Negative Test Suite (`scripts/run_negative_tests.py`):** Injects 5 deliberate failure scenarios (missing locator, invalid source ID, non-portable link, schema violation, slide count mismatch) to prove the testing framework never emits false passes.
 - **Audit Reports (`reports/`):** Includes the independent fidelity review (`fidelity-review.md`), execution log (`execution-log.md`), engineering reflection (`reflection.md`), and final validation summary (`final-validation-report.md`).

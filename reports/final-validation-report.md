@@ -32,9 +32,9 @@ AI AGENTS LEARNING WIKI - COMPREHENSIVE LINT SUITE
 [PASS] Claim Locators: All 18 claims have explicit, non-empty source locators.
 [PASS] Contradiction Registry: Verified 4 thematic contradiction categories across 5 registered claim cross-references (all targets resolve).
 [PASS] File Integrity: All 26 Wiki markdown files are substantive and well-structured.
-[PASS] Wiki Indexing: All 24 topic knowledge pages are indexed in wiki/index.md.
-[PASS] Link Portability: Zero non-portable machine-specific paths (file:/// or drive letters) detected.
-[PASS] Link Resolution: All 429 verified Markdown links resolve successfully to existing files.
+[PASS] Wiki Indexing: All 24 content pages (21 topic articles plus 3 supporting pages) are indexed in wiki/index.md.
+[PASS] Link Portability: Zero non-portable machine-specific paths (file:/// or drive letters) detected across 465 references.
+[PASS] Link Resolution: All 198 local relative links resolved successfully (465 total references scanned: 198 local relative checked, 198 resolved, 0 broken, 24 external URI links (HTTP(S)/mailto) skipped, 243 fragment-only skipped, 0 non-portable).
 [PASS] Topic Coverage: All 21 required knowledge areas are fully and substantively covered.
 [PASS] Inline Citations: All inline citations reference valid sources. Sources cited: ['S01', 'S02', 'S03', 'S04', 'S05', 'S06', 'S07', 'S08']
 ===========================================================================
@@ -133,4 +133,4 @@ To prove that the verification framework does not emit false passes, 5 intention
 ---
 
 ## 6. Final Quality Verdict
-The **AI Agents Learning Wiki** and its companion interactive presentation have satisfied every automated and manual quality gate. All 15 linter passes succeed, all 8 live URLs respond with HTTP 200, all 429 Markdown links resolve, Playwright browser tests execute with zero console errors, and all 5 negative scenarios are reliably intercepted.
+The **AI Agents Learning Wiki** and its companion interactive presentation have satisfied every automated and manual quality gate. All 15 linter passes succeed, all 8 live URLs respond with HTTP 200, all 198 local relative Markdown links resolve successfully (465 references scanned: 198 local checked, 24 external URI links (HTTP(S)/mailto) skipped, 243 fragment-only skipped, 0 broken, 0 non-portable paths), Playwright browser tests execute with zero console errors, and all 5 negative scenarios are reliably intercepted.

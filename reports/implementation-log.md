@@ -51,7 +51,7 @@
 - Created `raw/claims.json` containing 18 verified factual claims (`CLM-001` through `CLM-018`) with exact section locators, claim types, and registered disagreements.
 
 ### Turn 4: Layer B Wiki Knowledge Base Compilation
-- Authored 24 comprehensive, interlinked Markdown knowledge pages:
+- Authored 24 content pages (21 topic articles plus 3 supporting pages, 26 Markdown files total):
   - Navigation & Mental Map: `wiki/index.md`, `wiki/overview.md`, `wiki/glossary.md`, `wiki/log.md`, `wiki/evidence-registry.md`.
   - Fundamentals: `wiki/fundamentals/what-is-an-agent.md`, `wiki/fundamentals/agents-vs-chatbots.md`, `wiki/fundamentals/llm-foundations.md`.
   - Architecture: `wiki/architecture/agent-architecture.md`, `wiki/architecture/memory-and-context.md`, `wiki/architecture/tools-and-function-calling.md`, `wiki/architecture/agent-loop.md`.

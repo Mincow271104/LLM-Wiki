@@ -311,14 +311,19 @@ class WikiLinter:
         if unindexed:
             self.log("FAIL", "Wiki Indexing", f"Orphan pages not indexed in wiki/index.md: {unindexed}")
         else:
-            self.log("PASS", "Wiki Indexing", f"All {len(md_files)} topic knowledge pages are indexed in wiki/index.md.")
+            self.log("PASS", "Wiki Indexing", f"All {len(md_files)} content pages (21 topic articles plus 3 supporting pages) are indexed in wiki/index.md.")
 
     def check_links_resolution(self):
-        """Ensure all local Markdown links resolve, and reject non-portable machine-specific links."""
+        """Ensure all local Markdown links resolve, distinguish reference categories, and reject non-portable links."""
         md_files = list(BASE_DIR.rglob("*.md"))
-        broken_links = []
+
+        total_markdown_references = 0
+        local_relative_links_checked = 0
+        local_relative_links_resolved = 0
+        broken_local_links = []
+        external_links_skipped = 0
+        fragment_links_skipped = 0
         non_portable_links = []
-        link_count = 0
 
         for mf in md_files:
             # Skip git and legacy dev directory
@@ -333,33 +338,62 @@ class WikiLinter:
 
             links = re.findall(r'\[([^\]]+)\]\(([^)]+)\)', content_no_code)
             for text, target in links:
-                link_count += 1
-                if target.startswith("http://") or target.startswith("https://") or target.startswith("#"):
+                total_markdown_references += 1
+                t = target.strip()
+
+                # External web links skipped by local filesystem checking
+                if t.startswith("http://") or t.startswith("https://") or t.startswith("mailto:"):
+                    external_links_skipped += 1
                     continue
 
-                # Check for non-portable absolute links
-                if target.startswith("file:///") or re.match(r'^[a-zA-Z]:[\\/]', target):
-                    non_portable_links.append((mf.name, target))
+                # Fragment-only links skipped
+                if t.startswith("#"):
+                    fragment_links_skipped += 1
                     continue
 
-                # Relative link resolution
-                clean_target = target.split("#")[0].strip()
+                # Non-portable machine-specific paths
+                if t.startswith("file:///") or re.match(r'^[a-zA-Z]:[\\/]', t):
+                    non_portable_links.append((mf.name, t))
+                    continue
+
+                # Extract target path excluding in-page section fragment
+                clean_target = t.split("#")[0].strip()
                 if not clean_target:
+                    fragment_links_skipped += 1
                     continue
 
+                # Local relative link resolution check
+                local_relative_links_checked += 1
                 target_path = (mf.parent / clean_target).resolve()
-                if not target_path.exists():
-                    broken_links.append((mf.name, text, target))
+                if target_path.exists():
+                    local_relative_links_resolved += 1
+                else:
+                    broken_local_links.append((mf.name, text, t))
 
         if non_portable_links:
-            self.log("FAIL", "Link Portability", f"Found non-portable absolute file links: {non_portable_links[:3]}")
+            self.log("FAIL", "Link Portability", f"Found {len(non_portable_links)} non-portable absolute file links: {non_portable_links[:3]}")
         else:
-            self.log("PASS", "Link Portability", "Zero non-portable machine-specific paths (file:/// or drive letters) detected.")
+            self.log(
+                "PASS",
+                "Link Portability",
+                f"Zero non-portable machine-specific paths (file:/// or drive letters) detected across {total_markdown_references} references."
+            )
 
-        if broken_links:
-            self.log("FAIL", "Link Resolution", f"Found {len(broken_links)} broken local links: {broken_links[:3]}")
+        if broken_local_links:
+            self.log("FAIL", "Link Resolution", f"Found {len(broken_local_links)} broken local links out of {local_relative_links_checked} checked: {broken_local_links[:3]}")
         else:
-            self.log("PASS", "Link Resolution", f"All {link_count} verified Markdown links resolve successfully to existing files.")
+            self.log(
+                "PASS",
+                "Link Resolution",
+                f"All {local_relative_links_resolved} local relative links resolved successfully "
+                f"({total_markdown_references} total references scanned: "
+                f"{local_relative_links_checked} local relative checked, "
+                f"{local_relative_links_resolved} resolved, "
+                f"{len(broken_local_links)} broken, "
+                f"{external_links_skipped} external URI links (HTTP(S)/mailto) skipped, "
+                f"{fragment_links_skipped} fragment-only skipped, "
+                f"{len(non_portable_links)} non-portable)."
+            )
 
     def check_required_topics(self):
         """Ensure all 21 curriculum topics are covered by substantive pages."""

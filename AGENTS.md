@@ -90,6 +90,11 @@ In-text citations must use traceable brackets specifying the source ID and exact
 - `[S07, Core Concepts: Agents, Tasks, Crews]`
 - `[S08, Why Agent Framework?]`
 
+### Markdown Link Authoring Guidelines (Portability Rule):
+All internal cross-references and documentation links must use repository-relative Markdown paths (e.g., `[Overview](overview.md)`, `[S01 Card](../raw/source-cards/S01-react.md)`).
+- **Prohibited:** Machine-specific `file:///` URLs and absolute Windows paths (e.g. `C:\...` or `E:\...`) are strictly prohibited in user-facing documentation to ensure portability across GitHub, Linux, and other environments.
+- **Scope Notice:** This rule is an authoring guideline for Markdown formatting, not an automated claim-validation mechanism. Automated link resolution and portability verification are enforced separately by `scripts/lint_wiki.py` (Passes 12 & 13).
+
 ---
 
 ## 5. Standard Operating Protocols
@@ -111,7 +116,7 @@ In-text citations must use traceable brackets specifying the source ID and exact
 
 ### Protocol C: Lint
 1. Execute `python scripts/lint_wiki.py`.
-2. Ensure all 11 automated test passes succeed.
+2. Ensure all 15 automated test passes succeed.
 3. Output updated execution results to `reports/wiki-lint-report.md`.
 
 ---
